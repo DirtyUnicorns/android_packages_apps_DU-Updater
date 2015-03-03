@@ -1,0 +1,15 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Update Schedule">
+
+        <SwitchPreference android:title="Schedule Update Checks"
+            android:id="@+id/swUCheck"
+            android:key="schedule_check"
+            android:summaryOn="Checking for updates (Once a Week)"
+            android:summaryOff="Not checking for updates"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
