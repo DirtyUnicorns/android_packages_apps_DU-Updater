@@ -80,10 +80,25 @@ public class Dialogs {
                 .show();
     }
 
-    public static void OfflineDialog(Context ctx) {
+    @SuppressWarnings("deprecation")
+	public static void OfflineDialog(Context ctx) {
         AlertDialog alertDialog = new AlertDialog.Builder(ctx).create();
         alertDialog.setTitle("Offline");
         alertDialog.setMessage("Please check your data connection and relaunch app");
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                System.exit(1);
+            }
+        });
+        alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+        alertDialog.show();
+    }
+    
+    @SuppressWarnings("deprecation")
+	public static void BadDNS(Context ctx) {
+        AlertDialog alertDialog = new AlertDialog.Builder(ctx).create();
+        alertDialog.setTitle("Error");
+        alertDialog.setMessage("Your device cannot obtain the proper IP address of our server.\n\nPlease verify that you can reach http://download.dirtyunicorns.com on your device.");
         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 System.exit(1);

@@ -16,6 +16,7 @@
 
 package com.dirtyunicorns.duupdater.Services;
 
+import android.annotation.SuppressLint;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -24,19 +25,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import com.dirtyunicorns.duupdater.Utils.MainUtils;
-
 import java.util.Date;
 
 /**
  * Created by mazwoz on 03.03.15.
  */
-public class UpdateCheck extends IntentService{
+@SuppressLint({ "NewApi", "DefaultLocale" }) public class UpdateCheck extends IntentService{
 
     public UpdateCheck() {
         super("UpdateCheck");
     }
 
-    @Override
+    @SuppressLint("DefaultLocale")
+	@Override
     protected void onHandleIntent(Intent workIntent) {
         String buildType = BuildType().toLowerCase();
         Date[] potUpdates;
@@ -47,7 +48,7 @@ public class UpdateCheck extends IntentService{
 
             String[] potentialUpdates = MainUtils.getFiles(buildType.substring(0,1).toUpperCase() + buildType.substring(1));
 
-            if (potentialUpdates.length > 0) {
+            if (potentialUpdates != null) {
                 potUpdates = new Date[potentialUpdates.length];
                 strPotUpdates = new String[potentialUpdates.length];
                 for (String update : potentialUpdates) {
@@ -60,22 +61,23 @@ public class UpdateCheck extends IntentService{
                         i++;
                     }
                 }
-
-                Intent downloadIntent = new Intent(getApplication(), DownloadIntent.class);
-                downloadIntent.putExtra("fileName", strPotUpdates[i - 1]);
-                downloadIntent.putExtra("dirName", buildType.substring(0,1).toUpperCase() + buildType.substring(1));
-                PendingIntent pendingIntent = PendingIntent.getActivity(getApplication(), 0, downloadIntent, 0);
-
-                Notification mBuilder = new Notification.Builder(getApplication())
-                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                        .setContentTitle("A new update is available")
-                        .setContentText("Would you like to download it now?")
-                        .setAutoCancel(true)
-                        .addAction(android.R.drawable.stat_sys_download, "Download", pendingIntent).build();
-                mBuilder.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_AUTO_CANCEL;
-
-                NotificationManager mNotificationManaager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                mNotificationManaager.notify(0, mBuilder);
+                if (strPotUpdates.length > 0) {
+	                Intent downloadIntent = new Intent(getApplication(), DownloadIntent.class);
+	                downloadIntent.putExtra("fileName", strPotUpdates[i - 1]);
+	                downloadIntent.putExtra("dirName", buildType.substring(0,1).toUpperCase() + buildType.substring(1));
+	                PendingIntent pendingIntent = PendingIntent.getActivity(getApplication(), 0, downloadIntent, 0);
+	
+	                Notification mBuilder = new Notification.Builder(getApplication())
+	                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
+	                        .setContentTitle("A new update is available")
+	                        .setContentText("Would you like to download it now?")
+	                        .setAutoCancel(true)
+	                        .addAction(android.R.drawable.stat_sys_download, "Download", pendingIntent).build();
+	                mBuilder.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_AUTO_CANCEL;
+	
+	                NotificationManager mNotificationManaager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+	                mNotificationManaager.notify(0, mBuilder);
+                }
             }
 
         }

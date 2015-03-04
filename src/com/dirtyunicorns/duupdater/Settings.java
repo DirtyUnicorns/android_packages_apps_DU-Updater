@@ -38,7 +38,8 @@ public class Settings extends PreferenceActivity {
 
     public Settings(){}
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

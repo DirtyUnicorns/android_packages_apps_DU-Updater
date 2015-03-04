@@ -16,6 +16,7 @@
 
 package com.dirtyunicorns.duupdater.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -26,29 +27,31 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by mazwoz on 12/18/14.
  */
+@SuppressLint("SimpleDateFormat")
 public class MainUtils {
 
 
 
-    private static String[] dirs, sizes;
-    private static List<List<Map<String, String>>> files;
+    private static String[] dirs;
 
     private static final String TAG_MASTER = "dev_info";
-    private static final String TAG_FILES = "dev";
 
     private static ConnectivityManager connectivityManager;
     private static boolean connected = false;
+    private static boolean DNSGood = false;
 
     public static String[] getDirs() {
 
@@ -56,8 +59,6 @@ public class MainUtils {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                Map<String, String> groups = new HashMap<String, String>();
-
                 Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
 
@@ -95,8 +96,6 @@ public class MainUtils {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                Map<String, String> groups = new HashMap<String, String>();
-
                 Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
 
@@ -125,45 +124,7 @@ public class MainUtils {
         }
         return dirs;
     }
-
-    public static String[] getSizes(final String dir) {
-
-
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Map<String, String> groups = new HashMap<String, String>();
-
-                Looper.prepare();
-                JSONParser jsonParser = new JSONParser();
-
-                String path = "http://download.dirtyunicorns.com/json.php?device=" + Build.BOARD + "&folder=" + dir;
-
-                JSONObject json = jsonParser.getJSONFromUrl(path);
-                JSONArray folders = null;
-                try{
-                    if (json != null) {
-                        folders = json.getJSONArray(TAG_MASTER);
-                        sizes = new String[folders.length()];
-                        for (int i = 0; i < folders.length(); i++) {
-                            JSONObject d = folders.getJSONObject(i);
-                            String id = d.getString("filesize");
-                            sizes[i] = id;
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        t.start();
-        while (t.isAlive()) {
-            SystemClock.sleep(200);
-        }
-        return sizes;
-    }
-
+    
     public static boolean isOnline(Context ctx) {
         try {
             connectivityManager = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -198,5 +159,33 @@ public class MainUtils {
         } else {
             return false;
         }
+    }
+    
+    public static boolean CheckDNS(final Context ctx) {
+		
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					URL url = new URL("http://download.dirtyunicorns.com");
+			    	InetAddress address = InetAddress.getByName(url.getHost());
+			    	String temp = address.toString();
+			    	String IP = temp.substring(temp.indexOf("/")+1,temp.length());
+			    	if (IP != null) {
+			    		DNSGood = true;
+			    	} else {
+			    		Dialogs.BadDNS(ctx);
+			    	}
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (UnknownHostException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}).start();
+			
+		return DNSGood;
     }
 }

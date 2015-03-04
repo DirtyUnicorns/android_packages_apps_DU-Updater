@@ -34,21 +34,18 @@ import com.dirtyunicorns.duupdater.Utils.MainUtils;
 import com.dirtyunicorns.duupdater.Utils.Vars;
 import com.dirtyunicorns.duupdater.adapters.TabsPagerAdapter;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 
+@SuppressWarnings("deprecation")
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
     private String[] tabTitles;
     private TabsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private Context ctx;
-    private List<List<Map<String, String>>> files;
-    private InputStream is;
-    private String res = null;
     private ProgressDialog pd;
 
     @Override
@@ -74,12 +71,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         ctx = this;
 
         if (MainUtils.isOnline(this)) {
+        	MainUtils.CheckDNS(this);
             pd = ProgressDialog.show(this, "DU Updater", "Please wait while search for updates...", true);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
 
-                    files = new ArrayList<List<Map<String, String>>>();
+                    new ArrayList<List<Map<String, String>>>();
                     Vars.dirs = MainUtils.getDirs();
                     tabTitles = new String[Vars.dirs.length];
                     getTitles();
@@ -118,7 +116,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     });
                 }
             }).start();
-
         } else {
             Dialogs.OfflineDialog(this);
         }

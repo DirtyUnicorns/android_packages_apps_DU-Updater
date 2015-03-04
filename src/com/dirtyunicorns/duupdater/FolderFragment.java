@@ -22,7 +22,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,8 +29,6 @@ import com.dirtyunicorns.duupdater.Utils.Dialogs;
 import com.dirtyunicorns.duupdater.Utils.MainUtils;
 import com.dirtyunicorns.duupdater.Utils.Vars;
 import com.dirtyunicorns.duupdater.adapters.FileListAdapter;
-
-import java.util.List;
 
 /**
  * Created by mazwoz on 12/18/14.
@@ -56,11 +53,10 @@ public class FolderFragment extends Fragment {
         tv.setText(dir);
 
         Vars.files = MainUtils.getFiles(dir);
-        Vars.sizes = MainUtils.getSizes(dir);
 
         if (Vars.files.length > 0) {
 
-            FileListAdapter downloadsAdapter = new FileListAdapter(getActivity().getApplicationContext(), Vars.files, Vars.sizes);
+            FileListAdapter downloadsAdapter = new FileListAdapter(getActivity().getApplicationContext(), Vars.files);
             lv.setAdapter(downloadsAdapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
