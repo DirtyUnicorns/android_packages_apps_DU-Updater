@@ -9,8 +9,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v4
 
 LOCAL_PACKAGE_NAME := DU-Updater
-
 LOCAL_SDK_VERSION := current
-LOCAL_PROGUARD_FLAG_FILES := proguard.flags
-
+LOCAL_CERTIFICATE := platform
+LOCAL_PRIVILEGED_MODULE := true
 include $(BUILD_PACKAGE)
