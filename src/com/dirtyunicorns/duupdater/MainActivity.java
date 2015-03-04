@@ -61,17 +61,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
-        actionBar.setIcon(R.drawable.ic_launcher);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        actionBar.setIcon(R.drawable.ic_launcher);
-        actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(false);
 
         String phoneModel = Build.MODEL;
 
-        actionBar.setTitle(phoneModel);
+        actionBar.setTitle("DU Updater - " + phoneModel);
 
         Vars.SetActionBar(actionBar);
         ctx = this;
