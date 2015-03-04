@@ -23,17 +23,14 @@ import android.app.ActionBar;
  */
 public class Vars {
 
-    private static ActionBar actionBar;
     public static int position;
     public static String[] dirs;
     public static String[] files;
-    public static String[] sizes;
     public static String link;
     public static String latesUpdate;
     public static String currentDir;
 
     public static void SetActionBar(ActionBar actionBarl){
-        actionBar = actionBarl;
     }
 
 }

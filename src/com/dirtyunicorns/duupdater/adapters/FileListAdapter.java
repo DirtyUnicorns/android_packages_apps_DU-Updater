@@ -16,13 +16,13 @@
 
 package com.dirtyunicorns.duupdater.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.dirtyunicorns.duupdater.R;
 
 /**
@@ -30,29 +30,25 @@ import com.dirtyunicorns.duupdater.R;
  */
 public class FileListAdapter  extends ArrayAdapter<String>{
 
-    private Context ctx;
     private View row;
-    private String[] fNames, fSizes;
+    private String[] fNames;
 
-    public FileListAdapter(Context context,String[] fileNames, String[] fileSizes) {
+    public FileListAdapter(Context context,String[] fileNames) {
         super(context, R.layout.list_file_item, fileNames);
-        ctx = context;
 
         fNames = fileNames;
-        fSizes = fileSizes;
     }
 
-    @Override
+    @SuppressLint("ViewHolder")
+	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         row = inflater.inflate(R.layout.list_file_item, parent, false);
 
         TextView txtFilename = (TextView) row.findViewById(R.id.txtFilename);
-        TextView txtFilesize = (TextView) row.findViewById(R.id.txtFilesize);
 
         txtFilename.setText(fNames[position]);
-        txtFilesize.setText(fSizes[position] + " MB");
 
         return row;
     }
