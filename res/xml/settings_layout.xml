@@ -6,10 +6,16 @@
         <SwitchPreference android:title="Schedule Update Checks"
             android:id="@+id/swUCheck"
             android:key="schedule_check"
-            android:summaryOn="Checking for updates (Once a Week)"
+            android:summaryOn="Checking for updates"
             android:summaryOff="Not checking for updates"
             android:defaultValue="false" />
-
+		<ListPreference android:title="Interval"
+		    android:id="@+id/swUCheckInt"
+		    android:key="schedule_int"
+		    android:summary="Set how often you check for updates"
+		    android:entries="@array/updateFrequency"
+		    android:entryValues="@array/updateFrequencyValues"
+		    android:defaultValue="1"></ListPreference>
     </PreferenceCategory>
 
 </PreferenceScreen>
