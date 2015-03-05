@@ -107,5 +107,19 @@ public class Dialogs {
         alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
         alertDialog.show();
     }
+    
+    @SuppressWarnings("deprecation")
+    public static void DeviceNotFound(Context ctx) {
+		AlertDialog alertDialog = new AlertDialog.Builder(ctx).create();	
+		alertDialog.setTitle("Error");	
+		alertDialog.setMessage("Your device was not found on our server. This typically means you are running an unofficial build. Unofficial builds will not be supported by this updater.");
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {	
+		    public void onClick(DialogInterface dialog, int which) {	
+		        System.exit(1);	
+		    }	
+		});	
+		alertDialog.setIcon(android.R.drawable.ic_dialog_alert);	
+		alertDialog.show();	
+    }
 
 }

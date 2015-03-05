@@ -163,7 +163,7 @@ public class MainUtils {
     
     public static boolean CheckDNS(final Context ctx) {
 		
-		new Thread(new Runnable() {
+		Thread t = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
@@ -184,7 +184,16 @@ public class MainUtils {
 				}
 			}
 			
-		}).start();
+		});
+		t.start();
+		
+		while (t.isAlive()) {
+			try {
+				SystemClock.sleep(500);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 			
 		return DNSGood;
     }
