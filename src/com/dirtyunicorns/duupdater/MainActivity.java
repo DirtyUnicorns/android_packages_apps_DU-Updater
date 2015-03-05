@@ -79,6 +79,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
                     new ArrayList<List<Map<String, String>>>();
                     Vars.dirs = MainUtils.getDirs();
+                    if (Vars.dirs != null) {
                     tabTitles = new String[Vars.dirs.length];
                     getTitles();
                     mSectionsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager(), Vars.dirs.length);
@@ -114,6 +115,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                             pd.dismiss();
                         }
                     });
+                    } else {
+                    	runOnUiThread(new Runnable() {
+                    		@Override
+                    		public void run() {
+                    			Dialogs.DeviceNotFound(ctx);
+                    		}
+                    	});
+                    }
                 }
             }).start();
         } else {
