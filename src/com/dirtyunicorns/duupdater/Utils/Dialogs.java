@@ -21,6 +21,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import com.dirtyunicorns.duupdater.R;
+
 import com.dirtyunicorns.duupdater.Services.DownloadIntent;
 
 /**
@@ -90,7 +92,7 @@ public class Dialogs {
                 System.exit(1);
             }
         });
-        alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+        alertDialog.setIcon(R.drawable.ic_dialog_alert_material);
         alertDialog.show();
     }
     
@@ -104,7 +106,7 @@ public class Dialogs {
                 System.exit(1);
             }
         });
-        alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+        alertDialog.setIcon(R.drawable.ic_dialog_alert_material);
         alertDialog.show();
     }
     
@@ -118,7 +120,7 @@ public class Dialogs {
 		        System.exit(1);	
 		    }	
 		});	
-		alertDialog.setIcon(android.R.drawable.ic_dialog_alert);	
+		alertDialog.setIcon(R.drawable.ic_dialog_alert_material);	
 		alertDialog.show();	
     }
 
