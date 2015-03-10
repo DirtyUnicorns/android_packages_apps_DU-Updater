@@ -9,5 +9,11 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_download_intent">Download Update</string>
     <string name="large_text">Large Text</string>
+    <string name="update_schedule">Update Schedule</string>
+    <string name="schedule_update_checks">Schedule Update Checks</string>
+    <string name="checking_on">Checking for updates</string>
+    <string name="checking_off">Not checking for updates</string>
+    <string name="title_interval">Interval</string>
+    <string name="interval_summary">Set how often you check for updates</string>
 
 </resources>
