@@ -1,18 +1,18 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Update Schedule">
+    <PreferenceCategory android:title="@string/update_schedule">
 
-        <SwitchPreference android:title="Schedule Update Checks"
+        <SwitchPreference android:title="@string/schedule_update_checks"
             android:id="@+id/swUCheck"
             android:key="schedule_check"
-            android:summaryOn="Checking for updates"
-            android:summaryOff="Not checking for updates"
+            android:summaryOn="@string/checking_on"
+            android:summaryOff="@string/checking_off"
             android:defaultValue="false" />
-		<ListPreference android:title="Interval"
+		<ListPreference android:title="@string/title_interval"
 		    android:id="@+id/swUCheckInt"
 		    android:key="schedule_int"
-		    android:summary="Set how often you check for updates"
+		    android:summary="@string/interval_summary"
 		    android:entries="@array/updateFrequency"
 		    android:entryValues="@array/updateFrequencyValues"
 		    android:defaultValue="1"></ListPreference>

@@ -26,5 +26,11 @@
     <string name="action_settings">Paramètres</string>
     <string name="title_activity_download_intent">Télécharger la mise à jour</string>
     <string name="large_text">Texte Large</string>
+    <string name="update_schedule">Planification des mises à jour</string>
+    <string name="schedule_update_checks">État du contrôle</string>
+    <string name="checking_on">Mises à jour vérifiées</string>
+    <string name="checking_off">Mises à jour non vérifiées</string>
+    <string name="title_interval">Fréquence</string>
+    <string name="interval_summary">Définir la fréquence de vérification des mises à jour</string>
 
 </resources>
