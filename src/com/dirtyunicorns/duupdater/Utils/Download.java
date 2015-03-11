@@ -43,6 +43,7 @@ public class Download extends AsyncTask<String, Integer, String>{
         this.context = context;
         this.file = file;
         this.mProgressDialog = mProgressDialog;
+    	
     }
 
     @Override
@@ -84,6 +85,9 @@ public class Download extends AsyncTask<String, Integer, String>{
                 if (fileLength > 0) // only if total length is known
                     publishProgress((int) (total * 100 / fileLength));
                 output.write(data, 0, count);
+                if (isCancelled()) {
+                	break;
+                }
             }
         } catch (Exception e) {
             return e.toString();
@@ -111,6 +115,7 @@ public class Download extends AsyncTask<String, Integer, String>{
         mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
                 getClass().getName());
         mWakeLock.acquire();
+        
         mProgressDialog.show();
     }
 

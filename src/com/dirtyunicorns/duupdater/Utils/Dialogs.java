@@ -23,14 +23,13 @@ import android.content.DialogInterface;
 
 import com.dirtyunicorns.duupdater.R;
 
-import com.dirtyunicorns.duupdater.Services.DownloadIntent;
-
 /**
  * Created by mazwoz on 28.02.15.
  */
 public class Dialogs {
 
     private static String url;
+    private static Download downloadTask;
 
     public static void DownloadDialog(final Context ctx, String text, String title, final String dir, final String file) {
 
@@ -48,13 +47,23 @@ public class Dialogs {
 
                         // instantiate it within the onCreate method
                         mProgressDialog = new ProgressDialog(ctx);
-                        mProgressDialog.setMessage("Downloading...");
+                        mProgressDialog.setMessage(file + "\n\nDownloading...");
                         mProgressDialog.setIndeterminate(true);
-                        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                         mProgressDialog.setCancelable(false);
+                        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    	mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                			
+                			@Override
+                			public void onClick(DialogInterface dialog, int which) {
+                			    downloadTask.cancel(true);
+                				dialog.cancel();
+                			}
+                		});
                         // execute this when the downloader must be fired
-                        final Download downloadTask = new Download(ctx, file, mProgressDialog);
+                        downloadTask = new Download(ctx, file, mProgressDialog);
                         downloadTask.execute(url);
+                        
+                    	
 
                     }
                 })
