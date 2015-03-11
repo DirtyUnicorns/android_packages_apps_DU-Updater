@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -35,6 +36,7 @@ public class DownloadIntent extends Activity {
     private Context activity;
     private ProgressDialog mProgressDialog;
     public static Activity thisActivity;
+    private static Download downloadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +68,15 @@ public class DownloadIntent extends Activity {
                         mProgressDialog.setIndeterminate(true);
                         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                         mProgressDialog.setCancelable(false);
+                        mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                        	@Override
+                        	public void onClick(DialogInterface dialog, int which) {
+                        		downloadTask.cancel(true);
+                        		dialog.cancel();
+                        	}
+                        });
                         // execute this when the downloader must be fired
-                        final Download downloadTask = new Download(activity, file, mProgressDialog);
+                        downloadTask = new Download(activity, file, mProgressDialog);
                         downloadTask.execute(url);
 
                         NotificationManager mNotificationManaager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
