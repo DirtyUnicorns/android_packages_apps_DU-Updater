@@ -45,7 +45,8 @@
         </activity>
         <activity android:name=".Settings"
             android:theme="@style/AppTheme"
-            android:label="Settings" >
+            android:label="Settings"
+            android:parentActivityName="com.dirtyunicorns.duupdater.MainActivity" >
 
         </activity>
 
