@@ -1,0 +1,23 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<resources>
+    <string-array name="updateFrequency">
+        <item name="1">Tägliche</item>
+        <item name="2">Alle 2 Tage</item>
+        <item name="3">Alle 3 Tage</item>
+        <item name="4">Alle 4 Tage</item>
+        <item name="5">Alle 7 Tage</item>
+        <item name="6">Alle 6 Tage</item>
+        <item name="7">Einmal die Woche</item>
+    </string-array>
+
+    <string-array name="updateFrequencyValues">
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+        <item name="6">6</item>
+        <item name="7">7</item>
+    </string-array>
+     
+</resources>
