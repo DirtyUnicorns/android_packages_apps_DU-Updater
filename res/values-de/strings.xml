@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DU-Updater</string>
+    <string name="title_section1">Sektion 1</string>
+    <string name="title_section2">Sektion 2</string>
+    <string name="title_section3">Sektion 3</string>
+    <string name="start_download">Starte Download</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="title_activity_download_intent">Download Update</string>
+    <string name="large_text">Groﬂer Text</string>
+    <string name="update_schedule">Update Planung</string>
+    <string name="schedule_update_checks">Planung Update Checks</string>
+    <string name="checking_on">Suche nach Updates</string>
+    <string name="checking_off">Suche nicht nach Updates</string>
+    <string name="title_interval">Interval</string>
+    <string name="interval_summary">Setze wie oft nach Updates gesucht werden soll</string>
+
+</resources>
