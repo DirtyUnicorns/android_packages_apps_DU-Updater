@@ -6,6 +6,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtFilename"
-                android:textColor="@android:color/black"
+                android:textColor="@color/list_file_text_color"
                 android:paddingTop="15dp"/>
 </LinearLayout>

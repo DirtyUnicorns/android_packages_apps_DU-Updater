@@ -19,4 +19,5 @@
     <color name="primary_dark">#FF388E3C</color>
     <color name="primary_light">#FFC8E6C9</color>
     <color name="accent">#FF8BC34A</color>
+    <color name="list_file_text_color">#ff000000</color>
 </resources>
