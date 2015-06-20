@@ -62,8 +62,8 @@ public class MainUtils {
                 Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
 
-                String path = "http://download.dirtyunicorns.com/json.php?device=" + Build.BOARD;
-                Vars.link = "http://download.dirtyunicorns.com/files/" + Build.BOARD;
+                String path = "http://download.dirtyunicorns.com/json.php?device=" + Build.UPDATER;
+                Vars.link = "http://download.dirtyunicorns.com/files/" + Build.UPDATER;
 
                 JSONObject json = jsonParser.getJSONFromUrl(path);
                 JSONArray folders = null;
@@ -99,7 +99,7 @@ public class MainUtils {
                 Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
 
-                String path = "http://download.dirtyunicorns.com/json.php?device=" + Build.BOARD + "&folder=" + dir;
+                String path = "http://download.dirtyunicorns.com/json.php?device=" + Build.UPDATER + "&folder=" + dir;
                 JSONObject json = jsonParser.getJSONFromUrl(path);
                 JSONArray folders = null;
                 try{
