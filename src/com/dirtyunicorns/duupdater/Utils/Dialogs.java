@@ -37,7 +37,7 @@ public class Dialogs {
         url = Vars.link + "/" + dir + "/" + file + ".zip";
 
         new AlertDialog.Builder(ctx)
-                .setIcon(android.R.drawable.ic_dialog_info)
+                .setIcon(R.drawable.ic_dialog_alert_material)
                 .setTitle(title)
                 .setMessage(text)
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -79,7 +79,7 @@ public class Dialogs {
 
     public static void DownloadFinished(Context ctx, String message, String title) {
         new AlertDialog.Builder(ctx)
-                .setIcon(android.R.drawable.ic_dialog_info)
+                .setIcon(R.drawable.ic_dialog_alert_material)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {

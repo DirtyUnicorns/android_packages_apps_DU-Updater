@@ -16,6 +16,7 @@
 
 package com.dirtyunicorns.duupdater;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
@@ -24,6 +25,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.PermissionChecker;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +40,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
 @SuppressWarnings("deprecation")
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
@@ -48,6 +49,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     private Context ctx;
     private ProgressDialog pd;
 
+    private final static int REQUEST_READ_STORAGE_PERMISSION = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         Intent mServiceIntent = new Intent(this, UpdateCheck.class);
         startService(mServiceIntent);
+
+        if (Build.VERSION.SDK_INT >= 23 && PermissionChecker
+                .checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PermissionChecker.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_READ_STORAGE_PERMISSION);
+        } else {
+            // Do absolutely NOTHING
+        }
 
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
