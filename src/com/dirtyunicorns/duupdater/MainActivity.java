@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2015 Dirty Unicorns
+* Copyright (C) 2015-2016 Dirty Unicorns
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -20,8 +20,10 @@ import android.Manifest;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -154,26 +156,42 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        menu.findItem(R.id.hide_launcher).setChecked(!isLauncherIconEnabled());
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
-            Intent settings = new Intent(this, Settings.class);
-            startActivity(settings);
-
-            return true;
+        switch (item.getItemId()) {
+            case R.id.hide_launcher:
+                boolean checked = item.isChecked();
+                item.setChecked(!checked);
+                setLauncherIconEnabled(checked);
+                return true;
+            case R.id.action_settings:
+                Intent intent = new Intent(this, Settings.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    public void setLauncherIconEnabled(boolean enabled) {
+        int newState;
+        PackageManager pm = getPackageManager();
+        if (enabled) {
+            newState = PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+        } else {
+            newState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+        }
+        pm.setComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class), newState, PackageManager.DONT_KILL_APP);
+    }
+
+    public boolean isLauncherIconEnabled() {
+        PackageManager pm = getPackageManager();
+        return (pm.getComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class)) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
     }
 
     @Override

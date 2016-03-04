@@ -15,5 +15,6 @@
     <string name="checking_off">Not checking for updates</string>
     <string name="title_interval">Interval</string>
     <string name="interval_summary">Set how often you check for updates</string>
+    <string name="hide_launcher">Hide Launcher</string>
 
 </resources>
