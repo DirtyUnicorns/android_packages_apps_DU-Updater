@@ -32,5 +32,6 @@
     <string name="checking_off">Mises à jour non vérifiées</string>
     <string name="title_interval">Fréquence</string>
     <string name="interval_summary">Définir la fréquence de vérification des mises à jour</string>
+    <string name="hide_launcher">Masquer dans le lanceur d\'applications</string>
 
 </resources>
