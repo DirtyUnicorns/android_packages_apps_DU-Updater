@@ -14,6 +14,8 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+     French translation for Dirty Unicorns
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -32,6 +34,6 @@
     <string name="checking_off">Mises à jour non vérifiées</string>
     <string name="title_interval">Fréquence</string>
     <string name="interval_summary">Définir la fréquence de vérification des mises à jour</string>
-    <string name="hide_launcher">Masquer dans le lanceur d\'applications</string>
+    <string name="hide_launcher">Masquer sur le lanceur d\'appli.</string>
 
 </resources>
