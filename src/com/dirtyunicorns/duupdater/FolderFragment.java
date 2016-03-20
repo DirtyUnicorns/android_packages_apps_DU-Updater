@@ -62,7 +62,7 @@ public class FolderFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String downloadFile = (String) parent.getItemAtPosition(position);
-                    Dialogs.DownloadDialog(getActivity(),"Would you like to download the selected file?", "Download File?", dir, downloadFile);
+                    Dialogs.DownloadDialog(getActivity(), getString(R.string.download_prompt_message), getString(R.string.download_prompt_title), dir, downloadFile);
                 }
             });
         }

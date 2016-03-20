@@ -29,6 +29,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.dirtyunicorns.duupdater.R;
+
 /**
  * Created by mazwoz on 28.02.15.
  */
@@ -43,7 +45,6 @@ public class Download extends AsyncTask<String, Integer, String>{
         this.context = context;
         this.file = file;
         this.mProgressDialog = mProgressDialog;
-    	
     }
 
     @Override
@@ -115,7 +116,6 @@ public class Download extends AsyncTask<String, Integer, String>{
         mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
                 getClass().getName());
         mWakeLock.acquire();
-        
         mProgressDialog.show();
     }
 
@@ -133,9 +133,9 @@ public class Download extends AsyncTask<String, Integer, String>{
         mWakeLock.release();
         mProgressDialog.dismiss();
         if (result != null) {
-            Dialogs.DownloadFinished(context, "Download error: " + result, "Error");
+            Dialogs.DownloadFinished(context, context.getString(R.string.download_error) + result, context.getString(R.string.dialog_error_title));
         } else {
-            Dialogs.DownloadFinished(context, "File Downloaded Successfully. Happy Flashing!!!", "Download Complete");
+            Dialogs.DownloadFinished(context, context.getString(R.string.download_successful), context.getString(R.string.download_complete));
         }
     }
 }

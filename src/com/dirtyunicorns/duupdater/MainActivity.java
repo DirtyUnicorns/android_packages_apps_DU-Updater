@@ -79,14 +79,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         String phoneModel = Build.MODEL;
 
-        actionBar.setTitle("DU Updater - " + phoneModel);
+        actionBar.setTitle(getString(R.string.app_name) + phoneModel);
 
         Vars.SetActionBar(actionBar);
         ctx = this;
 
         if (MainUtils.isOnline(this)) {
         	MainUtils.CheckDNS(this);
-            pd = ProgressDialog.show(this, "DU Updater", "Please wait while search for updates...", true);
+            pd = ProgressDialog.show(this, getString(R.string.app_name), getString(R.string.please_wait_message), true);
             new Thread(new Runnable() {
                 @Override
                 public void run() {

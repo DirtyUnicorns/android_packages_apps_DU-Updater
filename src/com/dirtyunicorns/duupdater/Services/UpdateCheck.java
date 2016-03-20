@@ -27,6 +27,8 @@ import android.os.Build;
 import com.dirtyunicorns.duupdater.Utils.MainUtils;
 import java.util.Date;
 
+import com.dirtyunicorns.duupdater.R;
+
 /**
  * Created by mazwoz on 03.03.15.
  */
@@ -66,15 +68,13 @@ import java.util.Date;
 	                downloadIntent.putExtra("fileName", strPotUpdates[i - 1]);
 	                downloadIntent.putExtra("dirName", buildType.substring(0,1).toUpperCase() + buildType.substring(1));
 	                PendingIntent pendingIntent = PendingIntent.getActivity(getApplication(), 0, downloadIntent, 0);
-	
 	                Notification mBuilder = new Notification.Builder(getApplication())
 	                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
-	                        .setContentTitle("A new update is available")
-	                        .setContentText("Would you like to download it now?")
+	                        .setContentTitle(getString(R.string.update_available_title))
+	                        .setContentText(getString(R.string.update_download_prompt_title))
 	                        .setAutoCancel(true)
-	                        .addAction(android.R.drawable.stat_sys_download, "Download", pendingIntent).build();
+	                        .addAction(android.R.drawable.stat_sys_download, getString(R.string.update_download_button_title), pendingIntent).build();
 	                mBuilder.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_AUTO_CANCEL;
-	
 	                NotificationManager mNotificationManaager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 	                mNotificationManaager.notify(0, mBuilder);
                 }

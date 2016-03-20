@@ -64,12 +64,12 @@ public class DownloadIntent extends Activity {
 
                         // instantiate it within the onCreate method
                         mProgressDialog = new ProgressDialog(activity);
-                        mProgressDialog.setMessage("Downloading \n\n" + file + " \n\nto /sdcard/Download");
+                        mProgressDialog.setMessage(getString(R.string.download_location_title) + file + " \n\nto /sdcard/Download");
                         mProgressDialog.setIndeterminate(true);
                         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                         mProgressDialog.setCancelable(false);
-                        mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                			
+                        mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
+
                 			@Override
                 			public void onClick(DialogInterface dialog, int which) {
                 			    downloadTask.cancel(true);

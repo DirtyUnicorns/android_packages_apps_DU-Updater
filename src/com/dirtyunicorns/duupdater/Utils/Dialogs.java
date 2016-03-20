@@ -40,19 +40,19 @@ public class Dialogs {
                 .setIcon(R.drawable.ic_dialog_alert_material)
                 .setTitle(title)
                 .setMessage(text)
-                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                .setPositiveButton(ctx.getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ProgressDialog mProgressDialog;
 
                         // instantiate it within the onCreate method
                         mProgressDialog = new ProgressDialog(ctx);
-                        mProgressDialog.setMessage(file + "\n\nDownloading...");
+                        mProgressDialog.setMessage(file + ctx.getString(R.string.dialog_downloading));
                         mProgressDialog.setIndeterminate(true);
                         mProgressDialog.setCancelable(false);
                         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                    	mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                			
+                    	mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ctx.getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
+
                 			@Override
                 			public void onClick(DialogInterface dialog, int which) {
                 			    downloadTask.cancel(true);
@@ -62,9 +62,6 @@ public class Dialogs {
                         // execute this when the downloader must be fired
                         downloadTask = new Download(ctx, file, mProgressDialog);
                         downloadTask.execute(url);
-                        
-                    	
-
                     }
                 })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -82,7 +79,7 @@ public class Dialogs {
                 .setIcon(R.drawable.ic_dialog_alert_material)
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton(ctx.getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
@@ -93,9 +90,9 @@ public class Dialogs {
     @SuppressWarnings("deprecation")
 	public static void OfflineDialog(Context ctx) {
         AlertDialog alertDialog = new AlertDialog.Builder(ctx).create();
-        alertDialog.setTitle("Offline");
-        alertDialog.setMessage("Please check your data connection and relaunch app");
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+        alertDialog.setTitle(ctx.getString(R.string.dialog_offline_title));
+        alertDialog.setMessage(ctx.getString(R.string.dialog_offline_message));
+        alertDialog.setButton(ctx.getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 System.exit(1);
             }
@@ -107,9 +104,9 @@ public class Dialogs {
     @SuppressWarnings("deprecation")
 	public static void BadDNS(Context ctx) {
         AlertDialog alertDialog = new AlertDialog.Builder(ctx).create();
-        alertDialog.setTitle("Error");
-        alertDialog.setMessage("Your device cannot obtain the proper IP address of our server.\n\nPlease verify that you can reach http://download.dirtyunicorns.com on your device.");
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+        alertDialog.setTitle(ctx.getString(R.string.dialog_error_title));
+        alertDialog.setMessage(ctx.getString(R.string.dialog_error1_message));
+        alertDialog.setButton(ctx.getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 System.exit(1);
             }
@@ -121,9 +118,9 @@ public class Dialogs {
     @SuppressWarnings("deprecation")
     public static void DeviceNotFound(Context ctx) {
 		AlertDialog alertDialog = new AlertDialog.Builder(ctx).create();
-		alertDialog.setTitle("Error");
-		alertDialog.setMessage("Your device was not found on our server. This typically means you are running an unofficial build. Unofficial builds will not be supported by this updater.");
-		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+		alertDialog.setTitle(ctx.getString(R.string.dialog_error_title));
+		alertDialog.setMessage(ctx.getString(R.string.dialog_error2_message));
+		alertDialog.setButton(ctx.getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
 		    public void onClick(DialogInterface dialog, int which) {
 		        System.exit(1);
 		    }

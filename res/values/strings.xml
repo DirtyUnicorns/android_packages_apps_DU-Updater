@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DU-Updater</string>
+    <string name="app_name">DU Updater</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -16,5 +16,24 @@
     <string name="title_interval">Interval</string>
     <string name="interval_summary">Set how often you check for updates</string>
     <string name="hide_launcher">Hide Launcher</string>
+    <string name="please_wait_message">Please wait while searching for unicorns...</string>
+    <string name="download_prompt_title">Download File?</string>
+    <string name="download_prompt_message">Would you like to download the selected file?</string>
+    <string name="dialog_yes">YES</string>
+    <string name="dialog_downloading">\n\nDownloading...</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_offline_title">Offline</string>
+    <string name="dialog_offline_message">Please check your data connection and relaunch app</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="dialog_error1_message">Your device cannot obtain the proper IP address of our server.\n\nPlease verify that you can reach http://download.dirtyunicorns.com on your device.</string>
+    <string name="dialog_error2_message">Your device was not found on our server. This typically means you are running an unofficial build. Unofficial builds will not be supported by this updater.</string>
+    <string name="download_error">Download error: </string>
+    <string name="download_successful">File Downloaded Successfully. Happy Flashing!!!</string>
+    <string name="download_complete">Download Complete</string>
+    <string name="download_location_title">Downloading \n\n</string>
+    <string name="update_available_title">A new update is available</string>
+    <string name="update_download_prompt_title">Would you like to download it now?</string>
+    <string name="update_download_button_title">Download</string>
 
 </resources>
