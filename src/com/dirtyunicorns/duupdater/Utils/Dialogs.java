@@ -49,7 +49,7 @@ public class Dialogs {
                         mProgressDialog = new ProgressDialog(ctx);
                         mProgressDialog.setMessage(file + ctx.getString(R.string.dialog_downloading));
                         mProgressDialog.setIndeterminate(true);
-                        mProgressDialog.setCancelable(false);
+                        mProgressDialog.setCanceledOnTouchOutside(false);
                         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                     	mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ctx.getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
 
