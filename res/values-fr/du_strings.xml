@@ -36,4 +36,24 @@
     <string name="interval_summary">Définir la fréquence de vérification des mises à jour</string>
     <string name="hide_launcher">Masquer sur le lanceur d\'appli.</string>
 
+    <string name="please_wait_message">Veuillez patienter pendant la recherche de licornes...</string>
+    <string name="download_prompt_title">Télécharger le fichier ?</string>
+    <string name="download_prompt_message">Voulez-vous télécharger le fichier sélectionné ?</string>
+    <string name="dialog_yes">Oui</string>
+    <string name="dialog_downloading">\n\nTéléchargement en cours...</string>
+    <string name="dialog_cancel">Annuler</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_offline_title">Déconnecté</string>
+    <string name="dialog_offline_message">Veuillez vérifier votre connexion Internet et redémarrez l\'application</string>
+    <string name="dialog_error_title">Erreur</string>
+    <string name="dialog_error1_message">Impossible de se connecter au serveur depuis DU Updater.\n\nVeuillez essayer de vous connecter à http://download.dirtyunicorns.com depuis votre navigateur Internet.</string>
+    <string name="dialog_error2_message">Votre appareil n\'a pas été trouvé sur notre serveur. Cela signifie généralement que vous utilisez une compilation non-officielle. Les compilations non-officielles ne ont pas pris en charge par DU Updater.</string>
+    <string name="download_error">Erreur de téléchargement : </string>
+    <string name="download_successful">Fichier téléchargé. Bonne installation !!!</string>
+    <string name="download_complete">Téléchargement terminé</string>
+    <string name="download_location_title">Téléchargement en cours \n\n</string>
+    <string name="update_available_title">Une nouvelle mise à jour est disponible</string>
+    <string name="update_download_prompt_title">Voulez-vous la télécharger maintenant ?</string>
+    <string name="update_download_button_title">Télécharger</string>
+
 </resources>
