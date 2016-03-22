@@ -79,7 +79,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         String phoneModel = Build.MODEL;
 
-        actionBar.setTitle(getString(R.string.app_name) + phoneModel);
+        actionBar.setTitle(getString(R.string.app_name) + " - " + phoneModel);
 
         Vars.SetActionBar(actionBar);
         ctx = this;

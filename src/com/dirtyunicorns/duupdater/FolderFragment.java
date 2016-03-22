@@ -23,8 +23,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import com.dirtyunicorns.duupdater.Utils.Dialogs;
 import com.dirtyunicorns.duupdater.Utils.MainUtils;
 import com.dirtyunicorns.duupdater.Utils.Vars;
@@ -49,8 +47,6 @@ public class FolderFragment extends Fragment {
 
         Bundle bundle = getArguments();
         dir = bundle.getString("dir", "");
-        TextView tv = (TextView) view.findViewById(R.id.Folder);
-        tv.setText(dir);
 
         Vars.files = MainUtils.getFiles(dir);
 
