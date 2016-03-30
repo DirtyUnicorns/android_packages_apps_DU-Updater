@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Created by mazwoz on 03.03.15.-->
-<!--  Copyright (C) 2015 The Dirty Unicorns Project
-
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- -->
-
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
     <string name="app_name">DU-Updater</string>
     <string name="title_section1">Sektion 1</string>
@@ -26,11 +9,31 @@
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_download_intent">Update wird heruntergeladen</string>
     <string name="large_text">Großer Text</string>
-    <string name="update_schedule">Update Zeitplan</string>
+    <string name="update_schedule">Update-Zeitplan</string>
     <string name="schedule_update_checks">Updateüberprüfung planen</string>
     <string name="checking_on">Auf Updates prüfen</string>
     <string name="checking_off">Nicht auf Updates prüfen</string>
     <string name="title_interval">Intervall</string>
-    <string name="interval_summary">Wie oft soll auf Updates geprüft werden?</string>
+    <string name="interval_summary">Wie oft soll auf Updates gesucht werden?</string>
+    <string name="hide_launcher">Launcher verstecken</string>
+    <string name="please_wait_message">Bitte warte, während nach Unicorns gesucht wird...</string>
+    <string name="download_prompt_title">Datei herunterladen?</string>
+    <string name="download_prompt_message">Möchten Sie die ausgewählte Datei herunterladen?</string>
+    <string name="dialog_yes">JA</string>
+    <string name="dialog_downloading">\n\nLade herunter...</string>
+    <string name="dialog_cancel">Abbrechen</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_offline_title">Offline</string>
+    <string name="dialog_offline_message">Bitte überprüfen Sie ihre Verbindung und starten Sie die App neu.</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="dialog_error1_message">Ihr Gerät kann nicht die richtige IP-Adresse unseres Servers beziehen.\n\nBitte stellen Sie sicher, dass http://download.dirtyunicorns.com erreicht werden kann.</string>
+    <string name="dialog_error2_message">Ihr Gerät wurde nicht auf unserem Server gefunden. Das bedeutet typischerweise, dass Sie eine inoffizielle Version verwenden. Inoffizielle Versionen werden nicht unterstützt.</string>
+    <string name="download_error">Download Error: </string>
+    <string name="download_successful">Datei erfolgreich heruntergeladen. Happy Flashing!!!</string>
+    <string name="download_complete">Download komplett</string>
+    <string name="download_location_title">Lade herunter \n\n</string>
+    <string name="update_available_title">Ein neues Update ist verfügbar</string>
+    <string name="update_download_prompt_title">Möchten Sie es jetzt herunterladen?</string>
+    <string name="update_download_button_title">Download</string>
 
 </resources>
