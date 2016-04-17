@@ -25,7 +25,7 @@
   <string name="dialog_ok">OK</string>
   <string name="dialog_offline_title">Offline</string>
   <string name="dialog_offline_message">Bitte überprüfen Sie ihre Verbindung und starten Sie die App neu.</string>
-  <string name="dialog_error_title">Error</string>
+  <string name="dialog_error_title">Fehler</string>
   <string name="dialog_error1_message">Ihr Gerät kann nicht die richtige IP-Adresse unseres Servers beziehen.\n\nBitte stellen Sie sicher, dass http://download.dirtyunicorns.com erreicht werden kann.</string>
   <string name="dialog_error2_message">Ihr Gerät wurde nicht auf unserem Server gefunden. Das bedeutet typischerweise, dass Sie eine inoffizielle Version verwenden. Inoffizielle Versionen werden nicht unterstützt.</string>
   <string name="download_error">Download Error: </string>
