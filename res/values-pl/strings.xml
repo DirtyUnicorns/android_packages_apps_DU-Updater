@@ -26,8 +26,8 @@
   <string name="dialog_offline_title">Offline</string>
   <string name="dialog_offline_message">Sprawdź swoje połączenie internetowe i uruchom ponownie aplikację</string>
   <string name="dialog_error_title">Błąd</string>
-  <string name="dialog_error1_message">Your device cannot obtain the proper IP address of our server.\n\nPlease verify that you can reach http://download.dirtyunicorns.com on your device.</string>
-  <string name="dialog_error2_message">Your device was not found on our server. This typically means you are running an unofficial build. Unofficial builds will not be supported by this updater.</string>
+  <string name="dialog_error1_message">Urządzenie nie może otrzymać prawidłowego adresu IP naszego serwera.\n\nProszę sprawdzić, czy można otworzyć http://download.dirtyunicorns.com na urządzeniu.</string>
+  <string name="dialog_error2_message">Nie można odnaleźć urządzenia na naszym serwerze. To zazwyczaj oznacza, że korzystasz z nieoficjalnych kompilacji. Nieoficjalne wersje nie będą obsługiwane przez tą aplikację.</string>
   <string name="download_error">Błąd pobierania: </string>
   <string name="download_successful">Plik pobrany pomyślnie. Miłego flashowania!!!</string>
   <string name="download_complete">Pobieranie ukończone</string>
