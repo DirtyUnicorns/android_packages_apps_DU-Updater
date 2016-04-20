@@ -11,9 +11,9 @@
   <string name="large_text">Duży tekst</string>
   <string name="update_schedule">Częstotliwość aktualizacji</string>
   <string name="schedule_update_checks">Harmonogram sprawdzania aktualizacji</string>
-  <string name="checking_on">Sprawdź dostępność aktualizacji</string>
-  <string name="checking_off">Nie sprawdzanie aktualizacji</string>
-  <string name="title_interval">Interwał</string>
+  <string name="checking_on">Sprawdzanie aktualizacji włączone</string>
+  <string name="checking_off">Sprawdzanie aktualizacji wyłączone</string>
+  <string name="title_interval">Częstotliwość</string>
   <string name="interval_summary">Wybierz jak często sprawdzać dostępność aktualizacji</string>
   <string name="hide_launcher">Ukryj w launcherze</string>
   <string name="please_wait_message">Czekaj, trwają poszukiwania jednorożców...</string>

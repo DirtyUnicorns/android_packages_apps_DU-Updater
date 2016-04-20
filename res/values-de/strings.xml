@@ -16,7 +16,7 @@
   <string name="title_interval">Intervall</string>
   <string name="interval_summary">Wie oft soll auf Updates gesucht werden?</string>
   <string name="hide_launcher">Launcher verstecken</string>
-  <string name="please_wait_message">Bitte warte, während nach Unicorns gesucht wird...</string>
+  <string name="please_wait_message">Bitte warten Sie, während Updates gesucht werden...</string>
   <string name="download_prompt_title">Datei herunterladen?</string>
   <string name="download_prompt_message">Möchten Sie die ausgewählte Datei herunterladen?</string>
   <string name="dialog_yes">JA</string>
