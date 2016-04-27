@@ -16,11 +16,11 @@
   <string name="title_interval">Gyakoriság</string>
   <string name="interval_summary">Állítsd be, milyen gyakran keressen frissítést</string>
   <string name="hide_launcher">Alkalmazás indító elrejtése</string>
-  <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
+  <string name="please_wait_message">Kérjük, várjon, amíg unikornist keresünk\u2026</string>
   <string name="download_prompt_title">Fájl letöltése?</string>
   <string name="download_prompt_message">Szeretné letölteni a kijelölt fájlt?</string>
   <string name="dialog_yes">IGEN</string>
-  <string name="dialog_downloading">\n\nDownloading\u2026</string>
+  <string name="dialog_downloading">\n\nLetöltés\u2026</string>
   <string name="dialog_cancel">Mégsem</string>
   <string name="dialog_ok">OK</string>
   <string name="dialog_offline_title">Offline</string>
