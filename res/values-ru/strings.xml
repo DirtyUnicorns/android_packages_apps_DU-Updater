@@ -16,11 +16,11 @@
   <string name="title_interval">Интервал</string>
   <string name="interval_summary">Установить, как часто проверять наличие обновлений</string>
   <string name="hide_launcher">Скрыть Launcher</string>
-  <string name="please_wait_message">Пожалуйста подождите, идет поиск единорогов...</string>
+  <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
   <string name="download_prompt_title">Загрузить файл?</string>
   <string name="download_prompt_message">Вы хотите загрузить выбранный файл?</string>
   <string name="dialog_yes">ДА</string>
-  <string name="dialog_downloading">Загрузка...</string>
+  <string name="dialog_downloading">\n\nDownloading\u2026</string>
   <string name="dialog_cancel">Отмена</string>
   <string name="dialog_ok">ОК</string>
   <string name="dialog_offline_title">Оффлайн</string>

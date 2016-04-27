@@ -16,11 +16,11 @@
   <string name="title_interval">Fréquence</string>
   <string name="interval_summary">Définir la fréquence de vérification des mises à jour</string>
   <string name="hide_launcher">Masquer sur le lanceur d\'appli.</string>
-  <string name="please_wait_message">Veuillez patienter pendant la recherche de licornes...</string>
+  <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
   <string name="download_prompt_title">Télécharger le fichier ?</string>
   <string name="download_prompt_message">Voulez-vous télécharger le fichier sélectionné ?</string>
   <string name="dialog_yes">Oui</string>
-  <string name="dialog_downloading">\n\nTéléchargement en cours...</string>
+  <string name="dialog_downloading">\n\nDownloading\u2026</string>
   <string name="dialog_cancel">Annuler</string>
   <string name="dialog_ok">OK</string>
   <string name="dialog_offline_title">Déconnecté</string>

@@ -16,11 +16,11 @@
   <string name="title_interval">Aikaväli</string>
   <string name="interval_summary">Määritä kuinka usein päivitykset tarkistetaan</string>
   <string name="hide_launcher">Piilota kuvake</string>
-  <string name="please_wait_message">Etsitään yksisarvisia, ole hyvä ja odota...</string>
+  <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
   <string name="download_prompt_title">Lataa tiedosto?</string>
   <string name="download_prompt_message">Ladataanko valittu tiedosto?</string>
   <string name="dialog_yes">KYLLÄ</string>
-  <string name="dialog_downloading">\n\nLadataan...</string>
+  <string name="dialog_downloading">\n\nDownloading\u2026</string>
   <string name="dialog_cancel">Peruuta</string>
   <string name="dialog_ok">OK</string>
   <string name="dialog_offline_title">Offline</string>
