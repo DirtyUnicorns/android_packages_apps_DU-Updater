@@ -16,11 +16,11 @@
   <string name="title_interval">频率</string>
   <string name="interval_summary">设置每隔多久检查更新</string>
   <string name="hide_launcher">在启动器中隐藏</string>
-  <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
+  <string name="please_wait_message">正在查找更新，请稍候...</string>
   <string name="download_prompt_title">下载文件？</string>
   <string name="download_prompt_message">您要下载选定的文件吗？</string>
   <string name="dialog_yes">确定</string>
-  <string name="dialog_downloading">\n\nDownloading\u2026</string>
+  <string name="dialog_downloading">正在下载...</string>
   <string name="dialog_cancel">取消</string>
   <string name="dialog_ok">完成</string>
   <string name="dialog_offline_title">离线</string>
