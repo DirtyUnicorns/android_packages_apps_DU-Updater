@@ -16,11 +16,11 @@
   <string name="title_interval">Intervall</string>
   <string name="interval_summary">Ange hur ofta du kontrollera efter uppdateringar</string>
   <string name="hide_launcher">Dölja Launcher</string>
-  <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
+  <string name="please_wait_message">Vänta medan vi söker efter enhörningar\u2026</string>
   <string name="download_prompt_title">Ladda ner fil?</string>
   <string name="download_prompt_message">Vill du hämta den valda filen?</string>
   <string name="dialog_yes">JA</string>
-  <string name="dialog_downloading">\n\nDownloading\u2026</string>
+  <string name="dialog_downloading">\n\nHämtas\u2026</string>
   <string name="dialog_cancel">Avbryt</string>
   <string name="dialog_ok">Ok</string>
   <string name="dialog_offline_title">Frånkopplad</string>
