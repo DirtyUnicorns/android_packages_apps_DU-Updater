@@ -16,11 +16,11 @@
   <string name="title_interval">Intervalo</string>
   <string name="interval_summary">Establece la frecuencia con la que se buscarán actualizaciones</string>
   <string name="hide_launcher">Ocultar icono</string>
-  <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
+  <string name="please_wait_message">Por favor espera mientras se buscan unicornios\u2026</string>
   <string name="download_prompt_title">Descargar archivo?</string>
   <string name="download_prompt_message">¿Quieres descargar el archivo seleccionado?</string>
   <string name="dialog_yes">SÍ</string>
-  <string name="dialog_downloading">\n\nDownloading\u2026</string>
+  <string name="dialog_downloading">\n\nDescargando\u2026</string>
   <string name="dialog_cancel">Cancelar</string>
   <string name="dialog_ok">Confirmar</string>
   <string name="dialog_offline_title">Sin conexión</string>
