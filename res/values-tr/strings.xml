@@ -4,7 +4,7 @@
   <string name="app_name">DU Güncelleyici</string>
   <string name="title_section1">Bölüm 1</string>
   <string name="title_section2">Bölüm 2</string>
-  <string name="title_section3">Section 3</string>
+  <string name="title_section3">Bölüm 3</string>
   <string name="start_download">Starting Download</string>
   <string name="action_settings">Ayarlar</string>
   <string name="title_activity_download_intent">Güncellemeyi indir</string>
@@ -13,13 +13,13 @@
   <string name="schedule_update_checks">Schedule Update Checks</string>
   <string name="checking_on">Checking for updates</string>
   <string name="checking_off">Not checking for updates</string>
-  <string name="title_interval">Interval</string>
+  <string name="title_interval">Sıklık</string>
   <string name="interval_summary">Ne sıklıkta güncelleştirmeleri denetleneceğini ayarla</string>
   <string name="hide_launcher">Launcher gizle</string>
   <string name="please_wait_message">Please wait while searching for unicorns\u2026</string>
   <string name="download_prompt_title">Dosyayı İndir?</string>
   <string name="download_prompt_message">Would you like to download the selected file?</string>
-  <string name="dialog_yes">YES</string>
+  <string name="dialog_yes">EVET</string>
   <string name="dialog_downloading">\n\nDownloading\u2026</string>
   <string name="dialog_cancel">Iptal</string>
   <string name="dialog_ok">TAMAM</string>

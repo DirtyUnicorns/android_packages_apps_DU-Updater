@@ -11,7 +11,7 @@
   <string name="large_text">大型字體</string>
   <string name="update_schedule">更新排程</string>
   <string name="schedule_update_checks">定期檢查更新</string>
-  <string name="checking_on">正在檢查更新</string>
+  <string name="checking_on">檢查更新</string>
   <string name="checking_off">不要檢查更新</string>
   <string name="title_interval">頻率</string>
   <string name="interval_summary">設定檢查更新的頻率</string>
@@ -26,7 +26,7 @@
   <string name="dialog_offline_title">離線</string>
   <string name="dialog_offline_message">請檢查您的網路連線，然後重新開啟應用程式</string>
   <string name="dialog_error_title">錯誤</string>
-  <string name="dialog_error1_message">您的裝置無法正確取得我們伺服器的正確 IP 位置。\n\n請確認您的裝置可以連線至 http://download.dirtyunicorns.com。</string>
+  <string name="dialog_error1_message">您的裝置無法取得我們伺服器的正確 IP 位置。\n\n請確認您的裝置可以連線至 http://download.dirtyunicorns.com。</string>
   <string name="dialog_error2_message">無法在我們的伺服器上找到您的裝置。這通常表示您正在使用非官方建構版本。更新程式不支援非官方建構版本。</string>
   <string name="download_error">下載錯誤： </string>
   <string name="download_successful">檔案下載成功。祝您刷機愉快！！！</string>
