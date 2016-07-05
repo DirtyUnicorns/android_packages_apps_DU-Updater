@@ -1,6 +1,7 @@
 package com.dirtyunicorns.duupdater2.fragments;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,10 +32,16 @@ public class FragmentTest extends Fragment {
         if (NetUtils.isOnline(getActivity())) {
             files = ServerUtils.getFiles("Test");
 
+            System.out.println("We are in Test");
+
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             rv.setLayoutManager(llm);
-            CardAdapter adapter = new CardAdapter(files);
-            rv.setAdapter(adapter);
+            if (files.size() > 0) {
+                CardAdapter adapter = new CardAdapter(files);
+                rv.setAdapter(adapter);
+            } else {
+                Snackbar.make(rootView,"No files to show", Snackbar.LENGTH_INDEFINITE);
+            }
         }
 
         return rootView;

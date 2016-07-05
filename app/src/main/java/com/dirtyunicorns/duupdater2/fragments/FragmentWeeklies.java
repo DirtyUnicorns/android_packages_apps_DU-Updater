@@ -31,6 +31,8 @@ public class FragmentWeeklies extends Fragment {
         if (NetUtils.isOnline(getActivity())) {
             files = ServerUtils.getFiles("Weeklies");
 
+            System.out.println("We are in Weeklies");
+
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             rv.setLayoutManager(llm);
             CardAdapter adapter = new CardAdapter(files);

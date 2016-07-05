@@ -21,14 +21,15 @@ import com.dirtyunicorns.duupdater2.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater2.fragments.FragmentTest;
 import com.dirtyunicorns.duupdater2.fragments.FragmentWeeklies;
 import com.dirtyunicorns.duupdater2.utils.NetUtils;
-import com.dirtyunicorns.duupdater2.utils.Utils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout mDrawerLayout;
     private View view;
     private final static int REQUEST_READ_STORAGE_PERMISSION = 1;
     private Fragment frag;
+    private String title;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +65,7 @@ public class MainActivity extends AppCompatActivity {
         
         view = findViewById(R.id.content_frame);
         frag = new FragmentOfficial();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        toolbar.setTitle("Official Updates");
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
@@ -100,46 +99,16 @@ public class MainActivity extends AppCompatActivity {
                     .setAction("Action", null).show();
         } else {
             NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
-            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                    int id = menuItem.getItemId();
-
-                    switch (id){
-                        case R.id.official:
-                            frag = new FragmentOfficial();
-                            Snackbar.make(view, "You are looking for Official Downloads", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                            mDrawerLayout.closeDrawers();
-                            break;
-                        case R.id.weeklies:
-                            frag = new FragmentWeeklies();
-                            Snackbar.make(view, "You are looking for Weekly Downloads", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                            mDrawerLayout.closeDrawers();
-                            break;
-                        case R.id.test:
-                            frag = new FragmentTest();
-                            Snackbar.make(view, "You are looking for Test Downloads", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                            mDrawerLayout.closeDrawers();
-                            break;
-                        case R.id.gapps:
-                            Snackbar.make(view, "You are looking for GApps Downloads", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                            mDrawerLayout.closeDrawers();
-                            break;
-                        default:
-                            frag = new FragmentOfficial();
-                    }
-                    return true;
-                }
-            });
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame,frag);
-            ft.commitAllowingStateLoss();
+            navigationView.setNavigationItemSelectedListener(this);
         }
+    }
+
+    private void UpdateFragment() {
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame,frag);
+        ft.commit();
+        toolbar.setTitle(title);
     }
 
     private void InitPermissions() {
@@ -153,5 +122,49 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // Do absolutely NOTHING
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+            int id = item.getItemId();
+
+            switch (id){
+                case R.id.official:
+                    frag = new FragmentOfficial();
+                    Snackbar.make(view, "You are looking for Official Downloads", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    mDrawerLayout.closeDrawers();
+                    title = "Official Builds";
+                    UpdateFragment();
+                    break;
+                case R.id.weeklies:
+                    frag = new FragmentWeeklies();
+                    Snackbar.make(view, "You are looking for Weekly Downloads", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    mDrawerLayout.closeDrawers();
+                    title = "Weekly Builds";
+                    UpdateFragment();
+                    break;
+                case R.id.test:
+                    frag = new FragmentTest();
+                    Snackbar.make(view, "You are looking for Test Downloads", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    mDrawerLayout.closeDrawers();
+                    title = "Test Builds";
+                    UpdateFragment();
+                    break;
+                case R.id.gapps:
+                    Snackbar.make(view, "You are looking for GApps Downloads", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    mDrawerLayout.closeDrawers();
+                    title = "GApps Packages";
+                    UpdateFragment();
+                    break;
+                default:
+                    frag = new FragmentOfficial();
+                    UpdateFragment();
+            }
+            return true;
     }
 }
