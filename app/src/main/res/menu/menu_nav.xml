@@ -3,15 +3,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/official"
-            android:title="Official Builds"/>
+            android:title="Official Builds"
+            android:icon="@drawable/official"/>
         <item
             android:id="@+id/weeklies"
-            android:title="Weekly Builds"/>
+            android:title="Weekly Builds"
+            android:icon="@drawable/weekly"/>
         <item
             android:id="@+id/test"
-            android:title="Test Builds"/>
+            android:title="Test Builds"
+            android:icon="@drawable/test"/>
         <item
             android:id="@+id/gapps"
-            android:title="GApps"/>
+            android:title="GApps"
+            android:icon="@drawable/gapps"/>
     </group>
 </menu>

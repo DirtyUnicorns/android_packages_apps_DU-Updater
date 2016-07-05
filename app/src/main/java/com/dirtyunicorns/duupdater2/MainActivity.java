@@ -62,14 +62,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void InitInterface() {
-        
         view = findViewById(R.id.content_frame);
         frag = new FragmentOfficial();
+
+        assert toolbar != null;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,12 +101,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .setAction("Action", null).show();
         } else {
             NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+
+            assert navigationView != null;
             navigationView.setNavigationItemSelectedListener(this);
         }
     }
 
     private void UpdateFragment() {
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame,frag);
         ft.commit();
@@ -119,8 +122,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 PermissionChecker.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     REQUEST_READ_STORAGE_PERMISSION);
-        } else {
-            // Do absolutely NOTHING
         }
     }
 
