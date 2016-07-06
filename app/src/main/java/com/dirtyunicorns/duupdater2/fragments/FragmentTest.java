@@ -36,7 +36,7 @@ public class FragmentTest extends Fragment {
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             rv.setLayoutManager(llm);
             if (files.size() > 0) {
-                CardAdapter adapter = new CardAdapter(files);
+                CardAdapter adapter = new CardAdapter(files,getActivity());
                 rv.setAdapter(adapter);
             } else {
                 Snackbar.make(rootView,"No files to show", Snackbar.LENGTH_INDEFINITE);

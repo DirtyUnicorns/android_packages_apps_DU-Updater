@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.dirtyunicorns.duupdater2.R;
 import com.dirtyunicorns.duupdater2.adapters.CardAdapter;
@@ -43,8 +44,15 @@ public class FragmentWeeklies extends Fragment {
             rv.setLayoutManager(llm);
 
             if (files.size() > 0) {
-                CardAdapter adapter = new CardAdapter(files);
+                CardAdapter adapter = new CardAdapter(files,getActivity());
                 rv.setAdapter(adapter);
+                Button download = (Button) rv.findViewById(R.id.btnDownload);
+                download.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
             } else {
                 Snackbar.make(rootView,"No files to show", Snackbar.LENGTH_INDEFINITE);
             }

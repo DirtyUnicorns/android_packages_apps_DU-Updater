@@ -45,11 +45,19 @@
                 android:id="@+id/update_md5"
                 android:textSize="12sp"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/download_path"
+                android:visibility="invisible"
+                android:textSize="12sp"
+                />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/action_download"
+                android:id="@+id/btnDownload"
                 android:elevation="6dp"
                 style="?android:attr/colorButtonNormal"
                 android:layout_gravity="end"
