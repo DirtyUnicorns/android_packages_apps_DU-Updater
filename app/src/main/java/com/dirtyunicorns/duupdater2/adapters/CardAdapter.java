@@ -33,8 +33,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
     @Override
     public void onBindViewHolder(FileHolder holder, int position) {
         holder.fileName.setText(files.get(position).GetFileName());
+        //System.out.println(files.get(position).GetFileName());
         holder.fileSize.setText("File Size: " + files.get(position).GetFileSize());
-        holder.fileMD5.setText("File MD5: ");
+        holder.fileMD5.setText("File MD5: " + files.get(position).GetFileMD5());
     }
 
     @Override

@@ -4,10 +4,10 @@ package com.dirtyunicorns.duupdater2.utils;
  * Created by mazwoz on 7/5/16.
  */
 public class File {
-    private static String FileName;
-    private static String FileSize;
-    private static String FileMD5;
-    private static String FildLink;
+    private String FileName;
+    private String FileSize;
+    private String FileMD5;
+    private String FildLink;
 
     public void SetFileName(String value) {
         FileName = value;

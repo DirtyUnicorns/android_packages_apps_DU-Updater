@@ -30,9 +30,8 @@ public class FragmentTest extends Fragment {
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv);
         if (NetUtils.isOnline(getActivity())) {
-            files = ServerUtils.getFiles("Test");
-
-            System.out.println("We are in Test");
+            ServerUtils su = new ServerUtils();
+            files = su.getFiles("Test");
 
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             rv.setLayoutManager(llm);

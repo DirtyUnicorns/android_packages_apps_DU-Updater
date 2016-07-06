@@ -14,9 +14,9 @@ import java.util.ArrayList;
  */
 public class ServerUtils extends Utils {
 
-    public static ArrayList<File> getFiles(final String dir) {
+    private ArrayList<File> files = new ArrayList<File>();
 
-        final ArrayList<File> files = new ArrayList<>();
+    public ArrayList<File> getFiles(final String dir) {
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -26,7 +26,7 @@ public class ServerUtils extends Utils {
 
                 device = Build.BOARD;
 
-                path += device + "/" + dir;
+                path += device + "&folder=" + dir;
                 link += device;
 
                 JSONObject json = jsonParser.getJSONFromUrl(path);
@@ -41,6 +41,8 @@ public class ServerUtils extends Utils {
                             f.SetFileName(d.getString("filename"));
                             f.SetFileSize(d.getString("filesize"));
                             f.SetFileLink(d.getString("downloads"));
+                            f.SetFileMD5(d.getString("md5"));
+                            f.GetFileName();
                             files.add(f);
                         }
                     }
@@ -54,6 +56,9 @@ public class ServerUtils extends Utils {
         while (t.isAlive()) {
             SystemClock.sleep(200);
         }
+        /*for (File f : files) {
+            System.out.println(f.GetFileName());
+        }*/
         return files;
     }
 }

@@ -1,6 +1,7 @@
 package com.dirtyunicorns.duupdater2.fragments;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,14 +30,24 @@ public class FragmentWeeklies extends Fragment {
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv);
         if (NetUtils.isOnline(getActivity())) {
-            files = ServerUtils.getFiles("Weeklies");
+            ServerUtils su = new ServerUtils();
+            files = su.getFiles("Weeklies");
+
+            for (File file : files) {
+                System.out.println(file.GetFileName());
+            }
 
             System.out.println("We are in Weeklies");
 
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             rv.setLayoutManager(llm);
-            CardAdapter adapter = new CardAdapter(files);
-            rv.setAdapter(adapter);
+
+            if (files.size() > 0) {
+                CardAdapter adapter = new CardAdapter(files);
+                rv.setAdapter(adapter);
+            } else {
+                Snackbar.make(rootView,"No files to show", Snackbar.LENGTH_INDEFINITE);
+            }
         }
 
         return rootView;
