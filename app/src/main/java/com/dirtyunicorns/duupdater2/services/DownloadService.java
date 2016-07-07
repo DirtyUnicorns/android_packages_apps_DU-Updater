@@ -44,7 +44,7 @@ public class DownloadService extends IntentService{
             byte data[] = new byte[1024];
             long total = 0;
             int count;
-            while ((count = input.read(data)) > 0) {
+            while ((count = input.read(data)) != -1) {
                 total += count;
                 Bundle resultData = new Bundle();
                 resultData.putInt("progress",(int) (total * 100/fileLength));

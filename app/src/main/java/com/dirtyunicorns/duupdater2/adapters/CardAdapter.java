@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcel;
 import android.os.PowerManager;
 import android.support.v4.os.ResultReceiver;
 import android.support.v7.app.NotificationCompat;
@@ -35,6 +36,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
     private NotificationCompat.Builder mBuilder;
     private NotificationManager mNotifyManager;
     private Intent intent;
+    private int resCode;
+    private Bundle resData;
+    private DownloadReceiver dlRec;
 
     public CardAdapter(ArrayList<File> files, Context ctx) {
         this.files = files;
@@ -45,6 +49,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
     public FileHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_cardview, parent, false);
         FileHolder fh = new FileHolder(v);
+
+        dlRec = new DownloadReceiver(new Handler());
+
         final TextView downloadFile = (TextView) v.findViewById(R.id.download_path);
         final TextView fileName = (TextView) v.findViewById(R.id.update_name);
         Button btnDownload = (Button) v.findViewById(R.id.btnDownload);
@@ -62,14 +69,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
                 intent = new Intent(ctx, DownloadService.class);
                 intent.putExtra("url", link);
                 intent.putExtra("fileName", fileName.getText());
-                intent.putExtra("receiver", new DownloadReceiver(new Handler()));
+                intent.putExtra("receiver", dlRec);
+
 
                 new Thread(
                         new Runnable() {
                             @Override
                             public void run() {
-                                DownloadTask dt = new DownloadTask();
-                                dt.execute();
+                                ctx.startService(intent);
                             }
                         }
                 ).start();
@@ -111,54 +118,52 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
     @SuppressLint("ParcelCreator")
     private class DownloadReceiver extends ResultReceiver {
-        public DownloadReceiver (Handler handler) {
-            super(handler);
+        public DownloadReceiver (Handler parcel) {
+            super(parcel);
         }
 
         @Override
-        protected void onReceiveResult(final int resultCode, final Bundle resultData) {
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
             super.onReceiveResult(resultCode, resultData);
 
+            resCode = resultCode;
+            resData = resultData;
+
+            System.out.println("Progress of download: " + resultData.getInt("progress"));
+
             if (resultCode == DownloadService.UPDATE_PROGRESS) {
-                new Thread(
+                Thread download = new Thread(
                         new Runnable() {
                             @Override
                             public void run() {
-                                int progress = resultData.getInt("progress");
+
+                                int progress = resData.getInt("progress");
                                 if (progress < 100) {
                                     mBuilder.setProgress(100, progress, false);
-                                    mNotifyManager.notify(resultCode, mBuilder.build());
-                                    try {
-                                        Thread.sleep(5 * 1000);
-                                    } catch (InterruptedException e) {
-                                        Log.d("DirtyUnicornsUpdater", "Sleep Failure");
-                                    }
+                                    mBuilder.setContentText(progress + "/100");
+                                    mNotifyManager.notify(resCode, mBuilder.build());
                                 }
-                                mBuilder.setContentText("Download Completed!");
-                                mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
-                                mBuilder.setProgress(0,0,false);
-                                mNotifyManager.notify(resultCode, mBuilder.build());
 
                             }
-                        }).start();
+                        }
+                );
+                download.start();
+                while (download.isAlive()) {
 
-
+                    try {
+                        Thread.sleep(5 * 1000);
+                    } catch (InterruptedException e) {
+                        Log.d("DirtyUnicornsUpdater", "Sleep Failure");
+                    }
+                }
+                if (!download.isAlive()) {
+                    /*mBuilder.setContentText("Download Completed!");
+                    mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
+                    mBuilder.setProgress(0,0,false);
+                    mNotifyManager.notify(resultCode, mBuilder.build());*/
+                }
             }
 
         }
     }
-
-    private class DownloadTask extends AsyncTask<String, Integer, String> {
-
-        private PowerManager.WakeLock mWakeLock;
-
-        @Override
-        protected String doInBackground(String... params) {
-            ctx.startService(intent);
-
-            return null;
-        }
-    }
-
-
 }
