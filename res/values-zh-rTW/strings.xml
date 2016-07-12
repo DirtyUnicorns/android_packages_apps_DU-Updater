@@ -15,7 +15,7 @@
   <string name="checking_off">不要檢查更新</string>
   <string name="title_interval">頻率</string>
   <string name="interval_summary">設定檢查更新的頻率</string>
-  <string name="hide_launcher">在主畫面中隱藏</string>
+  <string name="hide_app">Hide app</string>
   <string name="please_wait_message">正在尋找「獨角獸」，請稍後\u2026</string>
   <string name="download_prompt_title">下載檔案？</string>
   <string name="download_prompt_message">您要下載選取的檔案嗎？</string>

@@ -15,7 +15,7 @@
   <string name="checking_off">Nicht auf Updates prüfen</string>
   <string name="title_interval">Intervall</string>
   <string name="interval_summary">Wie oft soll auf Updates gesucht werden?</string>
-  <string name="hide_launcher">Launcher verstecken</string>
+  <string name="hide_app">Hide app</string>
   <string name="please_wait_message">Bitte warten Sie, während der Suche nach Unicorns\u2026</string>
   <string name="download_prompt_title">Datei herunterladen?</string>
   <string name="download_prompt_message">Möchten Sie die ausgewählte Datei herunterladen?</string>

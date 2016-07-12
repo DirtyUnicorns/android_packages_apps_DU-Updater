@@ -15,7 +15,7 @@
   <string name="checking_off">Non verificare la presenza di aggiornamenti</string>
   <string name="title_interval">Intervallo</string>
   <string name="interval_summary">Imposta quanto spesso vuoi controllare gli aggiornamenti</string>
-  <string name="hide_launcher">Nascondi launcher</string>
+  <string name="hide_app">Hide app</string>
   <string name="please_wait_message">Aspetta, la ricerca di unicorni è in corso...</string>
   <string name="download_prompt_title">Scarica file?</string>
   <string name="download_prompt_message">Vuoi scaricare il file selezionato?</string>
