@@ -26,6 +26,8 @@ import com.dirtyunicorns.duupdater2.utils.File;
 
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by mazwoz on 7/5/16.
  */
@@ -33,12 +35,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
     private ArrayList<File> files;
     private Context ctx;
-    private NotificationCompat.Builder mBuilder;
-    private NotificationManager mNotifyManager;
     private Intent intent;
-    private int resCode;
-    private Bundle resData;
-    private DownloadReceiver dlRec;
 
     public CardAdapter(ArrayList<File> files, Context ctx) {
         this.files = files;
@@ -50,8 +47,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_cardview, parent, false);
         FileHolder fh = new FileHolder(v);
 
-        dlRec = new DownloadReceiver(new Handler());
-
         final TextView downloadFile = (TextView) v.findViewById(R.id.download_path);
         final TextView fileName = (TextView) v.findViewById(R.id.update_name);
         Button btnDownload = (Button) v.findViewById(R.id.btnDownload);
@@ -59,27 +54,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
             @Override
             public void onClick(View v) {
                 String link = downloadFile.getText().toString();
-
-
-                mNotifyManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-                mBuilder = new NotificationCompat.Builder(ctx);
-                mBuilder.setContentTitle("Dirty Unicorns")
-                        .setContentText("Downloading File")
-                        .setSmallIcon(android.R.drawable.stat_sys_download);
                 intent = new Intent(ctx, DownloadService.class);
                 intent.putExtra("url", link);
                 intent.putExtra("fileName", fileName.getText());
-                intent.putExtra("receiver", dlRec);
 
-
-                new Thread(
+                Thread startService = new Thread(
                         new Runnable() {
                             @Override
                             public void run() {
                                 ctx.startService(intent);
                             }
                         }
-                ).start();
+                );
+                startService.start();
+
             }
         });
 
@@ -113,57 +101,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
             fileSize = (TextView) itemView.findViewById(R.id.update_size);
             fileMD5 = (TextView) itemView.findViewById(R.id.update_md5);
             fildDownload = (TextView) itemView.findViewById(R.id.download_path);
-        }
-    }
-
-    @SuppressLint("ParcelCreator")
-    private class DownloadReceiver extends ResultReceiver {
-        public DownloadReceiver (Handler parcel) {
-            super(parcel);
-        }
-
-        @Override
-        protected void onReceiveResult(int resultCode, Bundle resultData) {
-            super.onReceiveResult(resultCode, resultData);
-
-            resCode = resultCode;
-            resData = resultData;
-
-            System.out.println("Progress of download: " + resultData.getInt("progress"));
-
-            if (resultCode == DownloadService.UPDATE_PROGRESS) {
-                Thread download = new Thread(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-
-                                int progress = resData.getInt("progress");
-                                if (progress < 100) {
-                                    mBuilder.setProgress(100, progress, false);
-                                    mBuilder.setContentText(progress + "/100");
-                                    mNotifyManager.notify(resCode, mBuilder.build());
-                                }
-
-                            }
-                        }
-                );
-                download.start();
-                while (download.isAlive()) {
-
-                    try {
-                        Thread.sleep(5 * 1000);
-                    } catch (InterruptedException e) {
-                        Log.d("DirtyUnicornsUpdater", "Sleep Failure");
-                    }
-                }
-                if (!download.isAlive()) {
-                    /*mBuilder.setContentText("Download Completed!");
-                    mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
-                    mBuilder.setProgress(0,0,false);
-                    mNotifyManager.notify(resultCode, mBuilder.build());*/
-                }
-            }
-
         }
     }
 }

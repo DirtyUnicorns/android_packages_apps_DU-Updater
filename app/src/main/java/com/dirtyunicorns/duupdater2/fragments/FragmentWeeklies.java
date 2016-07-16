@@ -46,13 +46,6 @@ public class FragmentWeeklies extends Fragment {
             if (files.size() > 0) {
                 CardAdapter adapter = new CardAdapter(files,getActivity());
                 rv.setAdapter(adapter);
-                Button download = (Button) rv.findViewById(R.id.btnDownload);
-                download.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
             } else {
                 Snackbar.make(rootView,"No files to show", Snackbar.LENGTH_INDEFINITE);
             }
