@@ -1,6 +1,5 @@
 package com.dirtyunicorns.duupdater2.services;
 
-import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -8,16 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Binder;
-import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.support.v4.os.ResultReceiver;
 import android.support.v7.app.NotificationCompat;
 
 import com.dirtyunicorns.duupdater2.MainActivity;
+import com.dirtyunicorns.duupdater2.receivers.ButtonReceiver;
+import com.dirtyunicorns.duupdater2.utils.Utils;
 
 import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
@@ -40,6 +39,9 @@ public class DownloadService extends Service {
     private NotificationCompat.Builder mBuilder;
     private NotificationManager mNotifyManager;
     private int prog;
+    private double speed;
+    private long total;
+
 
     public class LocalBinder extends Binder {
         DownloadService getService() {
@@ -57,6 +59,8 @@ public class DownloadService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startID) {
         this.intent = intent;
+        mBuilder = new NotificationCompat.Builder(ctx);
+        mBuilder.setSmallIcon(android.R.drawable.stat_sys_download);
         DownloadFilesTasks downloadFilesTasks = new DownloadFilesTasks();
         downloadFilesTasks.execute();
         return START_STICKY;
@@ -75,6 +79,10 @@ public class DownloadService extends Service {
 
     public final IBinder mBinder = new LocalBinder();
 
+    public void CancelDownload() {
+        DownloadFilesTasks downloadFilesTasks = new DownloadFilesTasks();
+        downloadFilesTasks.cancel(true);
+    }
 
     private class DownloadFilesTasks extends AsyncTask<String, String, Long> {
 
@@ -84,36 +92,41 @@ public class DownloadService extends Service {
             try {
                 final String fileName = intent.getStringExtra("fileName");
                 final String urlToDownload = intent.getStringExtra("url");
-                mBuilder = new NotificationCompat.Builder(ctx);
-                mBuilder.setContentTitle("Dirty Unicorns")
-                        .setContentText("Downloading File")
-                        .setSmallIcon(android.R.drawable.stat_sys_download);
                 URL url = new URL(urlToDownload);
                 URLConnection connection = url.openConnection();
                 connection.connect();
 
-                int fileLength = connection.getContentLength();
+                mBuilder.setContentTitle(fileName);
+                final int fileLength = connection.getContentLength();
 
                 InputStream input = new BufferedInputStream(connection.getInputStream());
+                BufferedInputStream bis = new BufferedInputStream(input);
                 OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DOWNLOADS + "/" + fileName);
 
                 byte data[] = new byte[1024];
-                long total = 0;
+                total = 0;
                 int count;
-                while ((count = input.read(data)) != -1) {
+                long startTime = System.currentTimeMillis();
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                while ((count = bis.read(data)) != -1) {
                     total += count;
                     prog = (int) (total * 100/fileLength);
                     output.write(data, 0, count);
+                    long estimatedTime = (System.currentTimeMillis() - startTime);
+                    speed = (total / estimatedTime);
                     if (prog < 100) {
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
                             public void run() {
                                 mBuilder.setProgress(100, prog, false);
-                                mBuilder.setContentTitle(fileName);
-                                mBuilder.setContentText(prog + "/100");
+                                mBuilder.setContentText(Utils.ConvertSpeed(speed) + "          " + prog + "% Complete");
                                 mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
                                 try {
-                                    Thread.sleep(2000);
+                                    Thread.sleep(1500);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -121,7 +134,7 @@ public class DownloadService extends Service {
                         });
                     }
                 }
-
+                bis.close();
                 output.flush();
                 output.close();
                 input.close();
