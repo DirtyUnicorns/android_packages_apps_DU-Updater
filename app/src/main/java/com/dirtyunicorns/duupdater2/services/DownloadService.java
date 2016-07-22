@@ -1,21 +1,16 @@
 package com.dirtyunicorns.duupdater2.services;
 
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Environment;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
 
-import com.dirtyunicorns.duupdater2.MainActivity;
-import com.dirtyunicorns.duupdater2.receivers.ButtonReceiver;
 import com.dirtyunicorns.duupdater2.utils.Utils;
 
 import java.io.BufferedInputStream;
@@ -34,14 +29,11 @@ import java.net.URLConnection;
 public class DownloadService extends Service {
 
     public static final int UPDATE_PROGRESS = 8344;
+    public static final long NOTIFICATION_UPDATE_INTERVAL = 1000;
     private Context ctx;
-    private Intent intent;
     private NotificationCompat.Builder mBuilder;
     private NotificationManager mNotifyManager;
-    private int prog;
-    private double speed;
     private long total;
-
 
     public class LocalBinder extends Binder {
         DownloadService getService() {
@@ -51,18 +43,20 @@ public class DownloadService extends Service {
 
     @Override
     public void onCreate() {
-
         mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         ctx = this;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startID) {
-        this.intent = intent;
+        final String fileName = intent.getStringExtra("fileName");
+        if (fileName == null) throw new AssertionError();
+        final String urlToDownload = intent.getStringExtra("url");
+        if (urlToDownload == null) throw new AssertionError();
         mBuilder = new NotificationCompat.Builder(ctx);
         mBuilder.setSmallIcon(android.R.drawable.stat_sys_download);
         DownloadFilesTasks downloadFilesTasks = new DownloadFilesTasks();
-        downloadFilesTasks.execute();
+        downloadFilesTasks.execute(fileName, urlToDownload);
         return START_STICKY;
     }
 
@@ -84,14 +78,19 @@ public class DownloadService extends Service {
         downloadFilesTasks.cancel(true);
     }
 
-    private class DownloadFilesTasks extends AsyncTask<String, String, Long> {
+    private static class DownloadStats {
+        int prog;
+        double speed;
+    }
+
+    private class DownloadFilesTasks extends AsyncTask<String, DownloadStats, Long> {
 
         @Override
         protected Long doInBackground(String... params) {
 
             try {
-                final String fileName = intent.getStringExtra("fileName");
-                final String urlToDownload = intent.getStringExtra("url");
+                final String fileName = params[0];
+                final String urlToDownload = params[1];
                 URL url = new URL(urlToDownload);
                 URLConnection connection = url.openConnection();
                 connection.connect();
@@ -99,6 +98,7 @@ public class DownloadService extends Service {
                 mBuilder.setContentTitle(fileName);
                 final int fileLength = connection.getContentLength();
 
+                DownloadStats downloadStats = new DownloadStats();
                 InputStream input = new BufferedInputStream(connection.getInputStream());
                 BufferedInputStream bis = new BufferedInputStream(input);
                 OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DOWNLOADS + "/" + fileName);
@@ -107,6 +107,7 @@ public class DownloadService extends Service {
                 total = 0;
                 int count;
                 long startTime = System.currentTimeMillis();
+                long progressInterval = System.currentTimeMillis();
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -114,24 +115,17 @@ public class DownloadService extends Service {
                 }
                 while ((count = bis.read(data)) != -1) {
                     total += count;
-                    prog = (int) (total * 100/fileLength);
+                    downloadStats.prog = (int) (total * 100/fileLength);
                     output.write(data, 0, count);
                     long estimatedTime = (System.currentTimeMillis() - startTime);
-                    speed = (total / estimatedTime);
-                    if (prog < 100) {
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mBuilder.setProgress(100, prog, false);
-                                mBuilder.setContentText(Utils.ConvertSpeed(speed) + "          " + prog + "% Complete");
-                                mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
-                                try {
-                                    Thread.sleep(1500);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
+                    long updateInterval = (System.currentTimeMillis() - progressInterval);
+                    downloadStats.speed = (total / estimatedTime);
+                    if (downloadStats.prog < 100 && updateInterval >= NOTIFICATION_UPDATE_INTERVAL) {
+                        progressInterval = System.currentTimeMillis();
+                        final DownloadStats tmp = new DownloadStats();
+                        tmp.prog = downloadStats.prog;
+                        tmp.speed = downloadStats.speed;
+                        publishProgress(tmp);
                     }
                 }
                 bis.close();
@@ -147,6 +141,15 @@ public class DownloadService extends Service {
                 e.printStackTrace();
             }
             return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(DownloadStats... stats) {
+            final int prog = stats[0].prog;
+            final double speed = stats[0].speed;
+            mBuilder.setProgress(100, prog, false);
+            mBuilder.setContentText(Utils.ConvertSpeed(speed) + "          " + prog + "% Complete");
+            mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
         }
     }
 }
