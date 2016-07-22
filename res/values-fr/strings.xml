@@ -15,7 +15,7 @@
   <string name="checking_off">Mises à jour non vérifiées</string>
   <string name="title_interval">Fréquence</string>
   <string name="interval_summary">Définir la fréquence de vérification des mises à jour</string>
-  <string name="hide_app">Hide app</string>
+  <string name="hide_app">Masquer l\'application</string>
   <string name="please_wait_message">Veuillez patienter pendant la recherche de licornes\u2026</string>
   <string name="download_prompt_title">Télécharger le fichier ?</string>
   <string name="download_prompt_message">Voulez-vous télécharger le fichier sélectionné ?</string>
