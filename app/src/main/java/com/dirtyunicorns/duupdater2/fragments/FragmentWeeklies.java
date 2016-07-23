@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.dirtyunicorns.duupdater2.R;
@@ -35,6 +37,9 @@ public class FragmentWeeklies extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_view,containter,false);
 
         rv = (RecyclerView) rootView.findViewById(R.id.rv);
+        Animation anim = AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
+        rv.setAnimation(anim);
+        rv.animate();
         if (NetUtils.isOnline(getActivity())) {
             su = new ServerUtils();
             files = new ArrayList<>();

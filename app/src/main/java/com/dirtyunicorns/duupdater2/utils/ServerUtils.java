@@ -42,8 +42,6 @@ public class ServerUtils extends Utils {
                     path += "&folder=" + dir;
                 }
 
-                System.out.println(path);
-
                 JSONObject json = jsonParser.getJSONFromUrl(path);
                 JSONArray folders = null;
                 try{
