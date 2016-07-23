@@ -14,8 +14,16 @@
             android:title="Test Builds"
             android:icon="@drawable/test"/>
         <item
-            android:id="@+id/gapps"
-            android:title="GApps"
+            android:id="@+id/gappsarm64"
+            android:title="GApps ARM 64"
+            android:icon="@drawable/gapps"/>
+        <item
+            android:id="@+id/gappsbanks"
+            android:title="GApps Banks"
+            android:icon="@drawable/gapps"/>
+        <item
+            android:id="@+id/gappstbo"
+            android:title="GApps TBO"
             android:icon="@drawable/gapps"/>
     </group>
 </menu>

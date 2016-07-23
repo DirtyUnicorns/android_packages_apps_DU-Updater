@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Environment;
@@ -134,6 +135,13 @@ public class DownloadService extends Service {
                         });
                     }
                 }
+                mBuilder.setProgress(100,100,false);
+                mBuilder.setContentText("Download finished, happy flashing!");
+                mBuilder.setVibrate(new long[] {300, 600, 300, 300});
+                mBuilder.setLights(Color.RED, 3000, 3000);
+                mBuilder.setOnlyAlertOnce(true);
+                mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
+                mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
                 bis.close();
                 output.flush();
                 output.close();

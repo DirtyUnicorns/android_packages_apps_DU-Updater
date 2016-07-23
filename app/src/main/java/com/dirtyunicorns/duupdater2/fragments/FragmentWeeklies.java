@@ -32,7 +32,8 @@ public class FragmentWeeklies extends Fragment {
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv);
         if (NetUtils.isOnline(getActivity())) {
             ServerUtils su = new ServerUtils();
-            files = su.getFiles("Weeklies");
+            files = new ArrayList<>();
+            files = su.getFiles("Weeklies",true);
 
             for (File file : files) {
                 System.out.println(file.GetFileName());

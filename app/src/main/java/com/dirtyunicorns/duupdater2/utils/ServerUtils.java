@@ -15,8 +15,11 @@ import java.util.ArrayList;
 public class ServerUtils extends Utils {
 
     private ArrayList<File> files = new ArrayList<File>();
+    private String dir;
 
-    public ArrayList<File> getFiles(final String dir) {
+    public ArrayList<File> getFiles(String dirP, final boolean isDeviceFiles) {
+
+        dir = dirP;
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -24,10 +27,13 @@ public class ServerUtils extends Utils {
                 Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
 
-                device = Build.BOARD;
-
-                path += device + "&folder=" + dir;
-                link += device;
+                if (isDeviceFiles) {
+                    device = Build.BOARD;
+                    path += device + "&folder=" + dir;
+                    link += device;
+                } else {
+                    path += "&folder=" + dir;
+                }
 
                 JSONObject json = jsonParser.getJSONFromUrl(path);
                 JSONArray folders = null;

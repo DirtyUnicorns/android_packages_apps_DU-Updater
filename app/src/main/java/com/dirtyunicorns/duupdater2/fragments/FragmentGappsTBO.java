@@ -3,7 +3,6 @@ package com.dirtyunicorns.duupdater2.fragments;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class FragmentOfficial extends Fragment {
+public class FragmentGappsTBO extends Fragment {
 
     private ArrayList<File> files;
 
@@ -33,7 +32,7 @@ public class FragmentOfficial extends Fragment {
         if (NetUtils.isOnline(getActivity())) {
             ServerUtils su = new ServerUtils();
             files = new ArrayList<>();
-            files = su.getFiles("Official",true);
+            files = su.getFiles("gapps/du_tbo_gapps",false);
 
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             rv.setLayoutManager(llm);

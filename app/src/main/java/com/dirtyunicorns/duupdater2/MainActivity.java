@@ -17,6 +17,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.dirtyunicorns.duupdater2.fragments.FragmentGappsARM64;
+import com.dirtyunicorns.duupdater2.fragments.FragmentGappsBanks;
+import com.dirtyunicorns.duupdater2.fragments.FragmentGappsTBO;
 import com.dirtyunicorns.duupdater2.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater2.fragments.FragmentTest;
 import com.dirtyunicorns.duupdater2.fragments.FragmentWeeklies;
@@ -69,16 +72,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        assert fab != null;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){
@@ -133,31 +126,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             switch (id){
                 case R.id.official:
                     frag = new FragmentOfficial();
-                    Snackbar.make(view, "You are looking for Official Downloads", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
                     mDrawerLayout.closeDrawers();
                     title = "Official Builds";
                     UpdateFragment();
                     break;
                 case R.id.weeklies:
                     frag = new FragmentWeeklies();
-                    Snackbar.make(view, "You are looking for Weekly Downloads", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
                     mDrawerLayout.closeDrawers();
                     title = "Weekly Builds";
                     UpdateFragment();
                     break;
                 case R.id.test:
                     frag = new FragmentTest();
-                    Snackbar.make(view, "You are looking for Test Downloads", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
                     mDrawerLayout.closeDrawers();
                     title = "Test Builds";
                     UpdateFragment();
                     break;
-                case R.id.gapps:
-                    Snackbar.make(view, "You are looking for GApps Downloads", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                case R.id.gappsarm64:
+                    frag = new FragmentGappsARM64();
+                    mDrawerLayout.closeDrawers();
+                    title = "GApps Packages";
+                    UpdateFragment();
+                    break;
+                case R.id.gappsbanks:
+                    frag = new FragmentGappsBanks();
+                    mDrawerLayout.closeDrawers();
+                    title = "GApps Packages";
+                    UpdateFragment();
+                    break;
+                case R.id.gappstbo:
+                    frag = new FragmentGappsTBO();
                     mDrawerLayout.closeDrawers();
                     title = "GApps Packages";
                     UpdateFragment();
