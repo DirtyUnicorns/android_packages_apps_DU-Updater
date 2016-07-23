@@ -32,6 +32,5 @@ public class Vars {
     protected static String currentDir;
     protected static String device;
     protected static final String TAG_MASTER = "dev_info";
-    protected static String path = "http://download.dirtyunicorns.com/json.php?device=";
 
 }

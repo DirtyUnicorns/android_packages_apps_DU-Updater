@@ -14,26 +14,34 @@ import java.util.ArrayList;
  */
 public class ServerUtils extends Utils {
 
-    private ArrayList<File> files = new ArrayList<File>();
+    private ArrayList<File> files;
     private String dir;
+    private boolean isDevFiles;
 
-    public ArrayList<File> getFiles(String dirP, final boolean isDeviceFiles) {
+    public ServerUtils() {
+        files = new ArrayList<File>();
+    }
 
+    public ArrayList<File> getFiles(String dirP, boolean isDeviceFiles) {
+        isDevFiles = isDeviceFiles;
         dir = dirP;
 
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                Looper.prepare();
+                //Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
+                String path = "http://download.dirtyunicorns.com/json.php?device=";
 
-                if (isDeviceFiles) {
+                if (isDevFiles) {
                     device = Build.BOARD;
                     path += device + "&folder=" + dir;
                     link += device;
                 } else {
                     path += "&folder=" + dir;
                 }
+
+                System.out.println(path);
 
                 JSONObject json = jsonParser.getJSONFromUrl(path);
                 JSONArray folders = null;
@@ -62,9 +70,9 @@ public class ServerUtils extends Utils {
         while (t.isAlive()) {
             SystemClock.sleep(200);
         }
-        /*for (File f : files) {
+        for (File f : files) {
             System.out.println(f.GetFileName());
-        }*/
+        }
         return files;
     }
 }
