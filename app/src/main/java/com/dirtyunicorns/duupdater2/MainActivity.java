@@ -3,7 +3,6 @@ package com.dirtyunicorns.duupdater2;
 import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.dirtyunicorns.duupdater2.fragments.FragmentGappsARM64;
 import com.dirtyunicorns.duupdater2.fragments.FragmentGappsBanks;
 import com.dirtyunicorns.duupdater2.fragments.FragmentGappsTBO;
 import com.dirtyunicorns.duupdater2.fragments.FragmentOfficial;
@@ -140,12 +138,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     frag = new FragmentTest();
                     mDrawerLayout.closeDrawers();
                     title = "Test Builds";
-                    UpdateFragment();
-                    break;
-                case R.id.gappsarm64:
-                    frag = new FragmentGappsARM64();
-                    mDrawerLayout.closeDrawers();
-                    title = "GApps Packages";
                     UpdateFragment();
                     break;
                 case R.id.gappsbanks:
