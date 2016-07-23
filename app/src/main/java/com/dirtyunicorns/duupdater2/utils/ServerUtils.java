@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by mazwoz on 7/5/16.
@@ -70,9 +71,7 @@ public class ServerUtils extends Utils {
         while (t.isAlive()) {
             SystemClock.sleep(200);
         }
-        for (File f : files) {
-            System.out.println(f.GetFileName());
-        }
+        Collections.reverse(files);
         return files;
     }
 }
