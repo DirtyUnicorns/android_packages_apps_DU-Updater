@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class File implements Parcelable, Serializable{
+public class File implements Parcelable, Serializable {
     private String FileName;
     private String FileSize;
     private String FileMD5;

@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 super.onDrawerOpened(v);
             }
         };
-        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
         if (!NetUtils.isOnline(this)) {
