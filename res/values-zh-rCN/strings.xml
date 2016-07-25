@@ -15,7 +15,7 @@
   <string name="checking_off">不检查更新</string>
   <string name="title_interval">频率</string>
   <string name="interval_summary">设置每隔多久检查更新</string>
-  <string name="hide_app">Hide app</string>
+  <string name="hide_app">隐藏应用</string>
   <string name="please_wait_message">正在查找更新，请稍候...</string>
   <string name="download_prompt_title">下载文件？</string>
   <string name="download_prompt_message">您要下载选定的文件吗？</string>
