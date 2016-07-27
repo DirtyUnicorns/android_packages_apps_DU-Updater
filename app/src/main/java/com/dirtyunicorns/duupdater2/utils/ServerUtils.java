@@ -2,6 +2,7 @@ package com.dirtyunicorns.duupdater2.utils;
 
 import android.os.Build;
 import android.os.Looper;
+import android.os.Parcel;
 import android.os.SystemClock;
 
 import org.json.JSONArray;
@@ -50,7 +51,7 @@ public class ServerUtils extends Utils {
                         dirs = new String[folders.length()];
                         for (int i = 0; i < folders.length(); i++) {
                             JSONObject d = folders.getJSONObject(i);
-                            File f = new File();
+                            File f = new File(Parcel.obtain());
                             f.SetFileName(d.getString("filename"));
                             f.SetFileSize(d.getString("filesize"));
                             f.SetFileLink(d.getString("downloads"));
