@@ -57,16 +57,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
                 intent = new Intent(ctx, DownloadService.class);
                 intent.putExtra("url", link);
                 intent.putExtra("fileName", fileName.getText());
-
-                Thread startService = new Thread(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                ctx.startService(intent);
-                            }
-                        }
-                );
-                startService.start();
+                ctx.startService(intent);
 
             }
         });

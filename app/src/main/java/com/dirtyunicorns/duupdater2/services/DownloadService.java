@@ -13,6 +13,7 @@ import android.os.Binder;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.NotificationCompat;
 
 import com.dirtyunicorns.duupdater2.utils.Utils;
@@ -33,7 +34,7 @@ import java.net.URLConnection;
 public class DownloadService extends Service {
 
     public static final int UPDATE_PROGRESS = 8344;
-    public static final long NOTIFICATION_UPDATE_INTERVAL = 1500;
+    public static final long NOTIFICATION_UPDATE_INTERVAL = 1000;
     private static final String STOPTEXT = "STOPDOWNLOAD";
     private Context ctx;
     private NotificationCompat.Builder mBuilder;
@@ -107,6 +108,7 @@ public class DownloadService extends Service {
                 mBuilder.setContentTitle("DU Download");
                 mBuilder.setProgress(100, 0, false);
                 mBuilder.mActions.clear();
+                mBuilder.setLights(Color.RED, 1500, 1500);
                 mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
             }
         } catch (Exception e) {
@@ -139,26 +141,27 @@ public class DownloadService extends Service {
                 URLConnection connection = url.openConnection();
                 connection.connect();
 
+                boolean isRunning = true;
                 mBuilder.setContentTitle(fileName);
                 final int fileLength = connection.getContentLength();
 
                 InputStream input = new BufferedInputStream(connection.getInputStream());
                 BufferedInputStream bis = new BufferedInputStream(input);
                 OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DOWNLOADS + "/" + fileName);
-                while (running) {
+                while (isRunning) {
 
                     byte data[] = new byte[1024];
                     total = 0;
                     long startTime = System.currentTimeMillis();
                     long progressInterval = System.currentTimeMillis();
+                    int count;
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    boolean running = true;
-                    while (running) {
-                        int count = bis.read(data);
+
+                    while (isRunning && (count = bis.read(data)) > -1) {
                         total += count;
                         downloadStats.prog = (int) (total * 100 / fileLength);
                         output.write(data, 0, count);
@@ -170,19 +173,21 @@ public class DownloadService extends Service {
                             final DownloadStats tmp = new DownloadStats();
                             tmp.prog = downloadStats.prog;
                             tmp.speed = downloadStats.speed;
+                            output.flush();
                             publishProgress(tmp);
                         } else if (downloadStats.prog == 100){
-                            running = false;
+                            isRunning = false;
                         }
                     }
                     mBuilder.setProgress(100, 100, false);
+                    mBuilder.mActions.clear();
                     mBuilder.setContentText("Download finished, happy flashing!");
-                    mBuilder.setLights(Color.RED, 3000, 3000);
+                    mBuilder.setLights(Color.RED, 1500, 1500);
                     mBuilder.setOnlyAlertOnce(true);
                     mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
                     mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
                     bis.close();
-                    output.flush();
+                    System.out.println("bis should be closed");
                     output.close();
                     input.close();
                 }
