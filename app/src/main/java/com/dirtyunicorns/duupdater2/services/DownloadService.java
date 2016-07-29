@@ -1,5 +1,6 @@
 package com.dirtyunicorns.duupdater2.services;
 
+import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -32,7 +33,7 @@ import java.net.URLConnection;
 public class DownloadService extends Service {
 
     public static final int UPDATE_PROGRESS = 8344;
-    public static final long NOTIFICATION_UPDATE_INTERVAL = 1000;
+    public static final long NOTIFICATION_UPDATE_INTERVAL = 1500;
     private static final String STOPTEXT = "STOPDOWNLOAD";
     private Context ctx;
     private NotificationCompat.Builder mBuilder;
@@ -76,7 +77,7 @@ public class DownloadService extends Service {
         downloadFilesTasks = new DownloadFilesTasks();
         downloadFilesTasks.execute(fileName, urlToDownload);
 
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -90,24 +91,26 @@ public class DownloadService extends Service {
         return null;
     }
 
-    public final IBinder mBinder = new LocalBinder();
-
     public void CancelDownload() {
-        if (downloadFilesTasks.getStatus() == AsyncTask.Status.RUNNING) {
-            downloadFilesTasks.cancel(true);
-            while (!downloadFilesTasks.isCancelled()) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        try {
+            if (downloadFilesTasks.getStatus() == AsyncTask.Status.RUNNING) {
+                downloadFilesTasks.cancel(true);
+                while (!downloadFilesTasks.isCancelled()) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+                mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
+                mBuilder.setContentText("Download Cancelled");
+                mBuilder.setContentTitle("DU Download");
+                mBuilder.setProgress(100, 0, false);
+                mBuilder.mActions.clear();
+                mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
             }
-            mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
-            mBuilder.setContentText("Download Cancelled");
-            mBuilder.setContentTitle("DU Download");
-            mBuilder.setProgress(100,0,false);
-            mBuilder.mActions.clear();
-            mNotifyManager.notify(UPDATE_PROGRESS,mBuilder.build());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -129,24 +132,23 @@ public class DownloadService extends Service {
         protected Long doInBackground(String... params) {
 
             try {
+                DownloadStats downloadStats = new DownloadStats();
+                final String fileName = params[0];
+                final String urlToDownload = params[1];
+                URL url = new URL(urlToDownload);
+                URLConnection connection = url.openConnection();
+                connection.connect();
+
+                mBuilder.setContentTitle(fileName);
+                final int fileLength = connection.getContentLength();
+
+                InputStream input = new BufferedInputStream(connection.getInputStream());
+                BufferedInputStream bis = new BufferedInputStream(input);
+                OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DOWNLOADS + "/" + fileName);
                 while (running) {
-                    final String fileName = params[0];
-                    final String urlToDownload = params[1];
-                    URL url = new URL(urlToDownload);
-                    URLConnection connection = url.openConnection();
-                    connection.connect();
-
-                    mBuilder.setContentTitle(fileName);
-                    final int fileLength = connection.getContentLength();
-
-                    DownloadStats downloadStats = new DownloadStats();
-                    InputStream input = new BufferedInputStream(connection.getInputStream());
-                    BufferedInputStream bis = new BufferedInputStream(input);
-                    OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DOWNLOADS + "/" + fileName);
 
                     byte data[] = new byte[1024];
                     total = 0;
-                    int count;
                     long startTime = System.currentTimeMillis();
                     long progressInterval = System.currentTimeMillis();
                     try {
@@ -154,7 +156,9 @@ public class DownloadService extends Service {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    while ((count = bis.read(data)) != -1) {
+                    boolean running = true;
+                    while (running) {
+                        int count = bis.read(data);
                         total += count;
                         downloadStats.prog = (int) (total * 100 / fileLength);
                         output.write(data, 0, count);
@@ -167,6 +171,8 @@ public class DownloadService extends Service {
                             tmp.prog = downloadStats.prog;
                             tmp.speed = downloadStats.speed;
                             publishProgress(tmp);
+                        } else if (downloadStats.prog == 100){
+                            running = false;
                         }
                     }
                     mBuilder.setProgress(100, 100, false);
@@ -183,10 +189,13 @@ public class DownloadService extends Service {
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                onError();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
+                onError();
             } catch (IOException e) {
                 e.printStackTrace();
+                onError();
             }
 
             return null;
@@ -200,5 +209,14 @@ public class DownloadService extends Service {
             mBuilder.setContentText(Utils.ConvertSpeed(speed) + "          " + prog + "% Complete");
             mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
         }
+    }
+
+    private void onError() {
+        mBuilder.setSmallIcon(android.R.drawable.stat_notify_error);
+        mBuilder.setContentText("Download Failed");
+        mBuilder.setContentTitle("DU Download");
+        mBuilder.setProgress(100, 0, false);
+        mBuilder.mActions.clear();
+        mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
     }
 }
