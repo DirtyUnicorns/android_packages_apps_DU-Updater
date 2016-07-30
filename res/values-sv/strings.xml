@@ -22,7 +22,7 @@
   <string name="dialog_yes">JA</string>
   <string name="dialog_downloading">\n\nHämtas\u2026</string>
   <string name="dialog_cancel">Avbryt</string>
-  <string name="dialog_ok">Ok</string>
+  <string name="dialog_ok">OK</string>
   <string name="dialog_offline_title">Frånkopplad</string>
   <string name="dialog_offline_message">Kontrollera din dataanslutning och starta om appen</string>
   <string name="dialog_error_title">Fel</string>
