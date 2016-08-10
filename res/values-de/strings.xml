@@ -14,7 +14,7 @@
   <string name="checking_on">Auf Updates prüfen</string>
   <string name="checking_off">Nicht auf Updates prüfen</string>
   <string name="title_interval">Intervall</string>
-  <string name="interval_summary">Wie oft soll auf Updates gesucht werden?</string>
+  <string name="interval_summary">Wie oft soll auf Updates geprüft werden?</string>
   <string name="hide_app">App ausblenden</string>
   <string name="please_wait_message">Bitte warten Sie, während der Suche nach Unicorns\u2026</string>
   <string name="download_prompt_title">Datei herunterladen?</string>
