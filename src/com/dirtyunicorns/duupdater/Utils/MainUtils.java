@@ -1,18 +1,18 @@
 /*
-* Copyright (C) 2015 Dirty Unicorns
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright (C) 2015 The Dirty Unicorns Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.dirtyunicorns.duupdater.Utils;
 
@@ -62,8 +62,8 @@ public class MainUtils {
                 Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
 
-                String path = "http://download.dirtyunicorns.com/json.php?device=" + Build.UPDATER;
-                Vars.link = "http://download.dirtyunicorns.com/files/" + Build.UPDATER;
+                String path = "https://download.dirtyunicorns.com/json.php?device=" + Build.UPDATER;
+                Vars.link = "https://download.dirtyunicorns.com/files/" + Build.UPDATER;
 
                 JSONObject json = jsonParser.getJSONFromUrl(path);
                 JSONArray folders = null;
@@ -99,7 +99,7 @@ public class MainUtils {
                 Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
 
-                String path = "http://download.dirtyunicorns.com/json.php?device=" + Build.UPDATER + "&folder=" + dir;
+                String path = "https://download.dirtyunicorns.com/json.php?device=" + Build.UPDATER + "&folder=" + dir;
                 JSONObject json = jsonParser.getJSONFromUrl(path);
                 JSONArray folders = null;
                 try{
@@ -124,7 +124,7 @@ public class MainUtils {
         }
         return dirs;
     }
-    
+
     public static boolean isOnline(Context ctx) {
         try {
             connectivityManager = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -160,41 +160,41 @@ public class MainUtils {
             return false;
         }
     }
-    
-    public static boolean CheckDNS(final Context ctx) {
-		
-		Thread t = new Thread(new Runnable() {
 
-			@Override
-			public void run() {
-				try {
-					URL url = new URL("http://download.dirtyunicorns.com");
-			    	InetAddress address = InetAddress.getByName(url.getHost());
-			    	String temp = address.toString();
-			    	String IP = temp.substring(temp.indexOf("/")+1,temp.length());
-			    	if (IP != null) {
-			    		DNSGood = true;
-			    	} else {
-			    		Dialogs.BadDNS(ctx);
-			    	}
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				} catch (UnknownHostException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		});
-		t.start();
-		
-		while (t.isAlive()) {
-			try {
-				SystemClock.sleep(500);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-			
-		return DNSGood;
+    public static boolean CheckDNS(final Context ctx) {
+
+        Thread t = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://download.dirtyunicorns.com");
+                    InetAddress address = InetAddress.getByName(url.getHost());
+                    String temp = address.toString();
+                    String IP = temp.substring(temp.indexOf("/")+1,temp.length());
+                    if (IP != null) {
+                        DNSGood = true;
+                    } else {
+                        Dialogs.BadDNS(ctx);
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+        t.start();
+
+        while (t.isAlive()) {
+            try {
+                SystemClock.sleep(500);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return DNSGood;
     }
 }
