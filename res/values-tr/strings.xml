@@ -16,7 +16,7 @@
   <string name="title_interval">Sıklık</string>
   <string name="interval_summary">Ne sıklıkta güncelleştirmeleri denetleneceğini ayarla</string>
   <string name="hide_app">Uygulamayı gizle</string>
-  <string name="please_wait_message">Unicornlar ararken lütfen bekleyin\u2026</string>
+  <string name="please_wait_message">Unicornlar aranırken lütfen bekleyin\u2026</string>
   <string name="download_prompt_title">Dosyayı İndir?</string>
   <string name="download_prompt_message">Seçili dosyayı indirmek ister misiniz?</string>
   <string name="dialog_yes">EVET</string>
@@ -27,7 +27,7 @@
   <string name="dialog_offline_message">Lütfen veri bağlantınızı denetleyin ve uygulamayı yeniden başlatın</string>
   <string name="dialog_error_title">Hata</string>
   <string name="dialog_error1_message">Cihazınız sunucumuzun IP adresini düzgün bir şekilde elde edemiyor.\n\nLütfen cihazınızdan http://download.dirtyunicorns.com adresine ulaşabildiğinizi doğrulayın.</string>
-  <string name="dialog_error2_message">Aygıtınız sunucumuzda bulunamadı. Bu genellikle resmi olmayan bir yapı çalıştırmakta olduğunuz anlamına gelir. Resmi olmayan yapılar bu Güncelleyici tarafından desteklenmez.</string>
+  <string name="dialog_error2_message">Cihazınız sunucumuzda bulunamadı. Bu genellikle resmi olmayan bir yapı çalıştırmakta olduğunuz anlamına gelir. Resmi olmayan yapılar bu Güncelleyici tarafından desteklenmez.</string>
   <string name="download_error">İndirme hatası: </string>
   <string name="download_successful">Dosya başarıyla indirildi. Flaşlamaya hazır!!!</string>
   <string name="download_complete">İndirme Tamamlandı</string>
