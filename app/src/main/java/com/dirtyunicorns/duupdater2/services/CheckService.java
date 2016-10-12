@@ -44,6 +44,8 @@ public class CheckService extends Service{
     @Override
     public void onCreate() {
 
+        mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         downloadIntent = new Intent(this, DownloadService.class);
         downloadIntent.setAction(STARTTEXT);
     }
@@ -53,20 +55,20 @@ public class CheckService extends Service{
     public int onStartCommand(Intent intent, int flags, int startID) {
 
         if (intent.getAction() != null && intent.getAction().equals(STARTTEXT)) {
+            mNotifyManager.cancel(00);
+            return START_NOT_STICKY;
+        } else {
+            currentVersion = new CurrentVersion();
+            currentVersion.GetInfo();
+            if (NetUtils.isOnline(this)) {
+                su = new ServerUtils();
+                serverVersions = su.getServerVersions(getBuildString(), true);
+                if (serverVersions != null) {
+                    ParseBuilds();
+                }
+            }
             return START_NOT_STICKY;
         }
-        currentVersion = new CurrentVersion();
-        currentVersion.GetInfo();
-
-        mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        if (NetUtils.isOnline(this)) {
-            su = new ServerUtils();
-            serverVersions = su.getServerVersions(getBuildString(),true);
-            if (serverVersions != null) {
-                ParseBuilds();
-            }
-        }
-        return START_NOT_STICKY;
     }
 
     private String getBuildString() {

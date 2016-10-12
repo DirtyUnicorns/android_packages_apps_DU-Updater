@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent checkService = new Intent(this, CheckService.class);
-        startService(checkService);
-
         InitInterface();
         InitPermissions();
     }
