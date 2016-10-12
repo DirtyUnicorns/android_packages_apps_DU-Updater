@@ -1,6 +1,7 @@
 package com.dirtyunicorns.duupdater2.services;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -30,6 +31,9 @@ public class CheckService extends Service{
     private NotificationCompat.Builder mBuilder;
     private NotificationManager mNotifyManager;
     private CurrentVersion currentVersion;
+    private Intent downloadIntent;
+    private PendingIntent startDownload;
+    private static final String STARTTEXT = "STARTDOWNLOAD";
 
     @Nullable
     @Override
@@ -39,11 +43,18 @@ public class CheckService extends Service{
 
     @Override
     public void onCreate() {
+
+        downloadIntent = new Intent(this, DownloadService.class);
+        downloadIntent.setAction(STARTTEXT);
     }
 
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startID) {
+
+        if (intent.getAction() != null && intent.getAction().equals(STARTTEXT)) {
+            return START_NOT_STICKY;
+        }
         currentVersion = new CurrentVersion();
         currentVersion.GetInfo();
 
@@ -75,16 +86,16 @@ public class CheckService extends Service{
         for (ServerVersion serverVersion : serverVersions) {
             serverVersion.getLink();
             if (currentVersion.getMajorVersion() < serverVersion.getMajorVersion()) {
-                UpdateNotification(MAJOR_VERSION, String.valueOf(serverVersion.getMajorVersion()));
+                UpdateNotification(MAJOR_VERSION, String.valueOf(serverVersion.getMajorVersion()), serverVersion.getLink());
 
                 break;
             } else if (currentVersion.getMajorVersion() == serverVersion.getMajorVersion()) {
                 if (currentVersion.getMinorVersion() < serverVersion.getMinorVersion()) {
-                    UpdateNotification(MINOR_VERSION, serverVersion.getMajorVersion() + "." + serverVersion.getMinorVersion());
+                    UpdateNotification(MINOR_VERSION, serverVersion.getMajorVersion() + "." + serverVersion.getMinorVersion(), serverVersion.getLink());
 
                     break;
                 } else if (currentVersion.getBuildDate().before(serverVersion.getBuildDate())) {
-                    UpdateNotification(BUILD_DATE, null);
+                    UpdateNotification(BUILD_DATE, null, serverVersion.getLink());
 
                     break;
                 }
@@ -92,11 +103,15 @@ public class CheckService extends Service{
         }
     }
 
-    private void UpdateNotification(int UPDATE_TYPE, String info) {
+    private void UpdateNotification(int UPDATE_TYPE, String info, String link) {
         mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
         mBuilder.setSubText("Would you like to download it?");
         mBuilder.setContentTitle("DU Update Available");
+        downloadIntent.putExtra("fileName", link.split("/")[link.split("/").length - 1]);
+        downloadIntent.putExtra("url", link);
+        startDownload = PendingIntent.getService(this, 42, downloadIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        mBuilder.addAction(android.R.drawable.stat_sys_download_done,"Download",startDownload);
 
         switch (UPDATE_TYPE) {
             case MAJOR_VERSION:
