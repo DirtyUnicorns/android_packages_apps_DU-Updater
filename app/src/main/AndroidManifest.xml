@@ -28,8 +28,9 @@
         </activity>
         <service android:name=".services.DownloadService"
             android:exported="false"/>
-        <receiver android:name=".receivers.ButtonReceiver">
-        </receiver>
+        <service android:name=".services.CheckService"
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>

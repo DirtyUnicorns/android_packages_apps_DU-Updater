@@ -24,12 +24,8 @@ import android.os.Build;
  */
 public class Vars {
 
-    protected static int position;
     protected static String[] dirs;
-    protected static String[] files;
-    protected static String link = "http://download.dirtyunicorns.com/files/";
-    protected static String latesUpdate;
-    protected static String currentDir;
+    protected static String link = "https://download.dirtyunicorns.com/files/";
     protected static String device;
     protected static final String TAG_MASTER = "dev_info";
 
