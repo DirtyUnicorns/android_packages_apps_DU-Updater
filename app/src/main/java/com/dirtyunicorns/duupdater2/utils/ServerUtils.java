@@ -1,7 +1,6 @@
 package com.dirtyunicorns.duupdater2.utils;
 
 import android.os.Build;
-import android.os.Looper;
 import android.os.Parcel;
 import android.os.SystemClock;
 
@@ -10,6 +9,10 @@ import com.dirtyunicorns.duupdater2.objects.ServerVersion;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,8 +42,7 @@ public class ServerUtils extends Utils {
             public void run() {
                 //Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
-                String path = "http://download.dirtyunicorns.com/json.php?device=";
-
+                String path = "device=";
                 if (isDevFiles) {
                     device = Build.BOARD;
                     path += device + "&folder=" + dir;
@@ -49,24 +51,30 @@ public class ServerUtils extends Utils {
                     path += "&folder=" + dir;
                 }
 
-                JSONObject json = jsonParser.getJSONFromUrl(path);
-                JSONArray folders = null;
-                try{
-                    if (json != null) {
-                        folders = json.getJSONArray(TAG_MASTER);
-                        dirs = new String[folders.length()];
-                        for (int i = 0; i < folders.length(); i++) {
-                            JSONObject d = folders.getJSONObject(i);
-                            File f = new File(Parcel.obtain());
-                            f.SetFileName(d.getString("filename"));
-                            f.SetFileSize(d.getString("filesize"));
-                            f.SetFileLink(d.getString("downloads"));
-                            f.SetFileMD5(d.getString("md5"));
-                            f.GetFileName();
-                            files.add(f);
+                try {
+                    URI uri = new URI("https", null, "download.dirtyunicorns.com", 443, "/json.php", path, null);
+
+                    JSONObject json = jsonParser.getJSONFromUrl(uri.toASCIIString());
+                    JSONArray folders = null;
+                    try {
+                        if (json != null) {
+                            folders = json.getJSONArray(TAG_MASTER);
+                            dirs = new String[folders.length()];
+                            for (int i = 0; i < folders.length(); i++) {
+                                JSONObject d = folders.getJSONObject(i);
+                                File f = new File(Parcel.obtain());
+                                f.SetFileName(d.getString("filename"));
+                                f.SetFileSize(d.getString("filesize"));
+                                f.SetFileLink(d.getString("downloads"));
+                                f.SetFileMD5(d.getString("md5"));
+                                f.GetFileName();
+                                files.add(f);
+                            }
                         }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
+                } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
             }
@@ -90,8 +98,7 @@ public class ServerUtils extends Utils {
             public void run() {
                 //Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
-                String path = "http://download.dirtyunicorns.com/json.php?device=";
-
+                String path = "device=";
                 if (isDevFiles) {
                     device = Build.BOARD;
                     path += device + "&folder=" + dir;
@@ -100,34 +107,40 @@ public class ServerUtils extends Utils {
                     path += "&folder=" + dir;
                 }
 
-                JSONObject json = jsonParser.getJSONFromUrl(path);
-                JSONArray folders = null;
-                try{
-                    if (json != null) {
-                        folders = json.getJSONArray(TAG_MASTER);
-                        dirs = new String[folders.length()];
-                        for (int i = 0; i < folders.length(); i++) {
+                try {
+                    URI uri = new URI("https", null, "download.dirtyunicorns.com", 443, "/json.php", path, null);
 
-                            JSONObject d = folders.getJSONObject(i);
-                            String link = d.getString("downloads");
-                            ServerVersion serverVersion = new ServerVersion();
-                            String[] buildInfo = d.getString("filename").replace(".zip","").split("_");
-                            dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
-                            try {
-                                serverVersion.setBuildDate(dateFormat.parse(buildInfo[3].split("\\.")[0]));
-                            } catch (ParseException e) {
-                                e.printStackTrace();
+                    JSONObject json = jsonParser.getJSONFromUrl(uri.toASCIIString());
+                    JSONArray folders = null;
+                    try{
+                        if (json != null) {
+                            folders = json.getJSONArray(TAG_MASTER);
+                            dirs = new String[folders.length()];
+                            for (int i = 0; i < folders.length(); i++) {
+
+                                JSONObject d = folders.getJSONObject(i);
+                                String link = d.getString("downloads");
+                                ServerVersion serverVersion = new ServerVersion();
+                                String[] buildInfo = d.getString("filename").replace(".zip","").split("_");
+                                dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
+                                try {
+                                    serverVersion.setBuildDate(dateFormat.parse(buildInfo[3].split("\\.")[0]));
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                serverVersion.setAndroidVersion(buildInfo[2]);
+                                serverVersion.setBuildType(buildInfo[3].split("\\.")[2]);
+                                serverVersion.setMajorVersion(Integer.valueOf(buildInfo[3].split("\\.")[1].replace("v","")));
+                                serverVersion.setMinorVersion(Integer.valueOf(buildInfo[3].split("\\.")[2].split("-")[0]));
+                                serverVersion.setLink(link);
+                                serverVersions.add(serverVersion);
                             }
-
-                            serverVersion.setAndroidVersion(buildInfo[2]);
-                            serverVersion.setBuildType(buildInfo[3].split("\\.")[2]);
-                            serverVersion.setMajorVersion(Integer.valueOf(buildInfo[3].split("\\.")[1].replace("v","")));
-                            serverVersion.setMinorVersion(Integer.valueOf(buildInfo[3].split("\\.")[2].split("-")[0]));
-                            serverVersion.setLink(link);
-                            serverVersions.add(serverVersion);
                         }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
+                } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
             }
