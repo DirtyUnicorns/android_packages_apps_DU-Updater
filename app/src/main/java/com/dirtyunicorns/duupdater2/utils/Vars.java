@@ -16,9 +16,6 @@
 
 package com.dirtyunicorns.duupdater2.utils;
 
-import android.app.ActionBar;
-import android.os.Build;
-
 /**
  * Created by mazwoz on 12/18/14.
  */

@@ -3,10 +3,8 @@ package com.dirtyunicorns.duupdater2.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by mazwoz on 10/12/16.

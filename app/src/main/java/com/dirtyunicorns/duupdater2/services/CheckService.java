@@ -15,7 +15,6 @@ import com.dirtyunicorns.duupdater2.utils.NetUtils;
 import com.dirtyunicorns.duupdater2.utils.ServerUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by mazwoz on 10/12/16.
