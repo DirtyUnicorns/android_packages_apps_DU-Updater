@@ -1,7 +1,6 @@
 package com.dirtyunicorns.duupdater2;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dirtyunicorns.duupdater2.fragments.FragmentGappsBanks;
@@ -22,14 +20,11 @@ import com.dirtyunicorns.duupdater2.fragments.FragmentGappsTBO;
 import com.dirtyunicorns.duupdater2.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater2.fragments.FragmentTest;
 import com.dirtyunicorns.duupdater2.fragments.FragmentWeeklies;
-import com.dirtyunicorns.duupdater2.objects.CurrentVersion;
-import com.dirtyunicorns.duupdater2.services.CheckService;
 import com.dirtyunicorns.duupdater2.utils.NetUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout mDrawerLayout;
-    private View view;
     private final static int REQUEST_READ_STORAGE_PERMISSION = 1;
     private Fragment frag;
     private Toolbar toolbar;
@@ -41,10 +36,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         InitInterface();
         InitPermissions();
+        InitOfficial();
     }
 
     private void InitInterface() {
-        view = findViewById(R.id.content_frame);
+        View view = findViewById(R.id.content_frame);
 
         assert toolbar != null;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -67,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
 
         if (!NetUtils.isOnline(this)) {
+            assert view != null;
             Snackbar.make(view,"You must be connected to the internet to use the updater", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Action", null).show();
         } else {
@@ -77,9 +74,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void InitOfficial() {
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        assert navigationView != null;
+        navigationView.setCheckedItem(R.id.official);
+        frag = new FragmentOfficial();
+        UpdateFragment();
+    }
+
     private void UpdateFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame,frag);
+        ft.replace(R.id.content_frame, frag);
         ft.commit();
     }
 
@@ -95,9 +100,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-            int id = item.getItemId();
+        int id = item.getItemId();
+        switch (id){
 
-            switch (id){
                 case R.id.official:
                     frag = new FragmentOfficial();
                     mDrawerLayout.closeDrawers();
@@ -123,9 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mDrawerLayout.closeDrawers();
                     UpdateFragment();
                     break;
-                default:
-                    frag = new FragmentOfficial();
-                    UpdateFragment();
             }
             return true;
     }

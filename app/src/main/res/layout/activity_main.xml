@@ -45,16 +45,6 @@
 
         <include layout="@layout/content_main"/>
 
-        <!--<android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/stat_sys_download_done"
-            android:tint="@color/primaryDark"
-            app:layout_anchor="@id/app_bar"
-            app:layout_anchorGravity="bottom|end" />-->
-
     </android.support.design.widget.CoordinatorLayout>
         <!-- The navigation drawer -->
     <android.support.design.widget.NavigationView
@@ -63,6 +53,8 @@
         android:layout_width="320dp"
         android:layout_gravity="start"
         app:headerLayout="@layout/header_nav"
-        app:menu="@menu/menu_nav"
-        app:itemIconTint="@color/primary"/>
+        app:itemBackground="@drawable/selector_background"
+        app:itemTextColor="@drawable/selector_item"
+        app:itemIconTint="@drawable/selector_drawable"
+        app:menu="@menu/menu_nav" />
 </android.support.v4.widget.DrawerLayout>
