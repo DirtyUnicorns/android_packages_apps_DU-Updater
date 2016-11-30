@@ -11,7 +11,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     defaultConfig {
-        applicationId "com.dirtyunicorns.duupdater2"
+        applicationId "com.dirtyunicorns.duupdater"
         minSdkVersion 23
         targetSdkVersion 23
         versionCode 1

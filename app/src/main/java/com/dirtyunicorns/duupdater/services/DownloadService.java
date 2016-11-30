@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.services;
+package com.dirtyunicorns.duupdater.services;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,7 +13,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
 
-import com.dirtyunicorns.duupdater2.utils.Utils;
+import com.dirtyunicorns.duupdater.utils.Utils;
 
 import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;

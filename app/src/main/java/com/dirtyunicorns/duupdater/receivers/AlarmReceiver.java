@@ -1,10 +1,10 @@
-package com.dirtyunicorns.duupdater2.receivers;
+package com.dirtyunicorns.duupdater.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.dirtyunicorns.duupdater2.services.CheckService;
+import com.dirtyunicorns.duupdater.services.CheckService;
 
 /**
  * Created by mazwoz on 10/13/16.

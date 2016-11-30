@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.objects;
+package com.dirtyunicorns.duupdater.objects;
 
 import java.io.BufferedReader;
 import java.io.IOException;

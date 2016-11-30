@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.services;
+package com.dirtyunicorns.duupdater.services;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,10 +9,10 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
 
-import com.dirtyunicorns.duupdater2.objects.CurrentVersion;
-import com.dirtyunicorns.duupdater2.objects.ServerVersion;
-import com.dirtyunicorns.duupdater2.utils.NetUtils;
-import com.dirtyunicorns.duupdater2.utils.ServerUtils;
+import com.dirtyunicorns.duupdater.objects.CurrentVersion;
+import com.dirtyunicorns.duupdater.objects.ServerVersion;
+import com.dirtyunicorns.duupdater.utils.NetUtils;
+import com.dirtyunicorns.duupdater.utils.ServerUtils;
 
 import java.util.ArrayList;
 

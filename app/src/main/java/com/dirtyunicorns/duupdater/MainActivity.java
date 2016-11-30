@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2;
+package com.dirtyunicorns.duupdater;
 
 import android.Manifest;
 import android.os.Build;
@@ -15,12 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.MenuItem;
 
-import com.dirtyunicorns.duupdater2.fragments.FragmentGappsBanks;
-import com.dirtyunicorns.duupdater2.fragments.FragmentGappsTBO;
-import com.dirtyunicorns.duupdater2.fragments.FragmentOfficial;
-import com.dirtyunicorns.duupdater2.fragments.FragmentTest;
-import com.dirtyunicorns.duupdater2.fragments.FragmentWeeklies;
-import com.dirtyunicorns.duupdater2.utils.NetUtils;
+import com.dirtyunicorns.duupdater.fragments.FragmentGappsBanks;
+import com.dirtyunicorns.duupdater.fragments.FragmentGappsTBO;
+import com.dirtyunicorns.duupdater.fragments.FragmentOfficial;
+import com.dirtyunicorns.duupdater.fragments.FragmentTest;
+import com.dirtyunicorns.duupdater.fragments.FragmentWeeklies;
+import com.dirtyunicorns.duupdater.utils.NetUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 

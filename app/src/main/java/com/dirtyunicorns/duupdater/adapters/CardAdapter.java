@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.adapters;
+package com.dirtyunicorns.duupdater.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.dirtyunicorns.duupdater2.R;
-import com.dirtyunicorns.duupdater2.services.DownloadService;
-import com.dirtyunicorns.duupdater2.utils.File;
+import com.dirtyunicorns.duupdater.R;
+import com.dirtyunicorns.duupdater.services.DownloadService;
+import com.dirtyunicorns.duupdater.utils.File;
 
 import java.util.ArrayList;
 

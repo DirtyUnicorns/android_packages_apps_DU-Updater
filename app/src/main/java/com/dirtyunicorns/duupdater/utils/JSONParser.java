@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.dirtyunicorns.duupdater2.utils;
+package com.dirtyunicorns.duupdater.utils;
 
 /**
  * Created by mazwoz on 12/18/14.

@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.fragments;
+package com.dirtyunicorns.duupdater.fragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,18 +12,18 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.dirtyunicorns.duupdater2.R;
-import com.dirtyunicorns.duupdater2.adapters.CardAdapter;
-import com.dirtyunicorns.duupdater2.utils.File;
-import com.dirtyunicorns.duupdater2.utils.NetUtils;
-import com.dirtyunicorns.duupdater2.utils.ServerUtils;
+import com.dirtyunicorns.duupdater.R;
+import com.dirtyunicorns.duupdater.adapters.CardAdapter;
+import com.dirtyunicorns.duupdater.utils.File;
+import com.dirtyunicorns.duupdater.utils.NetUtils;
+import com.dirtyunicorns.duupdater.utils.ServerUtils;
 
 import java.util.ArrayList;
 
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class FragmentGappsTBO extends Fragment {
+public class FragmentTest extends Fragment {
 
     private ArrayList<File> files;
     private ServerUtils su;
@@ -32,7 +32,7 @@ public class FragmentGappsTBO extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_view, containter, false);
+        rootView = inflater.inflate(R.layout.fragment_view,containter,false);
 
         rv = (RecyclerView) rootView.findViewById(R.id.rv);
         Animation anim = AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
@@ -43,6 +43,7 @@ public class FragmentGappsTBO extends Fragment {
             files = new ArrayList<>();
             GetFiles getFiles = new GetFiles();
             getFiles.execute();
+
         }
 
         return rootView;
@@ -52,8 +53,7 @@ public class FragmentGappsTBO extends Fragment {
 
         @Override
         protected ArrayList<File> doInBackground(String... params) {
-
-            files = su.getFiles("gapps/TBO", false);
+            files = su.getFiles("Test",true);
 
             return files;
         }

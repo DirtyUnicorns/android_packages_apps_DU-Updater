@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.utils;
+package com.dirtyunicorns.duupdater.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

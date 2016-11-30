@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.fragments;
+package com.dirtyunicorns.duupdater.fragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,18 +12,18 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.dirtyunicorns.duupdater2.R;
-import com.dirtyunicorns.duupdater2.adapters.CardAdapter;
-import com.dirtyunicorns.duupdater2.utils.File;
-import com.dirtyunicorns.duupdater2.utils.NetUtils;
-import com.dirtyunicorns.duupdater2.utils.ServerUtils;
+import com.dirtyunicorns.duupdater.R;
+import com.dirtyunicorns.duupdater.adapters.CardAdapter;
+import com.dirtyunicorns.duupdater.utils.File;
+import com.dirtyunicorns.duupdater.utils.NetUtils;
+import com.dirtyunicorns.duupdater.utils.ServerUtils;
 
 import java.util.ArrayList;
 
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class FragmentTest extends Fragment {
+public class FragmentWeeklies extends Fragment {
 
     private ArrayList<File> files;
     private ServerUtils su;
@@ -43,7 +43,6 @@ public class FragmentTest extends Fragment {
             files = new ArrayList<>();
             GetFiles getFiles = new GetFiles();
             getFiles.execute();
-
         }
 
         return rootView;
@@ -53,7 +52,7 @@ public class FragmentTest extends Fragment {
 
         @Override
         protected ArrayList<File> doInBackground(String... params) {
-            files = su.getFiles("Test",true);
+            files = su.getFiles("Weeklies",true);
 
             return files;
         }

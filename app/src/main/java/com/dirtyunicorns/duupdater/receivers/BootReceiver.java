@@ -1,4 +1,4 @@
-package com.dirtyunicorns.duupdater2.receivers;
+package com.dirtyunicorns.duupdater.receivers;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

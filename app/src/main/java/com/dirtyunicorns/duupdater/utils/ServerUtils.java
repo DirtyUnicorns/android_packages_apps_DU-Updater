@@ -1,10 +1,10 @@
-package com.dirtyunicorns.duupdater2.utils;
+package com.dirtyunicorns.duupdater.utils;
 
 import android.os.Build;
 import android.os.Parcel;
 import android.os.SystemClock;
 
-import com.dirtyunicorns.duupdater2.objects.ServerVersion;
+import com.dirtyunicorns.duupdater.objects.ServerVersion;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
