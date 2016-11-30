@@ -66,7 +66,7 @@ public class FragmentTest extends Fragment {
                     CardAdapter adapter = new CardAdapter(files, getActivity());
                     rv.setAdapter(adapter);
                 } else {
-                    Snackbar.make(rootView, "No files to show", Snackbar.LENGTH_INDEFINITE);
+                    Snackbar.make(rootView, getString(R.string.no_files_to_show), Snackbar.LENGTH_INDEFINITE);
                 }
             }
         }

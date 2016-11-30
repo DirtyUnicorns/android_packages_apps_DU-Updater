@@ -15,7 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.MenuItem;
 
-import com.dirtyunicorns.duupdater.fragments.FragmentGappsBanks;
+import com.dirtyunicorns.duupdater.fragments.FragmentGappsDynamic;
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsTBO;
 import com.dirtyunicorns.duupdater.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater.fragments.FragmentTest;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (!NetUtils.isOnline(this)) {
             assert view != null;
-            Snackbar.make(view,"You must be connected to the internet to use the updater", Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(view,getString(R.string.no_internet_snackbar), Snackbar.LENGTH_INDEFINITE)
                     .setAction("Action", null).show();
         } else {
             NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     UpdateFragment();
                     break;
                 case R.id.gappsbanks:
-                    frag = new FragmentGappsBanks();
+                    frag = new FragmentGappsDynamic();
                     mDrawerLayout.closeDrawers();
                     UpdateFragment();
                     break;

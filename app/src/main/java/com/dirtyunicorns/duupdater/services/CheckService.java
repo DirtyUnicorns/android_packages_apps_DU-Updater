@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
 
+import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.objects.CurrentVersion;
 import com.dirtyunicorns.duupdater.objects.ServerVersion;
 import com.dirtyunicorns.duupdater.utils.NetUtils;
@@ -107,22 +108,22 @@ public class CheckService extends Service{
     private void UpdateNotification(int UPDATE_TYPE, String info, String link) {
         mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
-        mBuilder.setSubText("Would you like to download it?");
-        mBuilder.setContentTitle("DU Update Available");
+        mBuilder.setSubText(getString(R.string.dialog_message));
+        mBuilder.setContentTitle(getString(R.string.dialog_title));
         downloadIntent.putExtra("fileName", link.split("/")[link.split("/").length - 1]);
         downloadIntent.putExtra("url", link);
         startDownload = PendingIntent.getService(this, 42, downloadIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        mBuilder.addAction(android.R.drawable.stat_sys_download_done,"Download",startDownload);
+        mBuilder.addAction(android.R.drawable.stat_sys_download_done,getString(R.string.dialog_download),startDownload);
 
         switch (UPDATE_TYPE) {
             case MAJOR_VERSION:
-                mBuilder.setContentText("DU " + info + " is available for download");
+                mBuilder.setContentText("DU " + info + " " + getString(R.string.major_version_text));
                 break;
             case MINOR_VERSION:
-                mBuilder.setContentText("An update (DU " + info + ") is available for download");
+                mBuilder.setContentText(getString(R.string.minor_version_text) + " (DU " + info + " " + getString(R.string.major_version_text));
                 break;
             case BUILD_DATE:
-                mBuilder.setContentText("A newer build of DU is available for download");
+                mBuilder.setContentText(getString(R.string.build_date_text));
         }
 
         mNotifyManager.notify(00, mBuilder.build());

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class FragmentGappsBanks extends Fragment {
+public class FragmentGappsDynamic extends Fragment {
 
     private ArrayList<File> files;
     private ServerUtils su;
@@ -53,7 +53,7 @@ public class FragmentGappsBanks extends Fragment {
         @Override
         protected ArrayList<File> doInBackground(String... params) {
 
-            files = su.getFiles("gapps/Banks", false);
+            files = su.getFiles("gapps/Dynamic", false);
 
             return files;
         }
@@ -66,7 +66,7 @@ public class FragmentGappsBanks extends Fragment {
                     CardAdapter adapter = new CardAdapter(files, getActivity());
                     rv.setAdapter(adapter);
                 } else {
-                    Snackbar.make(rootView, "No files to show", Snackbar.LENGTH_INDEFINITE);
+                    Snackbar.make(rootView, getString(R.string.no_files_to_show), Snackbar.LENGTH_INDEFINITE);
                 }
             }
         }

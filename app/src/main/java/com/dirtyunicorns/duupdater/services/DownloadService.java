@@ -13,6 +13,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
 
+import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.utils.Utils;
 
 import java.io.BufferedInputStream;
@@ -71,7 +72,7 @@ public class DownloadService extends Service {
         if (urlToDownload == null) throw new AssertionError();
         mBuilder = new NotificationCompat.Builder(ctx);
         mBuilder.setSmallIcon(android.R.drawable.stat_sys_download);
-        mBuilder.addAction(android.R.drawable.ic_menu_close_clear_cancel,"Cancel", stopDownload);
+        mBuilder.addAction(android.R.drawable.ic_menu_close_clear_cancel, getString(R.string.cancel), stopDownload);
         downloadFilesTasks = new DownloadFilesTasks();
         downloadFilesTasks.execute(fileName, urlToDownload);
 
@@ -101,8 +102,8 @@ public class DownloadService extends Service {
                     }
                 }
                 mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
-                mBuilder.setContentText("Download Cancelled");
-                mBuilder.setContentTitle("DU Download");
+                mBuilder.setContentText(getString(R.string.download_cancelled));
+                mBuilder.setContentTitle(getString(R.string.du_download));
                 mBuilder.setProgress(100, 0, false);
                 mBuilder.mActions.clear();
                 mBuilder.setLights(Color.RED, 1500, 1500);
@@ -178,13 +179,13 @@ public class DownloadService extends Service {
                     }
                     mBuilder.setProgress(100, 100, false);
                     mBuilder.mActions.clear();
-                    mBuilder.setContentText("Download finished, happy flashing!");
+                    mBuilder.setContentText(getString(R.string.download_happy));
                     mBuilder.setLights(Color.RED, 1500, 1500);
                     mBuilder.setOnlyAlertOnce(true);
                     mBuilder.setSmallIcon(android.R.drawable.stat_sys_download_done);
                     mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
                     bis.close();
-                    System.out.println("bis should be closed");
+                    System.out.println("this should be closed");
                     output.close();
                     input.close();
                 }
@@ -208,15 +209,15 @@ public class DownloadService extends Service {
             final int prog = stats[0].prog;
             final double speed = stats[0].speed;
             mBuilder.setProgress(100, prog, false);
-            mBuilder.setContentText(Utils.ConvertSpeed(speed) + "          " + prog + "% Complete");
+            mBuilder.setContentText(Utils.ConvertSpeed(speed) + "          " + prog + "% " + getString(R.string.complete));
             mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
         }
     }
 
     private void onError() {
         mBuilder.setSmallIcon(android.R.drawable.stat_notify_error);
-        mBuilder.setContentText("Download Failed");
-        mBuilder.setContentTitle("DU Download");
+        mBuilder.setContentText(getString(R.string.download_failed));
+        mBuilder.setContentTitle(getString(R.string.du_download));
         mBuilder.setProgress(100, 0, false);
         mBuilder.mActions.clear();
         mNotifyManager.notify(UPDATE_PROGRESS, mBuilder.build());
