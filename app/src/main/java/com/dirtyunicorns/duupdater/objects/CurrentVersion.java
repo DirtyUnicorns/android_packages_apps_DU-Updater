@@ -31,13 +31,13 @@ public class CurrentVersion extends Update implements Parcelable{
         if (buildType.equals("OFFICIAL")) {
             isOffical = true;
             isWeekly = false;
-            isTest = false;
+            isRc = false;
         } else if (buildType.equals("WEEKLIES")) {
             isWeekly = true;
             isOffical = false;
-            isTest = false;
-        } else if (buildType.equals("TEST")) {
-            isTest = true;
+            isRc = false;
+        } else if (buildType.equals("RC")) {
+            isRc = true;
             isOffical = false;
             isWeekly = false;
         }

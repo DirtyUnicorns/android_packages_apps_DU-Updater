@@ -76,8 +76,8 @@ public class CheckService extends Service{
             return "Official";
         } else if (currentVersion.isWeekly()) {
             return "Weeklies";
-        } else if (currentVersion.isTest()) {
-            return "Test";
+        } else if (currentVersion.isRc()) {
+            return "Rc";
         } else {
             return "Official";
         }

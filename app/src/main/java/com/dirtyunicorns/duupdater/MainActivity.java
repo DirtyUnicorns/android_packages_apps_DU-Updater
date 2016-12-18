@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsDynamic;
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsTBO;
 import com.dirtyunicorns.duupdater.fragments.FragmentOfficial;
-import com.dirtyunicorns.duupdater.fragments.FragmentTest;
+import com.dirtyunicorns.duupdater.fragments.FragmentRc;
 import com.dirtyunicorns.duupdater.fragments.FragmentWeeklies;
 import com.dirtyunicorns.duupdater.utils.NetUtils;
 
@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mDrawerLayout.closeDrawers();
                     UpdateFragment();
                     break;
-                case R.id.test:
-                    frag = new FragmentTest();
+                case R.id.rc:
+                    frag = new FragmentRc();
                     mDrawerLayout.closeDrawers();
                     UpdateFragment();
                     break;

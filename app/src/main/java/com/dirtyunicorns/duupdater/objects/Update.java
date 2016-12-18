@@ -18,7 +18,7 @@ public class Update {
     protected Date buildDate;
     protected boolean isOffical;
     protected boolean isWeekly;
-    protected boolean isTest;
+    protected boolean isRc;
 
     protected String GetProp() {
         String retProp = null;
@@ -65,7 +65,7 @@ public class Update {
         return isWeekly;
     }
 
-    public boolean isTest() {
-        return isTest;
+    public boolean isRc() {
+        return isRc;
     }
 }

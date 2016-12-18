@@ -27,7 +27,7 @@
 
     <!-- Nav drawer items -->
     <string name="navdrawer_official">Official builds</string>
-    <string name="navdrawer_test">Test builds</string>
+    <string name="navdrawer_rc">RC builds</string>
     <string name="navdrawer_weeklies">Weekly builds</string>
     <string name="navdrawer_dynamic_gapps">Dynamic gapps</string>
     <string name="navdrawer_tbo_gapps">TBO gapps</string>

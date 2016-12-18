@@ -23,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class FragmentTest extends Fragment {
+public class FragmentRc extends Fragment {
 
     private ArrayList<File> files;
     private ServerUtils su;
@@ -53,7 +53,7 @@ public class FragmentTest extends Fragment {
 
         @Override
         protected ArrayList<File> doInBackground(String... params) {
-            files = su.getFiles("Test",true);
+            files = su.getFiles("Rc",true);
 
             return files;
         }
