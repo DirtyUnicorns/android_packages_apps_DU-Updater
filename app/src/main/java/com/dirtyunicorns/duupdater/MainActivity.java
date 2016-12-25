@@ -1,5 +1,7 @@
 package com.dirtyunicorns.duupdater;
 
+import android.content.ComponentName;
+import android.content.pm.PackageManager;
 import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsDynamic;
@@ -118,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mDrawerLayout.closeDrawers();
                     UpdateFragment();
                     break;
-                case R.id.gappsbanks:
+                case R.id.gappsdynamic:
                     frag = new FragmentGappsDynamic();
                     mDrawerLayout.closeDrawers();
                     UpdateFragment();
@@ -130,5 +133,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
             }
             return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        menu.findItem(R.id.hide_app_icon).setChecked(!isLauncherIconEnabled());
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.hide_app_icon:
+                boolean checked = item.isChecked();
+                item.setChecked(!checked);
+                setLauncherIconEnabled(checked);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void setLauncherIconEnabled(boolean enabled) {
+        int newState;
+        PackageManager pm = getPackageManager();
+        if (enabled) {
+            newState = PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+        } else {
+            newState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+        }
+        pm.setComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class), newState, PackageManager.DONT_KILL_APP);
+    }
+
+    public boolean isLauncherIconEnabled() {
+        PackageManager pm = getPackageManager();
+        return (pm.getComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class)) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
     }
 }

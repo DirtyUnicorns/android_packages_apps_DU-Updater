@@ -18,7 +18,7 @@
         android:id="@+id/gapps_category"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/gappsbanks"
+            android:id="@+id/gappsdynamic"
             android:title="@string/navdrawer_dynamic_gapps"
             android:icon="@drawable/gapps"/>
         <item

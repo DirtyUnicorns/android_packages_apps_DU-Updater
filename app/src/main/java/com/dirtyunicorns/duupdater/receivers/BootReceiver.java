@@ -14,16 +14,13 @@ import java.util.Calendar;
 
 public class BootReceiver extends BroadcastReceiver{
 
-    private AlarmManager alarmManager;
-    private PendingIntent alarmIntent;
-
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
-            alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             Intent alarm = new Intent(context, AlarmReceiver.class);
-            alarmIntent = PendingIntent.getBroadcast(context, 42, alarm, 0);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(), AlarmManager.INTERVAL_DAY , alarmIntent);
+            PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 42, alarm, 0);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
         }
     }
 }

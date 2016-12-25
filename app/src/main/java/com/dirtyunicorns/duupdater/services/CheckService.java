@@ -24,15 +24,12 @@ import java.util.ArrayList;
 public class CheckService extends Service{
 
     private ArrayList<ServerVersion> serverVersions;
-    private ServerUtils su;
     private final int MAJOR_VERSION = 1;
     private final int MINOR_VERSION = 2;
     private final int BUILD_DATE = 3;
-    private NotificationCompat.Builder mBuilder;
     private NotificationManager mNotifyManager;
     private CurrentVersion currentVersion;
     private Intent downloadIntent;
-    private PendingIntent startDownload;
     private static final String STARTTEXT = "STARTDOWNLOAD";
 
     @Nullable
@@ -61,7 +58,7 @@ public class CheckService extends Service{
             currentVersion = new CurrentVersion();
             currentVersion.GetInfo();
             if (NetUtils.isOnline(this)) {
-                su = new ServerUtils();
+                ServerUtils su = new ServerUtils();
                 serverVersions = su.getServerVersions(getBuildString(), true);
                 if (serverVersions != null) {
                     ParseBuilds();
@@ -106,27 +103,24 @@ public class CheckService extends Service{
     }
 
     private void UpdateNotification(int UPDATE_TYPE, String info, String link) {
-        mBuilder = new NotificationCompat.Builder(this);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
-        mBuilder.setSubText(getString(R.string.dialog_message));
         mBuilder.setContentTitle(getString(R.string.dialog_title));
         downloadIntent.putExtra("fileName", link.split("/")[link.split("/").length - 1]);
         downloadIntent.putExtra("url", link);
-        startDownload = PendingIntent.getService(this, 42, downloadIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        mBuilder.addAction(android.R.drawable.stat_sys_download_done,getString(R.string.dialog_download),startDownload);
+        PendingIntent startDownload = PendingIntent.getService(this, 42, downloadIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        mBuilder.addAction(android.R.drawable.stat_sys_download_done, getString(R.string.dialog_download), startDownload);
 
         switch (UPDATE_TYPE) {
             case MAJOR_VERSION:
-                mBuilder.setContentText("DU " + info + " " + getString(R.string.major_version_text));
+                mBuilder.setContentText("DU " + info + ") " + getString(R.string.major_version_text));
                 break;
             case MINOR_VERSION:
-                mBuilder.setContentText(getString(R.string.minor_version_text) + " (DU " + info + " " + getString(R.string.major_version_text));
+                mBuilder.setContentText(getString(R.string.minor_version_text) + " (DU " + info + ") " + getString(R.string.major_version_text));
                 break;
             case BUILD_DATE:
                 mBuilder.setContentText(getString(R.string.build_date_text));
         }
-
         mNotifyManager.notify(00, mBuilder.build());
-
     }
 }

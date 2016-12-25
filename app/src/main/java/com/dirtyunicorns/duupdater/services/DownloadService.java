@@ -37,9 +37,7 @@ public class DownloadService extends Service {
     private Context ctx;
     private NotificationCompat.Builder mBuilder;
     private NotificationManager mNotifyManager;
-    private long total;
     private DownloadFilesTasks downloadFilesTasks;
-    private Intent stopIntent;
     private PendingIntent stopDownload;
 
     public class LocalBinder extends Binder {
@@ -53,7 +51,7 @@ public class DownloadService extends Service {
         mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         ctx = this;
 
-        stopIntent = new Intent(this, DownloadService.class);
+        Intent stopIntent = new Intent(this, DownloadService.class);
         stopIntent.setAction(STOPTEXT);
         stopDownload = PendingIntent.getService(this, 42, stopIntent, PendingIntent.FLAG_CANCEL_CURRENT);
     }
@@ -149,7 +147,7 @@ public class DownloadService extends Service {
                 while (isRunning) {
 
                     byte data[] = new byte[1024];
-                    total = 0;
+                    long total = 0;
                     long startTime = System.currentTimeMillis();
                     long progressInterval = System.currentTimeMillis();
                     int count;
