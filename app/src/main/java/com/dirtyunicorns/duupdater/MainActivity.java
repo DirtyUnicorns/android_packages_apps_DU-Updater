@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         InitOfficial();
     }
 
-    private void InitInterface() {
+    public void InitInterface() {
         View view = findViewById(R.id.content_frame);
 
         assert toolbar != null;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ft.commit();
     }
 
-    private void InitPermissions() {
+    public void InitPermissions() {
         if (Build.VERSION.SDK_INT >= 23 && PermissionChecker
                 .checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
                 PermissionChecker.PERMISSION_GRANTED) {
@@ -169,5 +169,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean isLauncherIconEnabled() {
         PackageManager pm = getPackageManager();
         return (pm.getComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class)) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
+    }
+
+    public void InitWeeklies() {
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        assert navigationView != null;
+        navigationView.setCheckedItem(R.id.weeklies);
+        frag = new FragmentWeeklies();
+        UpdateFragment();
+    }
+
+    public void InitRc() {
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        assert navigationView != null;
+        navigationView.setCheckedItem(R.id.rc);
+        frag = new FragmentRc();
+        UpdateFragment();
+    }
+
+    public void InitDynamicGapps() {
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        assert navigationView != null;
+        navigationView.setCheckedItem(R.id.gappsdynamic);
+        frag = new FragmentGappsDynamic();
+        UpdateFragment();
+    }
+
+    public void InitTboGapps() {
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        assert navigationView != null;
+        navigationView.setCheckedItem(R.id.gappstbo);
+        frag = new FragmentGappsTBO();
+        UpdateFragment();
     }
 }

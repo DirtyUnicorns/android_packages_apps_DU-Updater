@@ -9,6 +9,12 @@
     <string name="cancel">Cancel</string>
     <string name="hide_app_icon">Hide app</string>
 
+    <!-- Shortcuts -->
+    <string name="shortcuts_weeklies">Weekly builds</string>
+    <string name="shortcuts_rc">RC builds</string>
+    <string name="shortcuts_dynamic_gapps">Dynamic gapps</string>
+    <string name="shortcuts_tbo_gapps">TBO gapps</string>
+
     <!-- Snackbar messages -->
     <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>
     <string name="no_files_to_show">No files to show</string>
