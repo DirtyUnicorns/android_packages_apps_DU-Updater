@@ -1,4 +1,10 @@
-#For design support library
+#For support library
 -keep class android.support.design.widget.** { *; }
 -keep interface android.support.design.widget.** { *; }
 -dontwarn android.support.design.**
+-keep class android.support.v7.preference.** { *; }
+-keep interface android.support.v7.preference.** { *; }
+-dontwarn android.support.v7.preference.**
+-keep class android.support.v14.preference.** { *; }
+-keep interface android.support.v14.preference.** { *; }
+-dontwarn android.support.v14.preference.**

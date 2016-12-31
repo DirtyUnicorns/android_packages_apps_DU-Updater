@@ -22,6 +22,7 @@ import com.dirtyunicorns.duupdater.fragments.FragmentGappsDynamic;
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsTBO;
 import com.dirtyunicorns.duupdater.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater.fragments.FragmentRc;
+import com.dirtyunicorns.duupdater.fragments.FragmentSettings;
 import com.dirtyunicorns.duupdater.fragments.FragmentWeeklies;
 import com.dirtyunicorns.duupdater.utils.NetUtils;
 
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         InitInterface();
         InitPermissions();
         InitOfficial();
+
+        com.dirtyunicorns.duupdater.utils.Preferences.themeMe(this);
     }
 
     public void InitInterface() {
@@ -128,6 +131,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
                 case R.id.gappstbo:
                     frag = new FragmentGappsTBO();
+                    mDrawerLayout.closeDrawers();
+                    UpdateFragment();
+                    break;
+                case R.id.settings:
+                    frag = new FragmentSettings();
                     mDrawerLayout.closeDrawers();
                     UpdateFragment();
                     break;
