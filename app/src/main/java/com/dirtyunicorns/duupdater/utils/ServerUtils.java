@@ -21,27 +21,18 @@ import java.util.Collections;
  */
 public class ServerUtils extends Utils {
 
-    private ArrayList<File> files;
-    private ArrayList<ServerVersion> serverVersions;
-    private String dir;
-    private boolean isDevFiles;
-    private SimpleDateFormat dateFormat;
+    private static ArrayList<File> files;
+    private static ArrayList<ServerVersion> serverVersions;
 
-    public ServerUtils() {
-        files = new ArrayList<File>();
-    }
-
-    public ArrayList<File> getFiles(String dirP, boolean isDeviceFiles) {
-        isDevFiles = isDeviceFiles;
-        dir = dirP;
-
+    public static ArrayList<File> getFiles(final String dir, final boolean isDeviceFiles) {
+        files = new ArrayList<>();
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 //Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
                 String path = "device=";
-                if (isDevFiles) {
+                if (isDeviceFiles) {
                     device = Build.BOARD;
                     path += device + "&folder=" + dir;
                     link += device;
@@ -53,10 +44,9 @@ public class ServerUtils extends Utils {
                     URI uri = new URI("https", null, "download.dirtyunicorns.com", 443, "/json.php", path, null);
 
                     JSONObject json = jsonParser.getJSONFromUrl(uri.toASCIIString());
-                    JSONArray folders = null;
                     try {
                         if (json != null) {
-                            folders = json.getJSONArray(TAG_MASTER);
+                            JSONArray folders = json.getJSONArray(TAG_MASTER);
                             dirs = new String[folders.length()];
                             for (int i = 0; i < folders.length(); i++) {
                                 JSONObject d = folders.getJSONObject(i);
@@ -86,10 +76,8 @@ public class ServerUtils extends Utils {
         return files;
     }
 
-    public ArrayList<ServerVersion> getServerVersions(String dirP, boolean isDeviceFiles) {
+    public static ArrayList<ServerVersion> getServerVersions(final String dir, final boolean isDeviceFiles) {
         serverVersions = new ArrayList<>();
-        isDevFiles = isDeviceFiles;
-        dir = dirP;
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -97,7 +85,7 @@ public class ServerUtils extends Utils {
                 //Looper.prepare();
                 JSONParser jsonParser = new JSONParser();
                 String path = "device=";
-                if (isDevFiles) {
+                if (isDeviceFiles) {
                     device = Build.BOARD;
                     path += device + "&folder=" + dir;
                     link += device;
@@ -109,18 +97,17 @@ public class ServerUtils extends Utils {
                     URI uri = new URI("https", null, "download.dirtyunicorns.com", 443, "/json.php", path, null);
 
                     JSONObject json = jsonParser.getJSONFromUrl(uri.toASCIIString());
-                    JSONArray folders = null;
-                    try{
+                    try {
                         if (json != null) {
-                            folders = json.getJSONArray(TAG_MASTER);
+                            JSONArray folders = json.getJSONArray(TAG_MASTER);
                             dirs = new String[folders.length()];
                             for (int i = 0; i < folders.length(); i++) {
 
                                 JSONObject d = folders.getJSONObject(i);
                                 String link = d.getString("downloads");
                                 ServerVersion serverVersion = new ServerVersion();
-                                String[] buildInfo = d.getString("filename").replace(".zip","").split("_");
-                                dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
+                                String[] buildInfo = d.getString("filename").replace(".zip", "").split("_");
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
                                 try {
                                     serverVersion.setBuildDate(dateFormat.parse(buildInfo[3].split("\\.")[0]));
                                 } catch (ParseException e) {
@@ -129,7 +116,7 @@ public class ServerUtils extends Utils {
 
                                 serverVersion.setAndroidVersion(buildInfo[2]);
                                 serverVersion.setBuildType(buildInfo[3].split("\\.")[2]);
-                                serverVersion.setMajorVersion(Integer.valueOf(buildInfo[3].split("\\.")[1].replace("v","")));
+                                serverVersion.setMajorVersion(Integer.valueOf(buildInfo[3].split("\\.")[1].replace("v", "")));
                                 serverVersion.setMinorVersion(Integer.valueOf(buildInfo[3].split("\\.")[2].split("-")[0]));
                                 serverVersion.setLink(link);
                                 serverVersions.add(serverVersion);

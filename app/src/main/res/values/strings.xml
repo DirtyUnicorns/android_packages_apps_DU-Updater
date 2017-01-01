@@ -45,4 +45,8 @@
     <string name="navdrawer_dynamic_gapps">Dynamic gapps</string>
     <string name="navdrawer_tbo_gapps">TBO gapps</string>
 
+    <!--Card String-->
+    <string name="card_file_size">File Size: %1$s</string>
+    <string name="card_file_md5">File MD5: %1$s</string>
+
 </resources>

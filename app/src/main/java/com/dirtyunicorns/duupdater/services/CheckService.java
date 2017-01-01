@@ -58,8 +58,7 @@ public class CheckService extends Service{
             currentVersion = new CurrentVersion();
             currentVersion.GetInfo();
             if (NetUtils.isOnline(this)) {
-                ServerUtils su = new ServerUtils();
-                serverVersions = su.getServerVersions(getBuildString(), true);
+                serverVersions = ServerUtils.getServerVersions(getBuildString(), true);
                 if (serverVersions != null) {
                     ParseBuilds();
                 }

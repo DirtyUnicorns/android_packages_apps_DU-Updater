@@ -12,11 +12,9 @@ import java.text.SimpleDateFormat;
 
 public class CurrentVersion extends Update implements Parcelable{
 
-    private SimpleDateFormat dateFormat;
-
     public void GetInfo() {
         String[] buildInfo = GetProp().split("_");
-        dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
         try {
             buildDate = dateFormat.parse(buildInfo[3].split("\\.")[0]);
         } catch (ParseException e) {

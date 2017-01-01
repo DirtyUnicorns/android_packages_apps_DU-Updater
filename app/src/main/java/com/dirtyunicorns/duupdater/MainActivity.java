@@ -1,10 +1,11 @@
 package com.dirtyunicorns.duupdater;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.pm.PackageManager;
-import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -14,9 +15,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsDynamic;
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsTBO;
@@ -26,12 +27,13 @@ import com.dirtyunicorns.duupdater.fragments.FragmentSettings;
 import com.dirtyunicorns.duupdater.fragments.FragmentWeeklies;
 import com.dirtyunicorns.duupdater.utils.NetUtils;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private DrawerLayout mDrawerLayout;
     private final static int REQUEST_READ_STORAGE_PERMISSION = 1;
+    private DrawerLayout mDrawerLayout;
     private Fragment frag;
     private Toolbar toolbar;
+    private Snackbar snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +55,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setSupportActionBar(toolbar);
 
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
             @Override
-            public void onDrawerClosed(View v){
+            public void onDrawerClosed(View v) {
                 super.onDrawerClosed(v);
             }
 
@@ -68,12 +70,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         };
         actionBarDrawerToggle.syncState();
 
+        snackbar = Snackbar.make(view, "", Snackbar.LENGTH_INDEFINITE);
         if (!NetUtils.isOnline(this)) {
-            assert view != null;
-            Snackbar.make(view,getString(R.string.no_internet_snackbar), Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Action", null).show();
+            showSnackBar(R.string.no_internet_snackbar);
         } else {
-            NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
             assert navigationView != null;
             navigationView.setNavigationItemSelectedListener(this);
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void InitOfficial() {
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
         navigationView.setCheckedItem(R.id.official);
         frag = new FragmentOfficial();
@@ -104,43 +105,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
-        switch (id){
-
-                case R.id.official:
-                    frag = new FragmentOfficial();
-                    mDrawerLayout.closeDrawers();
-                    UpdateFragment();
-                    break;
-                case R.id.weeklies:
-                    frag = new FragmentWeeklies();
-                    mDrawerLayout.closeDrawers();
-                    UpdateFragment();
-                    break;
-                case R.id.rc:
-                    frag = new FragmentRc();
-                    mDrawerLayout.closeDrawers();
-                    UpdateFragment();
-                    break;
-                case R.id.gappsdynamic:
-                    frag = new FragmentGappsDynamic();
-                    mDrawerLayout.closeDrawers();
-                    UpdateFragment();
-                    break;
-                case R.id.gappstbo:
-                    frag = new FragmentGappsTBO();
-                    mDrawerLayout.closeDrawers();
-                    UpdateFragment();
-                    break;
-                case R.id.settings:
-                    frag = new FragmentSettings();
-                    mDrawerLayout.closeDrawers();
-                    UpdateFragment();
-                    break;
-            }
-            return true;
+        switch (id) {
+            case R.id.official:
+                frag = new FragmentOfficial();
+                break;
+            case R.id.weeklies:
+                frag = new FragmentWeeklies();
+                break;
+            case R.id.rc:
+                frag = new FragmentRc();
+                break;
+            case R.id.gappsdynamic:
+                frag = new FragmentGappsDynamic();
+                break;
+            case R.id.gappstbo:
+                frag = new FragmentGappsTBO();
+                break;
+            case R.id.settings:
+                frag = new FragmentSettings();
+                break;
+        }
+        mDrawerLayout.closeDrawers();
+        hideSnackBar();
+        UpdateFragment();
+        return true;
     }
 
     @Override
@@ -163,6 +154,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public void showSnackBar(int resId) {
+        hideSnackBar();
+        snackbar.setText(resId).show();
+    }
+
+    public void hideSnackBar() {
+        if (snackbar.isShown()) snackbar.dismiss();
+    }
+
+    public boolean isLauncherIconEnabled() {
+        PackageManager pm = getPackageManager();
+        return (pm.getComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class)) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
+    }
+
     public void setLauncherIconEnabled(boolean enabled) {
         int newState;
         PackageManager pm = getPackageManager();
@@ -174,13 +179,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         pm.setComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class), newState, PackageManager.DONT_KILL_APP);
     }
 
-    public boolean isLauncherIconEnabled() {
-        PackageManager pm = getPackageManager();
-        return (pm.getComponentEnabledSetting(new ComponentName(this, com.dirtyunicorns.duupdater.LauncherActivity.class)) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
-    }
-
     public void InitWeeklies() {
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
         navigationView.setCheckedItem(R.id.weeklies);
         frag = new FragmentWeeklies();
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void InitRc() {
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
         navigationView.setCheckedItem(R.id.rc);
         frag = new FragmentRc();
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void InitDynamicGapps() {
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
         navigationView.setCheckedItem(R.id.gappsdynamic);
         frag = new FragmentGappsDynamic();
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void InitTboGapps() {
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
         navigationView.setCheckedItem(R.id.gappstbo);
         frag = new FragmentGappsTBO();
