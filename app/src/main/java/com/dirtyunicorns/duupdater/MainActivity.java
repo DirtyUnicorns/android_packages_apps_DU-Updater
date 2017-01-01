@@ -25,7 +25,7 @@ import com.dirtyunicorns.duupdater.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater.fragments.FragmentRc;
 import com.dirtyunicorns.duupdater.fragments.FragmentSettings;
 import com.dirtyunicorns.duupdater.fragments.FragmentWeeklies;
-import com.dirtyunicorns.duupdater.utils.NetUtils;
+import com.dirtyunicorns.duupdater.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
 
         snackbar = Snackbar.make(view, "", Snackbar.LENGTH_INDEFINITE);
-        if (!NetUtils.isOnline(this)) {
+        if (!Utils.isOnline(this)) {
             showSnackBar(R.string.no_internet_snackbar);
         } else {
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

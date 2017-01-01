@@ -14,7 +14,7 @@ import com.dirtyunicorns.duupdater.MainActivity;
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.adapters.CardAdapter;
 import com.dirtyunicorns.duupdater.utils.GetFiles;
-import com.dirtyunicorns.duupdater.utils.NetUtils;
+import com.dirtyunicorns.duupdater.utils.Utils;
 
 /**
  * Created by mazwoz on 7/5/16.
@@ -32,7 +32,7 @@ public class FragmentOfficial extends Fragment {
         CardAdapter adapter = new CardAdapter(getContext());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
-        if (NetUtils.isOnline(getActivity())) {
+        if (Utils.isOnline(getActivity())) {
             GetFiles getFiles = new GetFiles("Official", true, adapter, (MainActivity) getActivity());
             getFiles.execute();
         }

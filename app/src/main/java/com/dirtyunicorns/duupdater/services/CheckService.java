@@ -12,8 +12,7 @@ import android.support.v7.app.NotificationCompat;
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.objects.CurrentVersion;
 import com.dirtyunicorns.duupdater.objects.ServerVersion;
-import com.dirtyunicorns.duupdater.utils.NetUtils;
-import com.dirtyunicorns.duupdater.utils.ServerUtils;
+import com.dirtyunicorns.duupdater.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -57,8 +56,8 @@ public class CheckService extends Service{
         } else {
             currentVersion = new CurrentVersion();
             currentVersion.GetInfo();
-            if (NetUtils.isOnline(this)) {
-                serverVersions = ServerUtils.getServerVersions(getBuildString(), true);
+            if (Utils.isOnline(this)) {
+                serverVersions = Utils.getServerVersions(getBuildString(), true);
                 if (serverVersions != null) {
                     ParseBuilds();
                 }

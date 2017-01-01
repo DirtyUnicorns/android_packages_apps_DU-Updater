@@ -1,8 +1,6 @@
 package com.dirtyunicorns.duupdater.utils;
 
 import android.os.AsyncTask;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 
 import com.dirtyunicorns.duupdater.MainActivity;
 import com.dirtyunicorns.duupdater.R;
@@ -30,7 +28,7 @@ public class GetFiles extends AsyncTask<String, String, ArrayList<File>> {
 
     @Override
     protected ArrayList<File> doInBackground(String... params) {
-        return ServerUtils.getFiles(dir, device);
+        return Utils.getFiles(dir, device);
     }
 
     protected void onPostExecute(ArrayList<File> result) {
