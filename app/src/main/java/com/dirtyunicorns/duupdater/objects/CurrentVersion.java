@@ -26,18 +26,22 @@ public class CurrentVersion extends Update implements Parcelable{
         majorVersion = Integer.valueOf(buildInfo[3].split("\\.")[1].replace("v",""));
         minorVersion = Integer.valueOf(buildInfo[3].split("\\.")[2].split("-")[0]);
 
-        if (buildType.equals("OFFICIAL")) {
-            isOffical = true;
-            isWeekly = false;
-            isRc = false;
-        } else if (buildType.equals("WEEKLIES")) {
-            isWeekly = true;
-            isOffical = false;
-            isRc = false;
-        } else if (buildType.equals("RC")) {
-            isRc = true;
-            isOffical = false;
-            isWeekly = false;
+        switch (buildType) {
+            case "OFFICIAL":
+                isOffical = true;
+                isWeekly = false;
+                isRc = false;
+                break;
+            case "WEEKLIES":
+                isWeekly = true;
+                isOffical = false;
+                isRc = false;
+                break;
+            case "RC":
+                isRc = true;
+                isOffical = false;
+                isWeekly = false;
+                break;
         }
     }
 
