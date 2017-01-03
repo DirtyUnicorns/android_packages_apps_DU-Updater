@@ -16,6 +16,8 @@ import com.dirtyunicorns.duupdater.utils.Utils;
 
 import java.util.ArrayList;
 
+import static com.dirtyunicorns.duupdater.utils.Utils.getServerVersions;
+
 /**
  * Created by mazwoz on 10/12/16.
  */
@@ -57,8 +59,8 @@ public class CheckService extends Service{
             currentVersion = new CurrentVersion();
             currentVersion.GetInfo();
             if (Utils.isOnline(this)) {
-                serverVersions = Utils.getServerVersions(getBuildString(), true);
                 if (serverVersions != null) {
+                    serverVersions = getServerVersions(getBuildString(), true);
                     ParseBuilds();
                 }
             }
@@ -122,3 +124,4 @@ public class CheckService extends Service{
         mNotifyManager.notify(00, mBuilder.build());
     }
 }
+
