@@ -73,10 +73,10 @@
         </service>
         <receiver android:name=".receivers.BootReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".receivers.AlarmReceiver" android:process=":remote"></receiver>
+        <receiver android:name=".receivers.AlarmReceiver" android:process=":remote"/>
     </application>
 
 </manifest>

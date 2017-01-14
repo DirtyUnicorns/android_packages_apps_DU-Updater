@@ -16,11 +16,6 @@
 
 package com.dirtyunicorns.duupdater.utils;
 
-/**
- * Created by mazwoz on 12/18/14.
- */
-import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +27,9 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * Created by mazwoz on 12/18/14.
+ */
 public class JSONParser {
 
     static InputStream is = null;

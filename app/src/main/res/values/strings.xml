@@ -20,8 +20,6 @@
     <!-- Theme strings -->
     <string name="theme_options">Theme options</string>
     <string name="pref_navbar_tint_title">Navigation bar tint</string>
-    <string name="enable_navbar_tint_summary">Enable navigation bar tint</string>
-    <string name="disable_navbar_tint_summary">Disable navigation bar tint</string>
 
     <!-- Shortcuts -->
     <string name="shortcuts_weeklies">Weekly builds</string>

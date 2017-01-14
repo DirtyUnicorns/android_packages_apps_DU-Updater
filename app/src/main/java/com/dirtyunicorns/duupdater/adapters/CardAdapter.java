@@ -46,7 +46,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
         holder.fileName.setText(files.get(position).GetFileName());
         holder.fileSize.setText(String.format(ctx.getString(R.string.card_file_size), files.get(pos).GetFileSize()));
         holder.fileMD5.setText(String.format(ctx.getString(R.string.card_file_md5), files.get(pos).GetFileMD5()));
-        holder.fildDownload.setText(files.get(pos).GetFileLink());
         holder.buttonDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +72,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
         TextView fileName;
         TextView fileSize;
         TextView fileMD5;
-        TextView fildDownload;
         Button buttonDownload;
 
         FileHolder(View itemView) {
@@ -81,7 +79,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
             fileName = (TextView) itemView.findViewById(R.id.update_name);
             fileSize = (TextView) itemView.findViewById(R.id.update_size);
             fileMD5 = (TextView) itemView.findViewById(R.id.update_md5);
-            fildDownload = (TextView) itemView.findViewById(R.id.download_path);
             buttonDownload = (Button) itemView.findViewById(R.id.btnDownload);
         }
     }

@@ -1,5 +1,6 @@
 package com.dirtyunicorns.duupdater.objects;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -14,7 +15,7 @@ public class CurrentVersion extends Update implements Parcelable{
 
     public void GetInfo() {
         String[] buildInfo = GetProp().split("_");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-hhmm");
         try {
             buildDate = dateFormat.parse(buildInfo[3].split("\\.")[0]);
         } catch (ParseException e) {

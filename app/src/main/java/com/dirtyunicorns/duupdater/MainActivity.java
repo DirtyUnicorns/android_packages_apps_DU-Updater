@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.official);
         frag = new FragmentOfficial();
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        assert collapsingToolbarLayout != null;
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.collapsing_toolbar_layout_collapsed_title_color));
+        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.collapsing_toolbar_layout_expanded_title_color));
         collapsingToolbarLayout.setTitle(getString(R.string.official));
         UpdateFragment();
     }
@@ -112,36 +113,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.collapsing_toolbar_layout_collapsed_title_color));
+        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.collapsing_toolbar_layout_expanded_title_color));
         int id = item.getItemId();
         switch (id) {
             case R.id.official:
                 frag = new FragmentOfficial();
-                assert collapsingToolbarLayout != null;
                 collapsingToolbarLayout.setTitle(getString(R.string.official));
                 break;
             case R.id.weeklies:
                 frag = new FragmentWeeklies();
-                assert collapsingToolbarLayout != null;
                 collapsingToolbarLayout.setTitle(getString(R.string.weeklies));
                 break;
             case R.id.rc:
                 frag = new FragmentRc();
-                assert collapsingToolbarLayout != null;
                 collapsingToolbarLayout.setTitle(getString(R.string.rc));
                 break;
             case R.id.gappsdynamic:
                 frag = new FragmentGappsDynamic();
-                assert collapsingToolbarLayout != null;
                 collapsingToolbarLayout.setTitle(getString(R.string.dynamic_gapps));
                 break;
             case R.id.gappstbo:
                 frag = new FragmentGappsTBO();
-                assert collapsingToolbarLayout != null;
                 collapsingToolbarLayout.setTitle(getString(R.string.tbo_gapps));
                 break;
             case R.id.settings:
                 frag = new FragmentSettings();
-                assert collapsingToolbarLayout != null;
                 collapsingToolbarLayout.setTitle(getString(R.string.settings_alt));
                 break;
         }
