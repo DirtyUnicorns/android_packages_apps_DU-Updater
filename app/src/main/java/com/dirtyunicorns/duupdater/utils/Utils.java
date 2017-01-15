@@ -54,7 +54,7 @@ public class Utils extends Vars{
                 JSONParser jsonParser = new JSONParser();
                 String path = "device=";
                 if (isDeviceFiles) {
-                    device = Build.BOARD;
+                    device = Build.UPDATER;
                     path += device + "&folder=" + dir;
                     link += device;
                 } else {
@@ -107,7 +107,7 @@ public class Utils extends Vars{
                 JSONParser jsonParser = new JSONParser();
                 String path = "device=";
                 if (isDeviceFiles) {
-                    device = Build.BOARD;
+                    device = Build.UPDATER;
                     path += device + "&folder=" + dir;
                     link += device;
                 } else {
