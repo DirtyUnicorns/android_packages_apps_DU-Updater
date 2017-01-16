@@ -25,7 +25,7 @@ import java.util.Collections;
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class Utils extends Vars{
+public class Utils extends Vars {
 
     protected static ConnectivityManager connectivityManager;
     protected static boolean connected = false;
