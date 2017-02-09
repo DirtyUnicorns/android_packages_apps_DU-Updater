@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.dirtyunicorns.duupdater.MainActivity;
 import com.dirtyunicorns.duupdater.R;
 
-public class TboGapps extends MainActivity {
+public class TrGapps extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +14,6 @@ public class TboGapps extends MainActivity {
 
         InitInterface();
         InitPermissions();
-        InitTboGapps();
+        InitTrGapps();
     }
 }

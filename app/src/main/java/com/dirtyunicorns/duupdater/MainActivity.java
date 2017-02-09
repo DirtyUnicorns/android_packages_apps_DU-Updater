@@ -21,7 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsDynamic;
-import com.dirtyunicorns.duupdater.fragments.FragmentGappsTBO;
+import com.dirtyunicorns.duupdater.fragments.FragmentGappsTR;
 import com.dirtyunicorns.duupdater.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater.fragments.FragmentRc;
 import com.dirtyunicorns.duupdater.fragments.FragmentSettings;
@@ -133,9 +133,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 frag = new FragmentGappsDynamic();
                 collapsingToolbarLayout.setTitle(getString(R.string.dynamic_gapps));
                 break;
-            case R.id.gappstbo:
-                frag = new FragmentGappsTBO();
-                collapsingToolbarLayout.setTitle(getString(R.string.tbo_gapps));
+            case R.id.gappstr:
+                frag = new FragmentGappsTR();
+                collapsingToolbarLayout.setTitle(getString(R.string.tr_gapps));
                 break;
             case R.id.settings:
                 frag = new FragmentSettings();
@@ -217,11 +217,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         UpdateFragment();
     }
 
-    public void InitTboGapps() {
+    public void InitTrGapps() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
-        navigationView.setCheckedItem(R.id.gappstbo);
-        frag = new FragmentGappsTBO();
+        navigationView.setCheckedItem(R.id.gappstr);
+        frag = new FragmentGappsTR();
         UpdateFragment();
     }
 }

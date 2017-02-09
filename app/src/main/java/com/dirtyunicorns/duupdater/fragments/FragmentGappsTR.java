@@ -19,7 +19,7 @@ import com.dirtyunicorns.duupdater.utils.Utils;
 /**
  * Created by mazwoz on 7/5/16.
  */
-public class FragmentGappsTBO extends Fragment {
+public class FragmentGappsTR extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class FragmentGappsTBO extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
         if (Utils.isOnline(getActivity())) {
-            GetFiles getFiles = new GetFiles("gapps/TBO", false, adapter, (MainActivity) getActivity());
+            GetFiles getFiles = new GetFiles("gapps/ThemeReady", false, adapter, (MainActivity) getActivity());
             getFiles.execute();
         }
 
