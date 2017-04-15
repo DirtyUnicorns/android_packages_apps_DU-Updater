@@ -15,7 +15,7 @@
     <string name="official">DU Updater - Official</string>
     <string name="weeklies">DU Updater - Weeklies</string>
     <string name="rc">DU Updater - Rc</string>
-    <string name="dynamic_gapps">DU Updater - Dynamic</string>
+    <string name="beans_gapps">DU Updater - Beans</string>
     <string name="tr_gapps">DU Updater - Theme ready</string>
     <string name="settings_alt">DU Updater - Settings</string>
 
@@ -26,7 +26,7 @@
     <!-- Shortcuts -->
     <string name="shortcuts_weeklies">Weekly builds</string>
     <string name="shortcuts_rc">RC builds</string>
-    <string name="shortcuts_dynamic_gapps">Dynamic gapps</string>
+    <string name="shortcuts_beans_gapps">Beans gapps</string>
     <string name="shortcuts_tr_gapps">Theme ready gapps</string>
 
     <!-- Snackbar messages -->
@@ -49,7 +49,7 @@
     <string name="navdrawer_official">Official builds</string>
     <string name="navdrawer_rc">RC builds</string>
     <string name="navdrawer_weeklies">Weekly builds</string>
-    <string name="navdrawer_dynamic_gapps">Dynamic</string>
+    <string name="navdrawer_beans_gapps">Beans</string>
     <string name="navdrawer_tr_gapps">Theme ready</string>
 
     <!--Card String-->
