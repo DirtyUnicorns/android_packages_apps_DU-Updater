@@ -39,5 +39,4 @@ public class FragmentGappsTR extends Fragment {
 
         return rootView;
     }
-
 }

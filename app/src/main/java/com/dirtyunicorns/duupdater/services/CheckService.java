@@ -124,4 +124,3 @@ public class CheckService extends Service{
         mNotifyManager.notify(00, mBuilder.build());
     }
 }
-
