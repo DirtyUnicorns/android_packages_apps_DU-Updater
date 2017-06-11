@@ -7,21 +7,15 @@
     <string name="action_download">Скачать</string>
     <string name="cancel">Отменить</string>
     <string name="hide_app_icon">Скрыть приложение</string>
-    <string name="settings">Настройки</string>
     <string name="qs_tile_name">Обновление</string>
     <string name="gapps_category">GAPPS</string>
 
-    <!-- Collapsing toolbar titles -->
+    <!-- Toolbar titles -->
     <string name="official">Официальные</string>
     <string name="weeklies">Еженедельные</string>
     <string name="rc">RC</string>
     <string name="beans_gapps">Beans GAPPS</string>
     <string name="tr_gapps">Theme Ready GAPPS</string>
-    <string name="settings_alt">Настройки</string>
-
-    <!-- Theme strings -->
-    <string name="theme_options">Настройки интерфейса</string>
-    <string name="pref_navbar_tint_title">Цветная панель навигации</string>
 
     <!-- Shortcuts -->
     <string name="shortcuts_weeklies">Еженедельные сборки</string>

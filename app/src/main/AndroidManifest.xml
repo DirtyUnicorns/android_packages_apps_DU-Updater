@@ -28,7 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/official"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -46,7 +46,7 @@
         <activity
             android:name=".shortcuts.Weeklies"
             android:label="@string/weeklies"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -54,7 +54,7 @@
         <activity
             android:name=".shortcuts.Rc"
             android:label="@string/rc"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -62,7 +62,7 @@
         <activity
             android:name=".shortcuts.BeansGapps"
             android:label="@string/beans_gapps"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -70,7 +70,7 @@
         <activity
             android:name=".shortcuts.TrGapps"
             android:label="@string/tr_gapps"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

@@ -3,10 +3,8 @@ package com.dirtyunicorns.duupdater;
 import android.Manifest;
 import android.content.ComponentName;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -24,7 +22,6 @@ import com.dirtyunicorns.duupdater.fragments.FragmentGappsBeans;
 import com.dirtyunicorns.duupdater.fragments.FragmentGappsTR;
 import com.dirtyunicorns.duupdater.fragments.FragmentOfficial;
 import com.dirtyunicorns.duupdater.fragments.FragmentRc;
-import com.dirtyunicorns.duupdater.fragments.FragmentSettings;
 import com.dirtyunicorns.duupdater.fragments.FragmentWeeklies;
 import com.dirtyunicorns.duupdater.utils.Utils;
 
@@ -87,11 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         assert navigationView != null;
         navigationView.setCheckedItem(R.id.official);
         frag = new FragmentOfficial();
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.collapsing_toolbar_layout_collapsed_title_color));
-        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.collapsing_toolbar_layout_expanded_title_color));
-        collapsingToolbarLayout.setTitle(getString(R.string.official));
         UpdateFragment();
+        toolbar.setTitle(getString(R.string.official));
     }
 
     private void UpdateFragment() {
@@ -101,9 +95,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void InitPermissions() {
-        if (Build.VERSION.SDK_INT >= 23 && PermissionChecker
-                .checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
-                PermissionChecker.PERMISSION_GRANTED) {
+        if (PermissionChecker
+                .checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PermissionChecker.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     REQUEST_READ_STORAGE_PERMISSION);
         }
@@ -112,34 +105,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.collapsing_toolbar_layout_collapsed_title_color));
-        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.collapsing_toolbar_layout_expanded_title_color));
         int id = item.getItemId();
         switch (id) {
             case R.id.official:
                 frag = new FragmentOfficial();
-                collapsingToolbarLayout.setTitle(getString(R.string.official));
+                toolbar.setTitle(getString(R.string.official));
                 break;
             case R.id.weeklies:
                 frag = new FragmentWeeklies();
-                collapsingToolbarLayout.setTitle(getString(R.string.weeklies));
+                toolbar.setTitle(getString(R.string.weeklies));
                 break;
             case R.id.rc:
                 frag = new FragmentRc();
-                collapsingToolbarLayout.setTitle(getString(R.string.rc));
+                toolbar.setTitle(getString(R.string.rc));
                 break;
             case R.id.gappsbeans:
                 frag = new FragmentGappsBeans();
-                collapsingToolbarLayout.setTitle(getString(R.string.beans_gapps));
+                toolbar.setTitle(getString(R.string.beans_gapps));
                 break;
             case R.id.gappstr:
                 frag = new FragmentGappsTR();
-                collapsingToolbarLayout.setTitle(getString(R.string.tr_gapps));
-                break;
-            case R.id.settings:
-                frag = new FragmentSettings();
-                collapsingToolbarLayout.setTitle(getString(R.string.settings_alt));
+                toolbar.setTitle(getString(R.string.tr_gapps));
                 break;
         }
         mDrawerLayout.closeDrawers();
@@ -199,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.weeklies);
         frag = new FragmentWeeklies();
         UpdateFragment();
+        toolbar.setTitle(getString(R.string.weeklies));
     }
 
     public void InitRc() {
@@ -207,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.rc);
         frag = new FragmentRc();
         UpdateFragment();
+        toolbar.setTitle(getString(R.string.rc));
     }
 
     public void InitBeansGapps() {
@@ -215,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.gappsbeans);
         frag = new FragmentGappsBeans();
         UpdateFragment();
+        toolbar.setTitle(getString(R.string.beans_gapps));
     }
 
     public void InitTrGapps() {
@@ -223,5 +212,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.gappstr);
         frag = new FragmentGappsTR();
         UpdateFragment();
+        toolbar.setTitle(getString(R.string.tr_gapps));
     }
 }

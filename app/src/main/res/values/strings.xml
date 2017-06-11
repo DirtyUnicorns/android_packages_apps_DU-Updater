@@ -7,21 +7,15 @@
     <string name="action_download">Download</string>
     <string name="cancel">Cancel</string>
     <string name="hide_app_icon">Hide app</string>
-    <string name="settings">Settings</string>
     <string name="qs_tile_name">Updater</string>
     <string name="gapps_category">Gapps</string>
 
-    <!-- Collapsing toolbar titles -->
+    <!-- Toolbar titles -->
     <string name="official">DU Updater - Official</string>
     <string name="weeklies">DU Updater - Weeklies</string>
     <string name="rc">DU Updater - Rc</string>
     <string name="beans_gapps">DU Updater - Beans</string>
     <string name="tr_gapps">DU Updater - Theme ready</string>
-    <string name="settings_alt">DU Updater - Settings</string>
-
-    <!-- Theme strings -->
-    <string name="theme_options">Theme options</string>
-    <string name="pref_navbar_tint_title">Navigation bar tint</string>
 
     <!-- Shortcuts -->
     <string name="shortcuts_weeklies">Weekly builds</string>

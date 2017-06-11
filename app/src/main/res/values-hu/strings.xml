@@ -7,21 +7,15 @@
     <string name="action_download">Letöltés</string>
     <string name="cancel">Mégse</string>
     <string name="hide_app_icon">Alkalmazás elrejtése</string>
-    <string name="settings">Beállítások</string>
     <string name="qs_tile_name">Frissítő</string>
     <string name="gapps_category">Gapps</string>
 
-    <!-- Collapsing toolbar titles -->
+    <!-- Toolbar titles -->
     <string name="official">DU Frissítő - Hivatalos</string>
     <string name="weeklies">DU Frissítő - Heti</string>
     <string name="rc">DU Frissítő - Rc</string>
     <string name="beans_gapps">DU Frissítő - Beans</string>
     <string name="tr_gapps">DU Frissítő - Témára kész</string>
-    <string name="settings_alt">DU Frissítő - Beállítások</string>
-
-    <!-- Theme strings -->
-    <string name="theme_options">Téma beállítások</string>
-    <string name="pref_navbar_tint_title">Navigációs sáv árnyalata</string>
 
     <!-- Shortcuts -->
     <string name="shortcuts_weeklies">Heti építés</string>

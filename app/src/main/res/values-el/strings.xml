@@ -7,21 +7,15 @@
     <string name="action_download">Λήψη</string>
     <string name="cancel">Ακύρωση</string>
     <string name="hide_app_icon">Απόκρυψη εφαρμογής</string>
-    <string name="settings">Ρυθμίσεις</string>
     <string name="qs_tile_name">Updater</string>
     <string name="gapps_category">Gapps</string>
 
-    <!-- Collapsing toolbar titles -->
+    <!-- Toolbar titles -->
     <string name="official">DU Updater - Επίσημες</string>
     <string name="weeklies">DU Updater - Εβδομαδιαίες</string>
     <string name="rc">DU Updater - Rc</string>
     <string name="beans_gapps">DU Updater - Beans</string>
     <string name="tr_gapps">DU Updater - Theme ready</string>
-    <string name="settings_alt">DU Updater - Ρυθμίσεις</string>
-
-    <!-- Theme strings -->
-    <string name="theme_options">Ρυθμίσεις Theme</string>
-    <string name="pref_navbar_tint_title">Χρώμα Navigation bar</string>
 
     <!-- Shortcuts -->
     <string name="shortcuts_weeklies">Εβδομαδίαια builds</string>
