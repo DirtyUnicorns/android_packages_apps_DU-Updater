@@ -22,7 +22,7 @@ package com.dirtyunicorns.duupdater.utils;
 public class Vars {
 
     protected static String[] dirs;
-    protected static String link = "https://download.dirtyunicorns.com/files/";
+    protected static String link = "https://download.dirtyunicorns.com/";
     protected static String device;
     protected static final String TAG_MASTER = "dev_info";
 
