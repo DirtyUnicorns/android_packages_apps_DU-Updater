@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2015-2018 The Dirty Unicorns Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.dirtyunicorns.duupdater.utils;
 
 import android.os.Parcel;
@@ -5,16 +21,13 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-/**
- * Created by mazwoz on 7/5/16.
- */
 public class File implements Parcelable, Serializable {
     private String FileName;
     private String FileSize;
     private String FileMD5;
     private String FildLink;
 
-    protected File(Parcel in) {
+    File(Parcel in) {
         FileName = in.readString();
         FileSize = in.readString();
         FileMD5 = in.readString();
@@ -33,19 +46,19 @@ public class File implements Parcelable, Serializable {
         }
     };
 
-    public void SetFileName(String value) {
+    void SetFileName(String value) {
         FileName = value;
     }
 
-    public void SetFileSize(String value) {
+    void SetFileSize(String value) {
         FileSize = value;
     }
 
-    public void SetFileLink(String value) {
+    void SetFileLink(String value) {
         FildLink = value;
     }
 
-    public void SetFileMD5(String value) {
+    void SetFileMD5(String value) {
         FileMD5 = value;
     }
 

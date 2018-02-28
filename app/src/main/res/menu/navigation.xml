@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/official"
+        android:icon="@drawable/official"
+        android:title="@string/official"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/weeklies"
+        android:icon="@drawable/weekly"
+        android:title="@string/weeklies"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/rc"
+        android:icon="@drawable/rc"
+        android:title="@string/rc"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/gapps"
+        android:icon="@drawable/gapps"
+        android:title="@string/gapps"
+        app:showAsAction="ifRoom|withText"/>
+</menu>

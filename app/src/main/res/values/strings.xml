@@ -1,31 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2014 The Android Open Source Project
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
 <resources>
 
     <!-- General strings -->
-    <string name="app_name">DU Updater</string>
+    <string name="app_name">Updater</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="action_download">Download</string>
     <string name="cancel">Cancel</string>
-    <string name="hide_app_icon">Hide app</string>
-    <string name="qs_tile_name">Updater</string>
-    <string name="gapps_category">Gapps</string>
 
     <!-- Toolbar titles -->
-    <string name="official">DU Updater - Official</string>
-    <string name="weeklies">DU Updater - Weeklies</string>
-    <string name="rc">DU Updater - Rc</string>
-    <string name="beans_gapps">DU Updater - Beans</string>
-    <string name="tr_gapps">DU Updater - Theme ready</string>
-
-    <!-- Shortcuts -->
-    <string name="shortcuts_weeklies">Weekly builds</string>
-    <string name="shortcuts_rc">RC builds</string>
-    <string name="shortcuts_beans_gapps">Beans gapps</string>
-    <string name="shortcuts_tr_gapps">Theme ready gapps</string>
+    <string name="official">Official</string>
+    <string name="weeklies">Weeklies</string>
+    <string name="rc">Rc</string>
+    <string name="gapps">Gapps</string>
 
     <!-- Snackbar messages -->
     <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>
-    <string name="no_files_to_show">No files to show</string>
+    <string name="no_files_to_show">Currently there are no files to show in this section</string>
 
     <!-- Dialogs & Downloads -->
     <string name="dialog_title">DU Update Available</string>
@@ -38,13 +45,6 @@
     <string name="download_happy">Download finished, happy flashing!</string>
     <string name="complete">Complete</string>
     <string name="download_failed">Download failed</string>
-
-    <!-- Nav drawer items -->
-    <string name="navdrawer_official">Official builds</string>
-    <string name="navdrawer_rc">RC builds</string>
-    <string name="navdrawer_weeklies">Weekly builds</string>
-    <string name="navdrawer_beans_gapps">Beans</string>
-    <string name="navdrawer_tr_gapps">Theme ready</string>
 
     <!--Card String-->
     <string name="card_file_size">File Size: %1$s</string>
