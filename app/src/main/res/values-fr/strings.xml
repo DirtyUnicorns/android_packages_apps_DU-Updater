@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2014 The Android Open Source Project
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<resources>
+
+    <!-- General strings -->
+    <string name="app_name">Mise à jour</string>
+    <string name="drawer_open">Ouvrir</string>
+    <string name="drawer_close">Fermer</string>
+    <string name="action_download">Télécharger</string>
+    <string name="cancel">Annuler</string>
+
+    <!-- Toolbar titles -->
+    <string name="official">Officielles</string>
+    <string name="weeklies">Hebdomadaires</string>
+    <string name="rc">RC</string>
+    <string name="gapps">GApps</string>
+
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">Connexion à Internet nécessaire pour utiliser le gestionnaire de mise à jour</string>
+    <string name="no_files_to_show">Aucun fichier à afficher actuellement</string>
+
+    <!-- Dialogs & Downloads -->
+    <string name="dialog_title">Mise à jour disponible</string>
+    <string name="dialog_download">Télécharger</string>
+    <string name="major_version_text">disponible pour téléchargement</string>
+    <string name="minor_version_text">Une mise à jour</string>
+    <string name="build_date_text">Une nouvelle version de DU est disponible au téléchargement</string>
+    <string name="download_cancelled">Téléchargement annulé</string>
+    <string name="du_download">Téléchargement DU</string>
+    <string name="download_happy">Téléchargement terminé. Bonne installation !</string>
+    <string name="complete">Terminé</string>
+    <string name="download_failed">Échec du téléchargement</string>
+
+    <!--Card String-->
+    <string name="card_file_size">Taille du fichier : %1$s</string>
+    <string name="card_file_md5">Fichier MD5 : %1$s</string>
+
+</resources>
