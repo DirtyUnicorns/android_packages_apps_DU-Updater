@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
         sbView.setBackgroundColor(getBackgroundColor(getApplicationContext()));
 
         TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(getResources().getColor(android.R.color.white));
+        textView.setTextColor(getResources().getColor(R.color.snackbar_text_color));
 
         if (!Utils.isOnline(this)) {
             showSnackBar(R.string.no_internet_snackbar);
