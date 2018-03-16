@@ -76,7 +76,7 @@ public class Utils extends Vars {
                         BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
                         String line = "";
                         while ((line=br.readLine()) != null){
-                            prop = line.replace("du_", "").replace("-userdebug","");
+                            prop = line.replace("du_", "").replace("-userdebug","").replace("-user","");
                         }
                         process.destroy();
                     } catch (IOException e) {
@@ -141,7 +141,7 @@ public class Utils extends Vars {
                         BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
                         String line = "";
                         while ((line=br.readLine()) != null){
-                            prop = line.replace("du_", "").replace("-userdebug","");
+                            prop = line.replace("du_", "").replace("-userdebug","").replace("-user","");
                         }
                         process.destroy();
                     } catch (IOException e) {

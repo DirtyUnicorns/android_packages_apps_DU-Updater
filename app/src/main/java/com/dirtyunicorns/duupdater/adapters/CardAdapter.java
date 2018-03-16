@@ -69,6 +69,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
                 ctx.startService(intent);
             }
         });
+
+        holder.fileName.setSelected(true);
+        holder.fileMD5.setSelected(true);
     }
 
     @Override
