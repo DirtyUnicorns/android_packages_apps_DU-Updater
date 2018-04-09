@@ -47,7 +47,7 @@ public class Official extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
         if (Utils.isOnline(getActivity())) {
-            GetFiles getFiles = new GetFiles("Official", true, adapter, (MainActivity) getActivity());
+            GetFiles getFiles = new GetFiles("Official", true, adapter);
             getFiles.execute();
         }
 

@@ -27,19 +27,14 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.dirtyunicorns.duupdater.MainActivity;
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.adapters.CardAdapter;
 import com.dirtyunicorns.duupdater.utils.GetFiles;
 import com.dirtyunicorns.duupdater.utils.Utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import static com.dirtyunicorns.duupdater.utils.Utils.readProp;
 
 public class Gapps extends Fragment {
-
-    private static String prop = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
@@ -53,40 +48,18 @@ public class Gapps extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
 
-        try {
-            Process process = new ProcessBuilder("/system/bin/getprop", "ro.build.flavor").redirectErrorStream(true).start();
-            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = "";
-            while ((line = br.readLine()) != null) {
-                prop = line.replace("du_", "").replace("-userdebug", "");
-            }
-            process.destroy();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String cpu;
+        if (readProp("ro.product.cpu.abi", false).contains("arm64")) {
+            cpu = "gapps/arm64";
+        } else {
+            cpu = "gapps/arm";
         }
 
-        GetFiles getArmGapps = new GetFiles("gapps/arm", false, adapter, (MainActivity) getActivity());
-        GetFiles getArm64Gapps = new GetFiles("gapps/arm64", false, adapter, (MainActivity) getActivity());
+
+        GetFiles getGapps = new GetFiles(cpu, false, adapter);
 
         if (Utils.isOnline(getActivity())) {
-            switch (prop) {
-                case "shamu": {
-                    getArmGapps.execute();
-                    break;
-                }
-                case "hammerhead": {
-                    getArmGapps.execute();
-                    break;
-                }
-                case "tenderloin": {
-                    getArmGapps.execute();
-                    break;
-                }
-                default: {
-                    getArm64Gapps.execute();
-                    break;
-                }
-            }
+            getGapps.execute();
         }
 
         return rootView;

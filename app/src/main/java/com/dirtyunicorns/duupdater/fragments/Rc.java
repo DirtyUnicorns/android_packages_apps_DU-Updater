@@ -47,7 +47,7 @@ public class Rc extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
         if (Utils.isOnline(getActivity())) {
-            GetFiles getFiles = new GetFiles("Rc", true, adapter, (MainActivity) getActivity());
+            GetFiles getFiles = new GetFiles("Rc", true, adapter);
             getFiles.execute();
 
         }

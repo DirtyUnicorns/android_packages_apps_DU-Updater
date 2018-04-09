@@ -19,7 +19,6 @@ package com.dirtyunicorns.duupdater.utils;
 class Vars {
 
     static String[] dirs;
-    static String link = "https://download.dirtyunicorns.com/";
+    static String link = "https://download.dirtyunicorns.com/api/";
     static String device;
-    static final String TAG_MASTER = "dev_info";
 }

@@ -43,6 +43,7 @@ public class Update {
                 retProp = line;
             }
             process.destroy();
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

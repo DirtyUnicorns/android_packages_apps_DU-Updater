@@ -27,7 +27,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.dirtyunicorns.duupdater.MainActivity;
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.adapters.CardAdapter;
 import com.dirtyunicorns.duupdater.utils.GetFiles;
@@ -47,7 +46,7 @@ public class Weeklies extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
         if (Utils.isOnline(getActivity())) {
-            GetFiles getFiles = new GetFiles("Weeklies", true, adapter, (MainActivity) getActivity());
+            GetFiles getFiles = new GetFiles("Weeklies", true, adapter);
             getFiles.execute();
         }
 

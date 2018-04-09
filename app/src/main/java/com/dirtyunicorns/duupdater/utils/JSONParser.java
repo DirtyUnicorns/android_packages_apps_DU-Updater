@@ -16,30 +16,31 @@
 
 package com.dirtyunicorns.duupdater.utils;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.net.ssl.HttpsURLConnection;
+import static com.dirtyunicorns.duupdater.utils.Vars.link;
 
 class JSONParser {
 
-    private static JSONObject jObj = null;
+    private static JSONArray jObj = null;
 
     JSONParser() {
 
     }
 
-    JSONObject getJSONFromUrl(String url) {
+    JSONArray getJSONFromUrl(String url) {
 
-        HttpsURLConnection client = null;
+        HttpURLConnection client;
         try{
-            URL jsonURL = new URL(url);
-            client = (HttpsURLConnection) jsonURL.openConnection();
+            URL jsonURL = new URL(link + url);
+            client = (HttpURLConnection) jsonURL.openConnection();
             client.setRequestMethod("GET");
             client.setRequestProperty("Content-Type","application/json");
             InputStream is = new BufferedInputStream(client.getInputStream());
@@ -50,7 +51,8 @@ class JSONParser {
                 sb.append(line).append("\n");
             }
             is.close();
-            jObj = new JSONObject(sb.toString());
+            jObj = new JSONArray(sb.toString());
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

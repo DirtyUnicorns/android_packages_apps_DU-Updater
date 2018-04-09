@@ -30,7 +30,7 @@ public class GetFiles extends AsyncTask<String, String, ArrayList<File>> {
     private CardAdapter adapter;
     private Boolean device;
 
-    public GetFiles(String dir, boolean device, CardAdapter adapter, MainActivity activity) {
+    public GetFiles(String dir, boolean device, CardAdapter adapter) {
         this.dir = dir;
         this.adapter = adapter;
         this.device = device;

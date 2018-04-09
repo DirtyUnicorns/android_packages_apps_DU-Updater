@@ -18,5 +18,4 @@
 
     <!-- Updater snackbar text color -->
     <color name="snackbar_text_color">@*android:color/updater_snackbar_text_color</color>
-
 </resources>

@@ -36,7 +36,7 @@ public class CurrentVersion extends Update implements Parcelable{
 
         androidVersion = buildInfo[2];
         buildType = buildInfo[3].split("\\.")[2];
-        majorVersion = Integer.valueOf(buildInfo[3].split("\\.")[1].replace("v",""));
+        majorVersion = Integer.parseInt(buildInfo[3].split("\\.")[1].replace("v",""));
         minorVersion = Integer.valueOf(buildInfo[3].split("\\.")[2].split("-")[0]);
 
         switch (buildType) {
@@ -54,6 +54,8 @@ public class CurrentVersion extends Update implements Parcelable{
                 isRc = true;
                 isOffical = false;
                 isWeekly = false;
+                break;
+            default:
                 break;
         }
     }

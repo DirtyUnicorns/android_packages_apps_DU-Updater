@@ -27,6 +27,9 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.PermissionChecker;
 import android.util.TypedValue;
@@ -38,24 +41,19 @@ import com.dirtyunicorns.duupdater.fragments.Gapps;
 import com.dirtyunicorns.duupdater.fragments.Official;
 import com.dirtyunicorns.duupdater.fragments.Rc;
 import com.dirtyunicorns.duupdater.fragments.Weeklies;
-import com.dirtyunicorns.duupdater.navigation.BottomNavigationItemView;
-import com.dirtyunicorns.duupdater.navigation.BottomNavigationMenuView;
-import com.dirtyunicorns.duupdater.navigation.BottomNavigationView;
 import com.dirtyunicorns.duupdater.utils.Utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+
+import static com.dirtyunicorns.duupdater.utils.Utils.readProp;
 
 public class MainActivity extends Activity {
 
     private Fragment fragment;
     private static Snackbar snackbar;
     BottomNavigationView navigation;
-    private static String prop = "";
 
-    private final static int REQUEST_READ_STORAGE_PERMISSION = 1;
+    private final static int REQUEST_WRITE_STORAGE_PERMISSION = 1;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -87,17 +85,7 @@ public class MainActivity extends Activity {
             transaction.add(R.id.fragmentContainer, fragment).commit();
         }
 
-        try {
-            Process process = new ProcessBuilder("/system/bin/getprop", "ro.build.ab_update").redirectErrorStream(true).start();
-            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = "";
-            while ((line=br.readLine()) != null){
-                prop = line;
-            }
-            process.destroy();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String prop = readProp("ro.build.ab_update", false);
 
         final BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
 
@@ -128,6 +116,8 @@ public class MainActivity extends Activity {
                                 fragment = new Gapps();
                                 bottomnavigation.getMenu().getItem(3).setChecked(true);
                                 break;
+                            default:
+                                break;
                         }
                         if (!Utils.isOnline(getApplicationContext())) {
                             showSnackBar(R.string.no_internet_snackbar);
@@ -145,9 +135,9 @@ public class MainActivity extends Activity {
 
     public void InitPermissions() {
         if (PermissionChecker
-                .checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PermissionChecker.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    REQUEST_READ_STORAGE_PERMISSION);
+                .checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PermissionChecker.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_WRITE_STORAGE_PERMISSION);
         }
     }
 

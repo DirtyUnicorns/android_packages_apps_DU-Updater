@@ -16,9 +16,13 @@
 
 package com.dirtyunicorns.duupdater.adapters;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +30,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dirtyunicorns.duupdater.R;
-import com.dirtyunicorns.duupdater.services.DownloadService;
 import com.dirtyunicorns.duupdater.utils.File;
 
 import java.util.ArrayList;
+
+import static android.content.Context.DOWNLOAD_SERVICE;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
@@ -62,11 +67,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
         holder.buttonDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String link = files.get(pos).GetFileLink();
-                intent = new Intent(ctx, DownloadService.class);
-                intent.putExtra("url", link);
-                intent.putExtra("fileName", files.get(pos).GetFileName());
-                ctx.startService(intent);
+                DownloadManager.Request request = null;
+                request = new DownloadManager.Request(Uri.parse(files.get(pos).GetFileLink()));
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, files.get(pos).GetFileName());
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED); // to notify when download is complete
+                request.allowScanningByMediaScanner();// if you want to be available from media players
+                DownloadManager manager = (DownloadManager) ctx.getSystemService(DOWNLOAD_SERVICE);
+                manager.enqueue(request);
             }
         });
 
