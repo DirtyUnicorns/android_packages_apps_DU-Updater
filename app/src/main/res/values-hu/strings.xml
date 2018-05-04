@@ -17,31 +17,31 @@ Copyright (C) 2014 The Android Open Source Project
 -->
 <resources>
   <!-- General strings -->
-  <string name="app_name">Updater</string>
-  <string name="drawer_open">Open</string>
-  <string name="drawer_close">Close</string>
-  <string name="action_download">Download</string>
-  <string name="cancel">Cancel</string>
+  <string name="app_name">Frissítő alkalmazás</string>
+  <string name="drawer_open">Megnyitás</string>
+  <string name="drawer_close">Bezárás</string>
+  <string name="action_download">Letöltés</string>
+  <string name="cancel">Mégse</string>
   <!-- Toolbar titles -->
-  <string name="official">Official</string>
-  <string name="weeklies">Weeklies</string>
-  <string name="rc">Rc</string>
-  <string name="gapps">Gapps</string>
+  <string name="official">Hivatalos</string>
+  <string name="weeklies">Heti</string>
+  <string name="rc">RC</string>
+  <string name="gapps">Google Alkalmazások</string>
   <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>
-  <string name="no_files_to_show">Currently there are no files to show in this section</string>
+  <string name="no_internet_snackbar">A Frissítő alkalmazás használatához internetkapcsolat szükséges</string>
+  <string name="no_files_to_show">Ezen a terülten jelenleg nincsenek megjeleníthető fájlok</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">DU Update Available</string>
-  <string name="dialog_download">Download</string>
-  <string name="major_version_text">is available for download</string>
-  <string name="minor_version_text">An update</string>
-  <string name="build_date_text">A newer build of DU is available for download</string>
-  <string name="download_cancelled">Download cancelled</string>
-  <string name="du_download">DU Download</string>
-  <string name="download_happy">Download finished, happy flashing!</string>
-  <string name="complete">Complete</string>
-  <string name="download_failed">Download failed</string>
+  <string name="dialog_title">DU frissítés elérhető</string>
+  <string name="dialog_download">Letöltés</string>
+  <string name="major_version_text">letöltésre készen áll</string>
+  <string name="minor_version_text">Egy frissítés</string>
+  <string name="build_date_text">Egy újabb DirtyUnicorns kiadás tölthető le</string>
+  <string name="download_cancelled">Letöltés megszakítva</string>
+  <string name="du_download">DU letöltés</string>
+  <string name="download_happy">Letöltés elkészült, vidám telepítést kívánunk!</string>
+  <string name="complete">Kész</string>
+  <string name="download_failed">A letöltés sikertelen</string>
   <!--Card String-->
-  <string name="card_file_size">File Size: %1$s</string>
-  <string name="card_file_md5">File MD5: %1$s</string>
+  <string name="card_file_size">Fájlméret: %1$s</string>
+  <string name="card_file_md5">MD5: %1$s</string>
 </resources>
