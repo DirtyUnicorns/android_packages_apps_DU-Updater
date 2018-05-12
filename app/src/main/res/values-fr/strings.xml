@@ -18,6 +18,8 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Mise à jour</string>
+  <string name="drawer_open">Ouvrir</string>
+  <string name="drawer_close">Fermer</string>
   <string name="action_download">Télécharger</string>
   <string name="cancel">Annuler</string>
   <!-- Toolbar titles -->
@@ -29,6 +31,11 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Connexion à Internet nécessaire pour utiliser le gestionnaire de mise à jour</string>
   <string name="no_files_to_show">Aucun fichier à afficher actuellement</string>
   <!-- Dialogs & Downloads -->
+  <string name="dialog_title">Mise à jour disponible</string>
+  <string name="dialog_download">Télécharger</string>
+  <string name="major_version_text">disponible pour téléchargement</string>
+  <string name="minor_version_text">Une mise à jour</string>
+  <string name="build_date_text">Une nouvelle version de DU est disponible au téléchargement</string>
   <string name="download_cancelled">Téléchargement annulé</string>
   <string name="du_download">Téléchargement DU</string>
   <string name="download_happy">Téléchargement terminé. Bonne installation !</string>
