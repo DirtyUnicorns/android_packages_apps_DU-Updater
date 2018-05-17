@@ -18,8 +18,6 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Updater</string>
-  <string name="drawer_open">Open</string>
-  <string name="drawer_close">Close</string>
   <string name="action_download">Download</string>
   <string name="cancel">Cancel</string>
   <!-- Toolbar titles -->
@@ -31,11 +29,6 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>
   <string name="no_files_to_show">Currently there are no files to show in this section</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">DU Update Available</string>
-  <string name="dialog_download">Download</string>
-  <string name="major_version_text">is available for download</string>
-  <string name="minor_version_text">An update</string>
-  <string name="build_date_text">A newer build of DU is available for download</string>
   <string name="download_cancelled">Download cancelled</string>
   <string name="du_download">DU Download</string>
   <string name="download_happy">Download finished, happy flashing!</string>

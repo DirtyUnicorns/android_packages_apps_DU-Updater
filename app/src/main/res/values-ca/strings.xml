@@ -18,8 +18,6 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Actualitzador</string>
-  <string name="drawer_open">Obre</string>
-  <string name="drawer_close">Tanca</string>
   <string name="action_download">Descarrega</string>
   <string name="cancel">Cancel·la</string>
   <!-- Toolbar titles -->
@@ -31,11 +29,6 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Cal estar connectat a Internet per poder utilitzar l\'actualitzador</string>
   <string name="no_files_to_show">Actualment no hi ha fitxers per mostrar en aquesta secció</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">Actualització DU disponible</string>
-  <string name="dialog_download">Descarrega</string>
-  <string name="major_version_text">està disponible per baixar</string>
-  <string name="minor_version_text">Una actualització</string>
-  <string name="build_date_text">Una nova versió de DU està disponible per baixar</string>
   <string name="download_cancelled">Descàrrega cancel·lada</string>
   <string name="du_download">Baixa DU</string>
   <string name="download_happy">Baixada finalitzada, gaudiu de la instal·lació!</string>

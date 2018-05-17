@@ -18,8 +18,6 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Aggiornamenti</string>
-  <string name="drawer_open">Apri</string>
-  <string name="drawer_close">Chiudi</string>
   <string name="action_download">Scarica</string>
   <string name="cancel">Cancella</string>
   <!-- Toolbar titles -->
@@ -31,11 +29,6 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Devi essere connesso a internet per aggiornare</string>
   <string name="no_files_to_show">Attualmente non sono presenti file in questa sezione</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">Aggiornamento DU disponibile</string>
-  <string name="dialog_download">Scarica</string>
-  <string name="major_version_text">è disponibile per il download</string>
-  <string name="minor_version_text">Un aggiornamento</string>
-  <string name="build_date_text">Una build più recente di DU è disponibile per il download</string>
   <string name="download_cancelled">Download annullato</string>
   <string name="du_download">DU Download</string>
   <string name="download_happy">Download completato, buon flash!</string>

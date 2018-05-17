@@ -18,8 +18,6 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Aktualizace</string>
-  <string name="drawer_open">Otevřít</string>
-  <string name="drawer_close">Zavřít</string>
   <string name="action_download">Stáhnout</string>
   <string name="cancel">Zrušit</string>
   <!-- Toolbar titles -->
@@ -31,11 +29,6 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Musíte být připojeni k Internetu pomocí updateru</string>
   <string name="no_files_to_show">V současnosti nejsou v tomto oddílu zobrazeny žádné soubory</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">DU aktualizace je dostupná</string>
-  <string name="dialog_download">Stáhnout</string>
-  <string name="major_version_text">je k dispozici ke stažení</string>
-  <string name="minor_version_text">Aktualizace</string>
-  <string name="build_date_text">Novější sestavení DU je k dispozici ke stažení</string>
   <string name="download_cancelled">Stahování zrušeno</string>
   <string name="du_download">DU ke stažení</string>
   <string name="download_happy">Stahování dokončeno, mnoho zábavy při instalaci!</string>

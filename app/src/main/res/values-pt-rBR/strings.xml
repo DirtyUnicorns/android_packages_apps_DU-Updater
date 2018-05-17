@@ -18,29 +18,22 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Atualizador</string>
-  <string name="drawer_open">Abrir</string>
-  <string name="drawer_close">Fechar</string>
   <string name="action_download">Baixar</string>
-  <string name="cancel">Cancel</string>
+  <string name="cancel">Cancelar</string>
   <!-- Toolbar titles -->
   <string name="official">Oficial</string>
-  <string name="weeklies">Weeklies</string>
+  <string name="weeklies">Semanais</string>
   <string name="rc">Rc</string>
   <string name="gapps">Gapps</string>
   <!-- Snackbar messages -->
   <string name="no_internet_snackbar">Tem que estar conectado na internet para usar o atualizador</string>
-  <string name="no_files_to_show">Currently there are no files to show in this section</string>
+  <string name="no_files_to_show">Atualmente não há arquivos para mostrar nesta seção</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">Atualização DU disponivel</string>
-  <string name="dialog_download">Baixar</string>
-  <string name="major_version_text">está disponivel para baixar</string>
-  <string name="minor_version_text">An update</string>
-  <string name="build_date_text">Uma versão atualizada de DU está disponivel para baixar</string>
-  <string name="download_cancelled">Download cancelled</string>
-  <string name="du_download">DU Download</string>
+  <string name="download_cancelled">Download cancelado</string>
+  <string name="du_download">Baixar DU</string>
   <string name="download_happy">O download finalizou, aproveite!</string>
-  <string name="complete">Complete</string>
-  <string name="download_failed">Download failed</string>
+  <string name="complete">Completo</string>
+  <string name="download_failed">Falha no download</string>
   <!--Card String-->
   <string name="card_file_size">Tamanho do arquivo: %1$s</string>
   <string name="card_file_md5">Arquivo MD5: %1$s</string>

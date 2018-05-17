@@ -18,8 +18,6 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Actualizador</string>
-  <string name="drawer_open">Abrír</string>
-  <string name="drawer_close">Cerrar</string>
   <string name="action_download">Descargar</string>
   <string name="cancel">Cancelar</string>
   <!-- Toolbar titles -->
@@ -31,11 +29,6 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Debe estar conectado a internet para usar el Updater</string>
   <string name="no_files_to_show">Actualmente no hay ningún archivo para mostrar en esta sección</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">Actualización para DU Disponible</string>
-  <string name="dialog_download">Descargar</string>
-  <string name="major_version_text">disponible para descargar</string>
-  <string name="minor_version_text">Una actualización</string>
-  <string name="build_date_text">Una nueva versión de DU está disponible para descargar</string>
   <string name="download_cancelled">Descarga cancelada</string>
   <string name="du_download">Descargar DU</string>
   <string name="download_happy">Descarga finalizada, ¡disfruta de la instalación!</string>

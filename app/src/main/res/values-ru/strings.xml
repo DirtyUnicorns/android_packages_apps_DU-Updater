@@ -18,8 +18,6 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Обновление</string>
-  <string name="drawer_open">Открыть</string>
-  <string name="drawer_close">Закрыть</string>
   <string name="action_download">Загрузить</string>
   <string name="cancel">Отмена</string>
   <!-- Toolbar titles -->
@@ -31,11 +29,6 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Вы должны быть подключены к Интернету, чтобы использовать обновлятор</string>
   <string name="no_files_to_show">Сейчас тут нечего показывать</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">Доступно обновление DU</string>
-  <string name="dialog_download">Загрузить</string>
-  <string name="major_version_text">доступно для загрузки</string>
-  <string name="minor_version_text">Обновление</string>
-  <string name="build_date_text">Новая сборка DU доступна для загрузки</string>
   <string name="download_cancelled">Загрузка отменена</string>
   <string name="du_download">Загрузить DU</string>
   <string name="download_happy">Загрузка завершена, удачной прошивки!</string>

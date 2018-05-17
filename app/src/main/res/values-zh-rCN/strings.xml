@@ -18,8 +18,6 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">更新程序</string>
-  <string name="drawer_open">打开</string>
-  <string name="drawer_close">关闭</string>
   <string name="action_download">下载</string>
   <string name="cancel">取消</string>
   <!-- Toolbar titles -->
@@ -31,11 +29,6 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">您必须连接至互联网以使用更新程序</string>
   <string name="no_files_to_show">当前没有可显示的文件</string>
   <!-- Dialogs & Downloads -->
-  <string name="dialog_title">有可用的 DU 更新</string>
-  <string name="dialog_download">下载</string>
-  <string name="major_version_text">可供下载</string>
-  <string name="minor_version_text">一个更新</string>
-  <string name="build_date_text">有新版本的 DU 可供下载</string>
   <string name="download_cancelled">下载已取消</string>
   <string name="du_download">下载 DU</string>
   <string name="download_happy">下载已完成，开刷吧！</string>
