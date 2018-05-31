@@ -17,24 +17,24 @@ Copyright (C) 2014 The Android Open Source Project
 -->
 <resources>
   <!-- General strings -->
-  <string name="app_name">Updater</string>
-  <string name="action_download">Download</string>
-  <string name="cancel">Cancel</string>
+  <string name="app_name">Päivittäjä</string>
+  <string name="action_download">Lataa</string>
+  <string name="cancel">Peruuta</string>
   <!-- Toolbar titles -->
-  <string name="official">Official</string>
-  <string name="weeklies">Weeklies</string>
-  <string name="rc">Rc</string>
+  <string name="official">Virallinen</string>
+  <string name="weeklies">Viikoittaiset versiot</string>
+  <string name="rc">Julkaisuehdokkaat</string>
   <string name="gapps">Gapps</string>
   <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>
-  <string name="no_files_to_show">Currently there are no files to show in this section</string>
+  <string name="no_internet_snackbar">Internet-yhteyden on oltava päällä päivittämistä varten</string>
+  <string name="no_files_to_show">Tällä hetkellä tässä osiossa ei ole näytettäviä tiedostoja</string>
   <!-- Dialogs & Downloads -->
-  <string name="download_cancelled">Download cancelled</string>
-  <string name="du_download">DU Download</string>
-  <string name="download_happy">Download finished, happy flashing!</string>
-  <string name="complete">Complete</string>
-  <string name="download_failed">Download failed</string>
+  <string name="download_cancelled">Lataus peruttu</string>
+  <string name="du_download">DU Lataus</string>
+  <string name="download_happy">Lataus valmistui, onnea asennukseen!</string>
+  <string name="complete">Valmis</string>
+  <string name="download_failed">Lataus epäonnistui</string>
   <!--Card String-->
-  <string name="card_file_size">File Size: %1$s</string>
-  <string name="card_file_md5">File MD5: %1$s</string>
+  <string name="card_file_size">Tiedostokoko: %1$s</string>
+  <string name="card_file_md5">Tiedoston MD5: %1$s</string>
 </resources>
