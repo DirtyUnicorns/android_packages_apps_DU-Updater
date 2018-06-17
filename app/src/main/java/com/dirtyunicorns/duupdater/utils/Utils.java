@@ -22,8 +22,10 @@ import android.net.NetworkInfo;
 import android.os.Parcel;
 import android.os.SystemClock;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -45,7 +47,6 @@ public class Utils extends Vars {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONParser jsonParser = new JSONParser();
                 String path = "files/";
                 if (isDeviceFiles) {
                     device = readProp("ro.build.flavor", true);
@@ -56,25 +57,33 @@ public class Utils extends Vars {
                     device = "";
                 }
 
-                JSONArray json = jsonParser.getJSONFromUrl(path);
-                try {
-                    if (json != null) {
-                        dirs = new String[json.length()];
-                        for (int i = 0; i < json.length(); i++) {
-                            JSONObject jsonObject = json.getJSONObject(i);
-                            File f = new File(Parcel.obtain());
-                            String fileName = jsonObject.getString("filename");
-                            f.SetFileName(fileName);
-                            f.SetFileSize(jsonObject.getString("filesize"));
-                            f.SetFileMD5(jsonObject.getString("fileMd5"));
-                            f.SetFileLink("https://download.dirtyunicorns.com/api/download" +
-                                    device + "/" + dir + "/" + fileName);
-                            files.add(f);
+                HttpHandler sh = new HttpHandler();
+                String postsAPI = path;
+                String jsonStr = sh.makeServiceCall(postsAPI);
+
+                if (!jsonStr.trim().equals("null")) {
+                    try {
+                        JSONArray jsonObject = new JSONArray(jsonStr);
+                        for (int i = 0; i < jsonObject.length(); i++) {
+                            try {
+                                JSONObject oneObject = jsonObject.getJSONObject(i);
+                                File f = new File(Parcel.obtain());
+                                String fileName = oneObject.getString("filename");
+                                f.SetFileName(fileName);
+                                f.SetFileSize(oneObject.getString("filesize"));
+                                f.SetFileMD5(oneObject.getString("fileMd5"));
+                                f.SetFileLink("https://download.dirtyunicorns.com/api/download" +
+                                        device + "/" + dir + "/" + fileName);
+                                files.add(f);
+                            } catch (JSONException ignored) {
+                            }
                         }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+
             }
         });
 
@@ -82,6 +91,7 @@ public class Utils extends Vars {
         while (t.isAlive()) {
             SystemClock.sleep(200);
         }
+
         Collections.reverse(files);
         return files;
     }
