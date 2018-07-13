@@ -17,24 +17,24 @@ Copyright (C) 2014 The Android Open Source Project
 -->
 <resources>
   <!-- General strings -->
-  <string name="app_name">Updater</string>
-  <string name="action_download">Download</string>
-  <string name="cancel">Cancel</string>
+  <string name="app_name">Uppdateraren</string>
+  <string name="action_download">Ladda ned</string>
+  <string name="cancel">Avbryt</string>
   <!-- Toolbar titles -->
-  <string name="official">Official</string>
-  <string name="weeklies">Weeklies</string>
+  <string name="official">Officiell</string>
+  <string name="weeklies">Veckobygg</string>
   <string name="rc">Rc</string>
   <string name="gapps">Gapps</string>
   <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>
-  <string name="no_files_to_show">Currently there are no files to show in this section</string>
+  <string name="no_internet_snackbar">Du måste vara ansluten till internet för att använda uppdateraren</string>
+  <string name="no_files_to_show">För närvarande finns det inga filer att visa här</string>
   <!-- Dialogs & Downloads -->
-  <string name="download_cancelled">Download cancelled</string>
-  <string name="du_download">DU Download</string>
-  <string name="download_happy">Download finished, happy flashing!</string>
-  <string name="complete">Complete</string>
-  <string name="download_failed">Download failed</string>
+  <string name="download_cancelled">Nerladdning avbruten</string>
+  <string name="du_download">DU Nedladdning</string>
+  <string name="download_happy">Nedladdning är klar, ha en trevlig installation!</string>
+  <string name="complete">Klar</string>
+  <string name="download_failed">Nedladdningen misslyckades</string>
   <!--Card String-->
-  <string name="card_file_size">File Size: %1$s</string>
-  <string name="card_file_md5">File MD5: %1$s</string>
+  <string name="card_file_size">Filstorlek: %1$s</string>
+  <string name="card_file_md5">Fil MD5: %1$s</string>
 </resources>

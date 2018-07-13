@@ -18,23 +18,23 @@ Copyright (C) 2014 The Android Open Source Project
 <resources>
   <!-- General strings -->
   <string name="app_name">Updater</string>
-  <string name="action_download">Download</string>
-  <string name="cancel">Cancel</string>
+  <string name="action_download">ダウンロード</string>
+  <string name="cancel">キャンセル</string>
   <!-- Toolbar titles -->
-  <string name="official">Official</string>
-  <string name="weeklies">Weeklies</string>
-  <string name="rc">Rc</string>
-  <string name="gapps">Gapps</string>
+  <string name="official">オフィシャル</string>
+  <string name="weeklies">ウィークリー</string>
+  <string name="rc">候補</string>
+  <string name="gapps">GApps</string>
   <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>
-  <string name="no_files_to_show">Currently there are no files to show in this section</string>
+  <string name="no_internet_snackbar">Updaterを使用するにはインターネットに接続してください</string>
+  <string name="no_files_to_show">現在このセクションに表示するファイルはありません</string>
   <!-- Dialogs & Downloads -->
-  <string name="download_cancelled">Download cancelled</string>
-  <string name="du_download">DU Download</string>
-  <string name="download_happy">Download finished, happy flashing!</string>
-  <string name="complete">Complete</string>
-  <string name="download_failed">Download failed</string>
+  <string name="download_cancelled">ダウンロードがキャンセルされました</string>
+  <string name="du_download">DirtyUnicorns ダウンロード</string>
+  <string name="download_happy">ダウンロード完了、お楽しみください！</string>
+  <string name="complete">完了</string>
+  <string name="download_failed">ダウンロードに失敗しました</string>
   <!--Card String-->
-  <string name="card_file_size">File Size: %1$s</string>
-  <string name="card_file_md5">File MD5: %1$s</string>
+  <string name="card_file_size">ファイルサイズ: %1$s</string>
+  <string name="card_file_md5">ファイルのMD5: %1$s</string>
 </resources>
