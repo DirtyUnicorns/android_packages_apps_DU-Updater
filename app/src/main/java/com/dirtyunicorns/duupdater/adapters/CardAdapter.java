@@ -18,17 +18,19 @@ package com.dirtyunicorns.duupdater.adapters;
 
 import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Vibrator;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static android.content.Context.VIBRATOR_SERVICE;
+
+import com.dirtyunicorns.duupdater.MainActivity;
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.utils.File;
 
@@ -40,7 +42,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
     private ArrayList<File> files;
     private Context ctx;
-    private Intent intent;
+    private Vibrator mVibrator;
 
     public CardAdapter(Context ctx){
         this.ctx = ctx;
@@ -60,6 +62,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
     @Override
     public void onBindViewHolder(FileHolder holder, int position) {
+        mVibrator = (Vibrator) ctx.getSystemService(VIBRATOR_SERVICE);
         final int pos = holder.getAdapterPosition();
         holder.fileName.setText(files.get(position).GetFileName());
         holder.fileSize.setText(String.format(ctx.getString(R.string.card_file_size), files.get(pos).GetFileSize()));
@@ -74,6 +77,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
                 request.allowScanningByMediaScanner();// if you want to be available from media players
                 DownloadManager manager = (DownloadManager) ctx.getSystemService(DOWNLOAD_SERVICE);
                 manager.enqueue(request);
+                mVibrator.vibrate(30);
+                MainActivity.showSnackBar(R.string.download_starting_snackbar);
             }
         });
 

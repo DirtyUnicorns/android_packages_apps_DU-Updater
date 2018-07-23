@@ -33,6 +33,7 @@ Copyright (C) 2014 The Android Open Source Project
     <string name="no_files_to_show">Currently there are no files to show in this section</string>
 
     <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">Starting download…</string>
     <string name="download_cancelled">Download cancelled</string>
     <string name="du_download">DU Download</string>
     <string name="download_happy">Download finished, happy flashing!</string>
