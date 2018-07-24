@@ -22,8 +22,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -32,7 +30,6 @@ import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.PermissionChecker;
-import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -71,10 +68,10 @@ public class MainActivity extends Activity {
         View view = findViewById(R.id.viewSnack);
         snackbar = Snackbar.make(view, "", Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
-        sbView.setBackgroundColor(getBackgroundColor(getApplicationContext()));
+        sbView.setBackgroundColor(Utils.getBackgroundColor(getApplicationContext()));
 
         TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(getResources().getColor(R.color.snackbar_text_color));
+        textView.setTextColor(Utils.getAccentColor(getApplicationContext()));
 
         if (!Utils.isOnline(this)) {
             showSnackBar(R.string.no_internet_snackbar);
@@ -148,13 +145,6 @@ public class MainActivity extends Activity {
 
     public static void hideSnackBar() {
         if (snackbar.isShown()) snackbar.dismiss();
-    }
-
-    public static int getBackgroundColor(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(android.R.attr.colorAccent, typedValue, true);
-        return typedValue.data;
     }
 
     @Override

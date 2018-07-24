@@ -16,11 +16,9 @@
 
 package com.dirtyunicorns.duupdater.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +32,7 @@ import com.dirtyunicorns.duupdater.utils.Utils;
 
 import static com.dirtyunicorns.duupdater.utils.Utils.readProp;
 
-public class Gapps extends Fragment {
+public class Gapps extends Official {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
@@ -55,7 +53,6 @@ public class Gapps extends Fragment {
             cpu = "gapps/arm";
         }
 
-
         GetFiles getGapps = new GetFiles(cpu, false, adapter);
 
         if (Utils.isOnline(getActivity())) {
@@ -63,25 +60,5 @@ public class Gapps extends Fragment {
         }
 
         return rootView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if (getView() != null) {
-            getView().setFocusableInTouchMode(true);
-            getView().requestFocus();
-        }
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().finish();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 }

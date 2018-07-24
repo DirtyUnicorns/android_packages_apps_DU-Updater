@@ -20,15 +20,14 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
-import android.os.Vibrator;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import static android.content.Context.VIBRATOR_SERVICE;
 
 import com.dirtyunicorns.duupdater.MainActivity;
 import com.dirtyunicorns.duupdater.R;
@@ -42,27 +41,21 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
     private ArrayList<File> files;
     private Context ctx;
-    private Vibrator mVibrator;
 
     public CardAdapter(Context ctx){
         this.ctx = ctx;
         this.files = new ArrayList<>();
     }
 
-    public CardAdapter(ArrayList<File> files, Context ctx) {
-        this.files = files;
-        this.ctx = ctx;
-    }
-
+    @NonNull
     @Override
-    public FileHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FileHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_cardview, parent, false);
         return new FileHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(FileHolder holder, int position) {
-        mVibrator = (Vibrator) ctx.getSystemService(VIBRATOR_SERVICE);
+    public void onBindViewHolder(@NonNull final FileHolder holder, int position) {
         final int pos = holder.getAdapterPosition();
         holder.fileName.setText(files.get(position).GetFileName());
         holder.fileSize.setText(String.format(ctx.getString(R.string.card_file_size), files.get(pos).GetFileSize()));
@@ -70,14 +63,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
         holder.buttonDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DownloadManager.Request request = null;
+                DownloadManager.Request request;
                 request = new DownloadManager.Request(Uri.parse(files.get(pos).GetFileLink()));
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, files.get(pos).GetFileName());
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED); // to notify when download is complete
-                request.allowScanningByMediaScanner();// if you want to be available from media players
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.allowScanningByMediaScanner();
                 DownloadManager manager = (DownloadManager) ctx.getSystemService(DOWNLOAD_SERVICE);
-                manager.enqueue(request);
-                mVibrator.vibrate(30);
+                if (manager != null) {
+                    manager.enqueue(request);
+                }
+                v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                 MainActivity.showSnackBar(R.string.download_starting_snackbar);
             }
         });

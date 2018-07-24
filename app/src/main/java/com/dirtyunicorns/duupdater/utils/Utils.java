@@ -17,12 +17,14 @@
 package com.dirtyunicorns.duupdater.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Parcel;
 import android.os.SystemClock;
 import android.util.Log;
-import android.widget.Toast;
+import android.util.TypedValue;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,7 +85,6 @@ public class Utils extends Vars {
                         e.printStackTrace();
                     }
                 }
-
             }
         });
 
@@ -147,5 +148,19 @@ public class Utils extends Vars {
                 process.destroy();
             }
         }
+    }
+
+    public static int getBackgroundColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(android.R.attr.background, typedValue, true);
+        return typedValue.data;
+    }
+
+    public static int getAccentColor(Context context) {
+        TypedArray array = context.obtainStyledAttributes(new int[]{android.R.attr.colorAccent});
+        int color = array.getColor(0, 0);
+        array.recycle();
+        return color;
     }
 }

@@ -17,8 +17,6 @@
 package com.dirtyunicorns.duupdater.utils;
 
 class Vars {
-
-    static String[] dirs;
     static String link = "https://download.dirtyunicorns.com/api/";
     static String device;
 }

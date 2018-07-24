@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/colorBackgroundFloating"
         app:itemIconTint="@drawable/icon_selector"
         app:itemTextColor="@drawable/icon_selector"
         app:menu="@menu/navigation" />

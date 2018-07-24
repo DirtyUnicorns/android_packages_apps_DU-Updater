@@ -14,14 +14,14 @@ import java.net.URL;
 
 import static com.dirtyunicorns.duupdater.utils.Vars.link;
 
-public class HttpHandler {
+class HttpHandler {
 
     private static final String TAG = HttpHandler.class.getSimpleName();
 
     HttpHandler() {
     }
 
-    public String makeServiceCall(String reqUrl) {
+    String makeServiceCall(String reqUrl) {
         String response = null;
         try {
             URL url = new URL(link + reqUrl);

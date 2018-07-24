@@ -16,11 +16,9 @@
 
 package com.dirtyunicorns.duupdater.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +30,7 @@ import com.dirtyunicorns.duupdater.adapters.CardAdapter;
 import com.dirtyunicorns.duupdater.utils.GetFiles;
 import com.dirtyunicorns.duupdater.utils.Utils;
 
-public class Weeklies extends Fragment {
+public class Weeklies extends Official {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
@@ -51,25 +49,5 @@ public class Weeklies extends Fragment {
         }
 
         return rootView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if (getView() != null) {
-            getView().setFocusableInTouchMode(true);
-            getView().requestFocus();
-        }
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().finish();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 }

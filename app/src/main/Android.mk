@@ -14,8 +14,6 @@ LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
     $(support_library_root_dir)/v7/recyclerview/res \
     $(support_library_root_dir)/v7/appcompat/res \
     $(support_library_root_dir)/design/res \
-    $(support_library_root_dir)/v7/preference/res \
-    $(support_library_root_dir)/v14/preference/res \
     $(support_library_root_dir)/transition/res
 
 LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
@@ -26,8 +24,6 @@ LOCAL_AAPT_FLAGS := \
     --extra-packages android.support.v7.cardview \
     --extra-packages android.support.v7.recyclerview \
     --extra-packages android.support.design \
-    --extra-packages android.support.v7.preference \
-    --extra-packages android.support.v14.preference \
     --extra-packages android.support.transition
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
@@ -38,8 +34,6 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v7-cardview \
     android-support-v7-recyclerview \
     android-support-design \
-    android-support-v7-preference \
-    android-support-v14-preference \
     android-support-transition
 
 include $(BUILD_PACKAGE)
