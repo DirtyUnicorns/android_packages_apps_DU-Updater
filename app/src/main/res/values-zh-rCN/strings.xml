@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">您必须连接至互联网以使用更新程序</string>
   <string name="no_files_to_show">当前没有可显示的文件</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">正在开始下载…</string>
   <string name="download_cancelled">下载已取消</string>
   <string name="du_download">下载 DU</string>
   <string name="download_happy">下载已完成，开刷吧！</string>

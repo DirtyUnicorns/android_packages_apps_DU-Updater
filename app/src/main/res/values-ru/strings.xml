@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Вы должны быть подключены к Интернету, чтобы использовать обновлятор</string>
   <string name="no_files_to_show">Сейчас тут нечего показывать</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">Starting download…</string>
   <string name="download_cancelled">Загрузка отменена</string>
   <string name="du_download">Загрузить DU</string>
   <string name="download_happy">Загрузка завершена, удачной прошивки!</string>

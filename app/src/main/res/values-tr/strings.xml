@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Güncelleyiciyi kullanmak için internete bağlı olmalısınız</string>
   <string name="no_files_to_show">Şu anda bu bölümde gösterilecek dosya yok</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">İndirme başlatılıyor…</string>
   <string name="download_cancelled">İndirme iptal edildi</string>
   <string name="du_download">DU İndir</string>
   <string name="download_happy">İndirme tamamlandı, mutlu yüklemeler!</string>

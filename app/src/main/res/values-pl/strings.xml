@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Musisz być połączony z internetem, aby używać aktualizatora</string>
   <string name="no_files_to_show">Aktualnie nie ma żadnych plików do wyświetlenia w tej sekcji</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">Starting download…</string>
   <string name="download_cancelled">Pobieranie anulowane</string>
   <string name="du_download">Pobierz DU</string>
   <string name="download_happy">Zakończono pobieranie, szczęśliwej aktualizacji!</string>

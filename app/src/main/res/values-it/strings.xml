@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Devi essere connesso a internet per aggiornare</string>
   <string name="no_files_to_show">Attualmente non sono presenti file in questa sezione</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">Avvio download…</string>
   <string name="download_cancelled">Download annullato</string>
   <string name="du_download">DU Download</string>
   <string name="download_happy">Download completato, buon flash!</string>

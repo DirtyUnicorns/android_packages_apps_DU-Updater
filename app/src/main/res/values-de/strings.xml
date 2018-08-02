@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Du musst mit dem Internet verbunden sein, um den Updater zu benutzen</string>
   <string name="no_files_to_show">Derzeit gibt es keine Dateien in diesem Abschnitt</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">Starte Download…</string>
   <string name="download_cancelled">Herunterladen abgebrochen</string>
   <string name="du_download">Herunterladen von DU</string>
   <string name="download_happy">Herunterladen beendet. Viel Spaß beim Flashen!</string>

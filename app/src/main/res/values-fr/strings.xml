@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Connexion à Internet nécessaire pour utiliser le gestionnaire de mise à jour</string>
   <string name="no_files_to_show">Aucun fichier à afficher actuellement</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">Démarrage du téléchargement…</string>
   <string name="download_cancelled">Téléchargement annulé</string>
   <string name="du_download">Téléchargement DU</string>
   <string name="download_happy">Téléchargement terminé. Bonne installation !</string>

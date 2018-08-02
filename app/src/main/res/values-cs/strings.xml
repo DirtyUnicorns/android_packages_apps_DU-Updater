@@ -29,6 +29,7 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="no_internet_snackbar">Musíte být připojeni k Internetu pomocí updateru</string>
   <string name="no_files_to_show">V současnosti nejsou v tomto oddílu zobrazeny žádné soubory</string>
   <!-- Dialogs & Downloads -->
+  <string name="download_starting_snackbar">Zahájení stahování…</string>
   <string name="download_cancelled">Stahování zrušeno</string>
   <string name="du_download">DU ke stažení</string>
   <string name="download_happy">Stahování dokončeno, mnoho zábavy při instalaci!</string>
