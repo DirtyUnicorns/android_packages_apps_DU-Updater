@@ -46,8 +46,8 @@ import static com.dirtyunicorns.duupdater.utils.Utils.readProp;
 
 public class MainActivity extends Activity {
 
-    private Fragment fragment;
-    private static Snackbar snackbar;
+    Fragment fragment;
+    static Snackbar snackbar;
     BottomNavigationView navigation;
 
     private final static int REQUEST_WRITE_STORAGE_PERMISSION = 1;
@@ -73,20 +73,29 @@ public class MainActivity extends Activity {
         TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(Utils.getAccentColor(getApplicationContext()));
 
+        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
+        String duVersion = readBuildProp("ro.du.version");
+        String abDevice = readBuildProp("ro.build.ab_update");
+
         if (!Utils.isOnline(this)) {
             showSnackBar(R.string.no_internet_snackbar);
         } else {
             FragmentManager fragmentManager = getFragmentManager();
-            fragment = new Official();
+            if (duVersion.contains("WEEKLIES")) {
+                fragment = new Weeklies();
+                setBottomNavigationId("1");
+            } else if (duVersion.contains("RC")) {
+                fragment = new Rc();
+                setBottomNavigationId("2");
+            } else {
+                // Default
+                fragment = new Official();
+            }
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.add(R.id.fragmentContainer, fragment).commit();
         }
 
-        String prop = readProp("ro.build.ab_update", false);
-
-        final BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
-
-        if (prop.contains("true")) {
+        if (abDevice.contains("true")) {
             bottomnavigation.findViewById(R.id.gapps).setVisibility(View.GONE);
         }
 
@@ -99,19 +108,19 @@ public class MainActivity extends Activity {
                         switch (item.getItemId()) {
                             case R.id.official:
                                 fragment = new Official();
-                                bottomnavigation.getMenu().getItem(0).setChecked(true);
+                                setBottomNavigationId("0");
                                 break;
                             case R.id.weeklies:
                                 fragment = new Weeklies();
-                                bottomnavigation.getMenu().getItem(1).setChecked(true);
+                                setBottomNavigationId("1");
                                 break;
                             case R.id.rc:
                                 fragment = new Rc();
-                                bottomnavigation.getMenu().getItem(2).setChecked(true);
+                                setBottomNavigationId("2");
                                 break;
                             case R.id.gapps:
                                 fragment = new Gapps();
-                                bottomnavigation.getMenu().getItem(3).setChecked(true);
+                                setBottomNavigationId("3");
                                 break;
                             default:
                                 break;
@@ -187,5 +196,14 @@ public class MainActivity extends Activity {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setBottomNavigationId(String fragment) {
+        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
+        bottomnavigation.getMenu().getItem(Integer.parseInt(fragment)).setChecked(true);
+    }
+
+    private String readBuildProp(String string) {
+        return readProp(string, false);
     }
 }

@@ -63,26 +63,28 @@ public class Utils extends Vars {
                 String postsAPI = path;
                 String jsonStr = sh.makeServiceCall(postsAPI);
 
-                if (!jsonStr.trim().equals("null")) {
-                    try {
-                        JSONArray jsonObject = new JSONArray(jsonStr);
-                        for (int i = 0; i < jsonObject.length(); i++) {
-                            try {
-                                JSONObject oneObject = jsonObject.getJSONObject(i);
-                                File f = new File(Parcel.obtain());
-                                String fileName = oneObject.getString("filename");
-                                f.SetFileName(fileName);
-                                f.SetFileSize(oneObject.getString("filesize"));
-                                f.SetFileMD5(oneObject.getString("fileMd5"));
-                                f.SetFileLink("https://download.dirtyunicorns.com/api/download" +
-                                        device + "/" + dir + "/" + fileName);
-                                files.add(f);
-                            } catch (JSONException ignored) {
+                if (jsonStr != null) {
+                    if (!jsonStr.trim().equals("null")) {
+                        try {
+                            JSONArray jsonObject = new JSONArray(jsonStr);
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                                try {
+                                    JSONObject oneObject = jsonObject.getJSONObject(i);
+                                    File f = new File(Parcel.obtain());
+                                    String fileName = oneObject.getString("filename");
+                                    f.SetFileName(fileName);
+                                    f.SetFileSize(oneObject.getString("filesize"));
+                                    f.SetFileMD5(oneObject.getString("fileMd5"));
+                                    f.SetFileLink("https://download.dirtyunicorns.com/api/download" +
+                                            device + "/" + dir + "/" + fileName);
+                                    files.add(f);
+                                } catch (JSONException ignored) {
+                                }
                             }
-                        }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
