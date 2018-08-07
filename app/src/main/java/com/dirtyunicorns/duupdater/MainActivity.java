@@ -16,19 +16,16 @@
 
 package com.dirtyunicorns.duupdater;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.UiModeManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -38,25 +35,31 @@ import com.dirtyunicorns.duupdater.fragments.Official;
 import com.dirtyunicorns.duupdater.fragments.Rc;
 import com.dirtyunicorns.duupdater.fragments.Vendors;
 import com.dirtyunicorns.duupdater.fragments.Weeklies;
+import com.dirtyunicorns.duupdater.utils.InterfaceHelper;
 import com.dirtyunicorns.duupdater.utils.Utils;
+
+import static com.dirtyunicorns.duupdater.utils.InterfaceHelper.InitPermissions;
+import static com.dirtyunicorns.duupdater.utils.InterfaceHelper.setBottomNavigationId;
+import static com.dirtyunicorns.duupdater.utils.InterfaceHelper.showSnackBar;
 
 public class MainActivity extends Activity {
 
     BottomNavigationView navigation;
     private Fragment fragment;
-    static Snackbar snackbar;
-
-    private final static int REQUEST_WRITE_STORAGE_PERMISSION = 1;
+    public static Snackbar snackbar;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-        setTheme();
+        InterfaceHelper.setTheme(MainActivity.this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
-        InitPermissions();
+        setupInterface();
+    }
 
+    private void setupInterface() {
+        InitPermissions(MainActivity.this);
         View view = findViewById(R.id.viewSnack);
         snackbar = Snackbar.make(view, "", Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
@@ -71,15 +74,15 @@ public class MainActivity extends Activity {
         BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
 
         if (!Utils.isOnline(this)) {
-            showSnackBar(R.string.no_internet_snackbar);
+            showSnackBar(R.string.no_internet_snackbar, snackbar);
         } else {
             FragmentManager fragmentManager = getFragmentManager();
             if (Utils.checkProp("ro.du.version", false, "WEEKLIES")) {
                 fragment = new Weeklies();
-                setBottomNavigationId("1");
+                setBottomNavigationId("1",MainActivity.this);
             } else if (Utils.checkProp("ro.du.version", false, "RC")) {
                 fragment = new Rc();
-                setBottomNavigationId("2");
+                setBottomNavigationId("2",MainActivity.this);
             } else {
                 fragment = new Official();
             }
@@ -94,29 +97,29 @@ public class MainActivity extends Activity {
                         switch (item.getItemId()) {
                             case R.id.official:
                                 fragment = new Official();
-                                setBottomNavigationId("0");
+                                setBottomNavigationId("0",MainActivity.this);
                                 break;
                             case R.id.weeklies:
                                 fragment = new Weeklies();
-                                setBottomNavigationId("1");
+                                setBottomNavigationId("1",MainActivity.this);
                                 break;
                             case R.id.rc:
                                 fragment = new Rc();
-                                setBottomNavigationId("2");
+                                setBottomNavigationId("2",MainActivity.this);
                                 break;
                             case R.id.gapps:
                                 fragment = new Gapps();
-                                setBottomNavigationId("3");
+                                setBottomNavigationId("3",MainActivity.this);
                                 break;
                             case R.id.vendors:
                                 fragment = new Vendors();
-                                setBottomNavigationId("4");
+                                setBottomNavigationId("4",MainActivity.this);
                                 break;
                             default:
                                 break;
                         }
                         if (!Utils.isOnline(getApplicationContext())) {
-                            showSnackBar(R.string.no_internet_snackbar);
+                            showSnackBar(R.string.no_internet_snackbar,snackbar);
                         } else {
                             FragmentManager fragmentManager = getFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -129,29 +132,10 @@ public class MainActivity extends Activity {
                 });
     }
 
-    private void InitPermissions() {
-        if (PermissionChecker
-                .checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PermissionChecker.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    REQUEST_WRITE_STORAGE_PERMISSION);
-        }
-    }
-
-    public static void showSnackBar(int resId) {
-        hideSnackBar();
-        snackbar.setText(resId).show();
-    }
-
-    public static void hideSnackBar() {
-        if (snackbar.isShown()) snackbar.dismiss();
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
-        updateBottomNavigation();
+        InterfaceHelper.updateBottomNavigation(MainActivity.this);
     }
 
     @Override
@@ -168,34 +152,5 @@ public class MainActivity extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void setTheme() {
-        UiModeManager mUiModeManager =
-                getApplicationContext().getSystemService(UiModeManager.class);
-
-        int mode = mUiModeManager.getNightMode();
-        switch (mode) {
-            case UiModeManager.MODE_NIGHT_AUTO:
-                setTheme(R.style.DefaultTheme);
-            case UiModeManager.MODE_NIGHT_YES:
-                setTheme(R.style.DarkTheme);
-            case UiModeManager.MODE_NIGHT_NO:
-        }
-    }
-
-    private void setBottomNavigationId(String fragment) {
-        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
-        bottomnavigation.getMenu().getItem(Integer.parseInt(fragment)).setChecked(true);
-        updateBottomNavigation();
-    }
-
-    private void updateBottomNavigation() {
-        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
-        bottomnavigation.findViewById(R.id.gapps).setVisibility(Utils.checkProp(
-                "ro.build.ab_update", true, "true") ? View.GONE : View.VISIBLE);
-        bottomnavigation.findViewById(R.id.vendors).setVisibility(Utils.checkProp(
-                "ro.build.ab_update", true, "true") ? View.VISIBLE : View.GONE);
-        Utils.setMargins(bottomnavigation,-180,0,-180,0);
     }
 }

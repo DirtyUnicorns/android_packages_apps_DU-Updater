@@ -24,6 +24,8 @@ import com.dirtyunicorns.duupdater.adapters.CardAdapter;
 
 import java.util.ArrayList;
 
+import static com.dirtyunicorns.duupdater.utils.InterfaceHelper.showSnackBar;
+
 public class GetFiles extends AsyncTask<String, String, ArrayList<File>> {
 
     private String dir;
@@ -47,7 +49,7 @@ public class GetFiles extends AsyncTask<String, String, ArrayList<File>> {
             adapter.addItem(result);
         } else {
             adapter.clear();
-            MainActivity.showSnackBar(R.string.no_files_to_show);
+            showSnackBar(R.string.no_files_to_show,MainActivity.snackbar);
         }
     }
 }

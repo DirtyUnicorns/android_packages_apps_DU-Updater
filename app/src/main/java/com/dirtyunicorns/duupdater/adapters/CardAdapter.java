@@ -36,6 +36,7 @@ import com.dirtyunicorns.duupdater.utils.File;
 import java.util.ArrayList;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
+import static com.dirtyunicorns.duupdater.utils.InterfaceHelper.showSnackBar;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
@@ -70,7 +71,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
             @Override
             public void onClick(View v) {
                 holder.fileName.setSelected(true);
-                MainActivity.showSnackBar(R.string.card_snackbar);
+                showSnackBar(R.string.card_snackbar, MainActivity.snackbar);
             }
         });
 
@@ -91,7 +92,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
                     manager.enqueue(request);
                 }
                 v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-                MainActivity.showSnackBar(R.string.download_starting_snackbar);
+                showSnackBar(R.string.download_starting_snackbar,MainActivity.snackbar);
             }
         });
 
