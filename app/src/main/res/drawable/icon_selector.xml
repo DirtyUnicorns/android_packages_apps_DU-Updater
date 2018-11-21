@@ -16,8 +16,7 @@ Copyright (C) 2014 The Android Open Source Project
 -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:color="@*android:color/accent_device_default_light" />
-    <item android:state_pressed="true" android:state_enabled="true" android:color="@*android:color/accent_device_default_light" />
-    <item android:color="@*android:color/darker_gray" />
-
+    <item android:state_checked="true" android:color="@color/bottom_navigation_icon_text_active_color" />
+    <item android:state_pressed="true" android:state_enabled="true" android:color="@color/bottom_navigation_icon_text_active_color" />
+    <item android:color="@color/bottom_navigation_icon_text_inactive_color" />
 </selector>

@@ -17,16 +17,14 @@
 package com.dirtyunicorns.duupdater;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.UiModeManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.PermissionChecker;
@@ -40,42 +38,40 @@ import com.dirtyunicorns.duupdater.fragments.Rc;
 import com.dirtyunicorns.duupdater.fragments.Weeklies;
 import com.dirtyunicorns.duupdater.utils.Utils;
 
-import java.lang.reflect.Field;
-
 import static com.dirtyunicorns.duupdater.utils.Utils.readProp;
 
 public class MainActivity extends Activity {
 
+    BottomNavigationView navigation;
     Fragment fragment;
     static Snackbar snackbar;
-    BottomNavigationView navigation;
+    UiModeManager mUiModeManager;
 
     private final static int REQUEST_WRITE_STORAGE_PERMISSION = 1;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        setTheme();
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
         InitPermissions();
 
-        if (getActionBar() !=null) {
-            getActionBar().setTitle(R.string.app_name);
-            getActionBar().setElevation(4);
-        }
-
         View view = findViewById(R.id.viewSnack);
         snackbar = Snackbar.make(view, "", Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
-        sbView.setBackgroundColor(Utils.getBackgroundColor(getApplicationContext()));
+        Utils.setMargins(sbView,30,0,30,0);
+        sbView.setBackground(getResources().getDrawable(R.drawable.round_edges));
 
         TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Utils.getAccentColor(getApplicationContext()));
+        textView.setTextColor(getColor(R.color.snackbar_text_color));
+        Utils.setMargins(textView,35,0,0,0);
 
-        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
+        final BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
+
         String duVersion = readBuildProp("ro.du.version");
-        String abDevice = readBuildProp("ro.build.ab_update");
+        final String abDevice = readBuildProp("ro.build.ab_update");
 
         if (!Utils.isOnline(this)) {
             showSnackBar(R.string.no_internet_snackbar);
@@ -88,7 +84,6 @@ public class MainActivity extends Activity {
                 fragment = new Rc();
                 setBottomNavigationId("2");
             } else {
-                // Default
                 fragment = new Official();
             }
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -97,9 +92,8 @@ public class MainActivity extends Activity {
 
         if (abDevice.contains("true")) {
             bottomnavigation.findViewById(R.id.gapps).setVisibility(View.GONE);
+            Utils.setMargins(bottomnavigation,-210,0,-210,0);
         }
-
-        disableShiftMode(bottomnavigation);
 
         bottomnavigation.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -133,6 +127,10 @@ public class MainActivity extends Activity {
                             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
+                        }
+                        if (abDevice.contains("true")) {
+                            bottomnavigation.findViewById(R.id.gapps).setVisibility(View.GONE);
+                            Utils.setMargins(bottomnavigation,-210,0,-210,0);
                         }
                         return true;
                     }
@@ -177,27 +175,6 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressLint("RestrictedApi")
-    public static void disableShiftMode(BottomNavigationView navigationView) {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigationView.getChildAt(0);
-
-        try {
-            Field shiftMode = menuView.getClass().getDeclaredField("mShiftingMode");
-            shiftMode.setAccessible(true);
-            shiftMode.setBoolean(menuView, false);
-            shiftMode.setAccessible(false);
-
-            for (int i = 0; i < menuView.getChildCount(); i++) {
-                BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(i);
-                itemView.setShiftingMode(false);
-                itemView.setChecked(itemView.getItemData().isChecked());
-            }
-
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void setBottomNavigationId(String fragment) {
         BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
         bottomnavigation.getMenu().getItem(Integer.parseInt(fragment)).setChecked(true);
@@ -205,5 +182,18 @@ public class MainActivity extends Activity {
 
     private String readBuildProp(String string) {
         return readProp(string, false);
+    }
+
+    private void setTheme() {
+        mUiModeManager = getApplicationContext().getSystemService(UiModeManager.class);
+
+        int mode = mUiModeManager.getNightMode();
+        switch (mode) {
+            case UiModeManager.MODE_NIGHT_AUTO:
+                setTheme(R.style.DefaultTheme);
+            case UiModeManager.MODE_NIGHT_YES:
+                setTheme(R.style.DarkTheme);
+            case UiModeManager.MODE_NIGHT_NO:
+        }
     }
 }

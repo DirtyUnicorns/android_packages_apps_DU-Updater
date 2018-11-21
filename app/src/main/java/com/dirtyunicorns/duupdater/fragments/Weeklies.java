@@ -22,31 +22,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.adapters.CardAdapter;
-import com.dirtyunicorns.duupdater.utils.GetFiles;
-import com.dirtyunicorns.duupdater.utils.Utils;
 
-public class Weeklies extends Official {
+public class Weeklies extends Base {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_view, containter, false);
 
         RecyclerView rv = rootView.findViewById(R.id.rv);
-        Animation anim = AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
-        rv.setAnimation(anim);
-        rv.animate();
-        CardAdapter adapter = new CardAdapter(getContext());
+        adapter = new CardAdapter(getContext());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
-        if (Utils.isOnline(getActivity())) {
-            GetFiles getFiles = new GetFiles("Weeklies", true, adapter);
-            getFiles.execute();
-        }
+
+        pullToRefresh = rootView.findViewById(R.id.pullToRefresh);
+
+        pullDownToRefresh("Weeklies");
+        fetchServer("Weeklies");
 
         return rootView;
     }

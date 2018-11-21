@@ -5,18 +5,15 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_PACKAGE_NAME := DU-Updater
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
+LOCAL_PRIVATE_PLATFORM_APIS := true
+LOCAL_CERTIFICATE := platform
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_SRC_FILES := $(call all-java-files-under, java)
-LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
-    $(support_library_root_dir)/v7/cardview/res \
-    $(support_library_root_dir)/v7/recyclerview/res \
-    $(support_library_root_dir)/v7/appcompat/res \
-    $(support_library_root_dir)/design/res \
-    $(support_library_root_dir)/transition/res
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 
-LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
+LOCAL_USE_AAPT2 := true
 
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \

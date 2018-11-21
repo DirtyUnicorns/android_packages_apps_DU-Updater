@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackgroundFloating"
+    android:background="?attr/background_color"
     android:fitsSystemWindows="true">
 
     <FrameLayout
@@ -22,10 +22,11 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
+        android:background="?attr/bottom_navigation_bg_color"
         app:itemIconTint="@drawable/icon_selector"
         app:itemTextColor="@drawable/icon_selector"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation" />
 
 </RelativeLayout>

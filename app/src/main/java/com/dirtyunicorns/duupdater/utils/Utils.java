@@ -17,14 +17,13 @@
 package com.dirtyunicorns.duupdater.utils;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Parcel;
 import android.os.SystemClock;
 import android.util.Log;
-import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -119,6 +118,16 @@ public class Utils extends Vars {
         return connected;
     }
 
+    public static String isCPU() {
+        String cpu;
+        if (readProp("ro.product.cpu.abi", false).contains("arm64")) {
+            cpu = "gapps/arm64";
+        } else {
+            cpu = "gapps/arm";
+        }
+        return cpu;
+    }
+
     public static String readProp(String propName, Boolean device) {
         Process process = null;
         BufferedReader bufferedReader = null;
@@ -152,17 +161,11 @@ public class Utils extends Vars {
         }
     }
 
-    public static int getBackgroundColor(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(android.R.attr.background, typedValue, true);
-        return typedValue.data;
-    }
-
-    public static int getAccentColor(Context context) {
-        TypedArray array = context.obtainStyledAttributes(new int[]{android.R.attr.colorAccent});
-        int color = array.getColor(0, 0);
-        array.recycle();
-        return color;
+    public static void setMargins (View v, int l, int t, int r, int b) {
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
     }
 }

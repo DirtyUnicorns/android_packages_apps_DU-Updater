@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv"
-        android:background="?android:attr/colorBackgroundFloating"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</ScrollView>
+<com.dirtyunicorns.duupdater.utils.SwipeRefresh
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pullToRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:background="?attr/background_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+</com.dirtyunicorns.duupdater.utils.SwipeRefresh>

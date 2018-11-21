@@ -16,60 +16,32 @@
 
 package com.dirtyunicorns.duupdater.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.adapters.CardAdapter;
-import com.dirtyunicorns.duupdater.utils.GetFiles;
-import com.dirtyunicorns.duupdater.utils.Utils;
 
-public class Official extends Fragment {
+public class Official extends Base {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_view, containter, false);
 
         RecyclerView rv = rootView.findViewById(R.id.rv);
-        Animation anim = AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
-        rv.setAnimation(anim);
-        rv.animate();
-        CardAdapter adapter = new CardAdapter(getContext());
+        adapter = new CardAdapter(getContext());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
-        if (Utils.isOnline(getActivity())) {
-            GetFiles getFiles = new GetFiles("Official", true, adapter);
-            getFiles.execute();
-        }
+
+        pullToRefresh = rootView.findViewById(R.id.pullToRefresh);
+
+        pullDownToRefresh("Official");
+        fetchServer("Official");
 
         return rootView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if (getView() != null) {
-            getView().setFocusableInTouchMode(true);
-            getView().requestFocus();
-            getView().setOnKeyListener(new View.OnKeyListener() {
-                @Override
-                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                        getActivity().finish();
-                        return true;
-                    }
-                    return false;
-                }
-            });
-        }
     }
 }

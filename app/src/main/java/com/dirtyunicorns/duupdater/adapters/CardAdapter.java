@@ -58,8 +58,26 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
     public void onBindViewHolder(@NonNull final FileHolder holder, int position) {
         final int pos = holder.getAdapterPosition();
         holder.fileName.setText(files.get(position).GetFileName());
-        holder.fileSize.setText(String.format(ctx.getString(R.string.card_file_size), files.get(pos).GetFileSize()));
-        holder.fileMD5.setText(String.format(ctx.getString(R.string.card_file_md5), files.get(pos).GetFileMD5()));
+        holder.fileName.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                holder.fileName.setSelected(false);
+                return false;
+            }
+        });
+
+        holder.fileName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.fileName.setSelected(true);
+                MainActivity.showSnackBar(R.string.card_snackbar);
+            }
+        });
+
+        holder.fileSizeTitle.setText(R.string.card_file_size);
+        holder.fileSizeSummary.setText(files.get(pos).GetFileSize());
+        holder.fileMD5Title.setText(R.string.card_file_md5);
+        holder.fileMD5Summary.setText(files.get(pos).GetFileMD5());
         holder.buttonDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,13 +95,23 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
             }
         });
 
-        holder.fileName.setSelected(true);
-        holder.fileMD5.setSelected(true);
+        holder.fileMD5Title.setSelected(true);
     }
 
     @Override
     public int getItemCount() {
         return files.size();
+    }
+
+    public void clear() {
+        final int size = files.size();
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                files.remove(0);
+            }
+            notifyItemRangeRemoved(0, size);
+            notifyDataSetChanged();
+        }
     }
 
     public void addItem(ArrayList<File> files){
@@ -93,15 +121,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
 
     static class FileHolder extends RecyclerView.ViewHolder {
         TextView fileName;
-        TextView fileSize;
-        TextView fileMD5;
+        TextView fileSizeTitle;
+        TextView fileSizeSummary;
+        TextView fileMD5Title;
+        TextView fileMD5Summary;
         Button buttonDownload;
 
         FileHolder(View itemView) {
             super(itemView);
             fileName = itemView.findViewById(R.id.update_name);
-            fileSize = itemView.findViewById(R.id.update_size);
-            fileMD5 = itemView.findViewById(R.id.update_md5);
+            fileSizeTitle = itemView.findViewById(R.id.update_size_title);
+            fileSizeSummary = itemView.findViewById(R.id.update_size_summary);
+            fileMD5Title = itemView.findViewById(R.id.update_md5_title);
+            fileMD5Summary = itemView.findViewById(R.id.update_md5_summary);
             buttonDownload = itemView.findViewById(R.id.btnDownload);
         }
     }

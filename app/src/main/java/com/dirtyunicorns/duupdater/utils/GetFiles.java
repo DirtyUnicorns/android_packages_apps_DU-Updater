@@ -43,8 +43,10 @@ public class GetFiles extends AsyncTask<String, String, ArrayList<File>> {
 
     protected void onPostExecute(ArrayList<File> result) {
         if (result.size() > 0) {
+            adapter.clear();
             adapter.addItem(result);
         } else {
+            adapter.clear();
             MainActivity.showSnackBar(R.string.no_files_to_show);
         }
     }

@@ -26,7 +26,8 @@ public class TileService extends android.service.quicksettings.TileService {
     public void onClick() {
         super.onClick();
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivityAndCollapse(intent);
     }
 }

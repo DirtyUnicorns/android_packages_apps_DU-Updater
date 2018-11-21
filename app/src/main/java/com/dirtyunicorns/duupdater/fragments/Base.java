@@ -16,13 +16,17 @@
 
 package com.dirtyunicorns.duupdater.fragments;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.dirtyunicorns.duupdater.R;
 import com.dirtyunicorns.duupdater.adapters.CardAdapter;
@@ -30,40 +34,70 @@ import com.dirtyunicorns.duupdater.utils.SwipeRefresh;
 import com.dirtyunicorns.duupdater.utils.GetFiles;
 import com.dirtyunicorns.duupdater.utils.Utils;
 
-public class Gapps extends Base {
+public class Base extends Fragment {
+
+    SwipeRefresh pullToRefresh;
+    CardAdapter adapter;
+    RecyclerView rv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_view, containter, false);
+        View rootView = inflater.inflate(R.layout.fragment_view, containter, false);
 
-        RecyclerView rv = rootView.findViewById(R.id.rv);
+        rv = rootView.findViewById(R.id.rv);
+
+        Animation anim = AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
+        rv.setAnimation(anim);
+        rv.animate();
         adapter = new CardAdapter(getContext());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
 
         pullToRefresh = rootView.findViewById(R.id.pullToRefresh);
+
+        return rootView;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (getView() != null) {
+            getView().setFocusableInTouchMode(true);
+            getView().requestFocus();
+            getView().setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                        getActivity().finish();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
+    }
+
+    public void fetchServer(String directory) {
+        if (Utils.isOnline(getActivity())) {
+            GetFiles getFiles = new GetFiles(directory, true, adapter);
+            getFiles.execute();
+        }
+    }
+
+    public void pullDownToRefresh(final String directory) {
         pullToRefresh.setOnRefreshListener(new SwipeRefresh.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        fetchGapps();
+                        fetchServer(directory);
                         pullToRefresh.setRefreshing(false);
                     }
                 }, 1500);
             }
         });
-
-        fetchGapps();
-
-        return rootView;
-    }
-
-    private void fetchGapps() {
-        if (Utils.isOnline(getActivity())) {
-            GetFiles getGapps = new GetFiles(Utils.isCPU(), false, adapter);
-            getGapps.execute();
-        }
     }
 }
