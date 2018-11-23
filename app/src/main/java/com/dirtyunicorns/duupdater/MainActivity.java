@@ -35,10 +35,9 @@ import android.widget.TextView;
 import com.dirtyunicorns.duupdater.fragments.Gapps;
 import com.dirtyunicorns.duupdater.fragments.Official;
 import com.dirtyunicorns.duupdater.fragments.Rc;
+import com.dirtyunicorns.duupdater.fragments.Vendors;
 import com.dirtyunicorns.duupdater.fragments.Weeklies;
 import com.dirtyunicorns.duupdater.utils.Utils;
-
-import static com.dirtyunicorns.duupdater.utils.Utils.readProp;
 
 public class MainActivity extends Activity {
 
@@ -70,17 +69,14 @@ public class MainActivity extends Activity {
 
         final BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
 
-        String duVersion = readBuildProp("ro.du.version");
-        final String abDevice = readBuildProp("ro.build.ab_update");
-
         if (!Utils.isOnline(this)) {
             showSnackBar(R.string.no_internet_snackbar);
         } else {
             FragmentManager fragmentManager = getFragmentManager();
-            if (duVersion.contains("WEEKLIES")) {
+            if (Utils.checkProp("ro.du.version", false, "WEEKLIES")) {
                 fragment = new Weeklies();
                 setBottomNavigationId("1");
-            } else if (duVersion.contains("RC")) {
+            } else if (Utils.checkProp("ro.du.version", false, "RC")) {
                 fragment = new Rc();
                 setBottomNavigationId("2");
             } else {
@@ -90,10 +86,11 @@ public class MainActivity extends Activity {
             transaction.add(R.id.fragmentContainer, fragment).commit();
         }
 
-        if (abDevice.contains("true")) {
-            bottomnavigation.findViewById(R.id.gapps).setVisibility(View.GONE);
-            Utils.setMargins(bottomnavigation,-210,0,-210,0);
-        }
+        bottomnavigation.findViewById(R.id.gapps).setVisibility(Utils.checkProp(
+                "ro.build.ab_update", true, "true") ? View.GONE : View.VISIBLE);
+        bottomnavigation.findViewById(R.id.vendors).setVisibility(Utils.checkProp(
+                "ro.build.ab_update", true, "true") ? View.VISIBLE : View.GONE);
+        Utils.setMargins(bottomnavigation,-180,0,-180,0);
 
         bottomnavigation.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -116,6 +113,10 @@ public class MainActivity extends Activity {
                                 fragment = new Gapps();
                                 setBottomNavigationId("3");
                                 break;
+                            case R.id.vendors:
+                                fragment = new Vendors();
+                                setBottomNavigationId("4");
+                                break;
                             default:
                                 break;
                         }
@@ -128,10 +129,12 @@ public class MainActivity extends Activity {
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
                         }
-                        if (abDevice.contains("true")) {
-                            bottomnavigation.findViewById(R.id.gapps).setVisibility(View.GONE);
-                            Utils.setMargins(bottomnavigation,-210,0,-210,0);
-                        }
+
+                        bottomnavigation.findViewById(R.id.gapps).setVisibility(Utils.checkProp(
+                                "ro.build.ab_update", true, "true") ? View.GONE : View.VISIBLE);
+                        bottomnavigation.findViewById(R.id.vendors).setVisibility(Utils.checkProp(
+                                "ro.build.ab_update", true, "true") ? View.VISIBLE : View.GONE);
+                        Utils.setMargins(bottomnavigation,-180,0,-180,0);
                         return true;
                     }
                 });
@@ -178,10 +181,6 @@ public class MainActivity extends Activity {
     private void setBottomNavigationId(String fragment) {
         BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
         bottomnavigation.getMenu().getItem(Integer.parseInt(fragment)).setChecked(true);
-    }
-
-    private String readBuildProp(String string) {
-        return readProp(string, false);
     }
 
     private void setTheme() {

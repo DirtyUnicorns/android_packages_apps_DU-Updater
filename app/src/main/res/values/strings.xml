@@ -27,6 +27,7 @@ Copyright (C) 2014 The Android Open Source Project
     <string name="weeklies">Weeklies</string>
     <string name="rc">Rc</string>
     <string name="gapps">Gapps</string>
+    <string name="vendors">Vendors</string>
 
     <!-- Snackbar messages -->
     <string name="no_internet_snackbar">You must be connected to the internet to use the updater</string>

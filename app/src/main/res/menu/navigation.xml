@@ -24,4 +24,10 @@
         android:icon="@drawable/gapps"
         android:title="@string/gapps"
         app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/vendors"
+        android:icon="@drawable/vendors"
+        android:title="@string/vendors"
+        app:showAsAction="ifRoom|withText" />
 </menu>

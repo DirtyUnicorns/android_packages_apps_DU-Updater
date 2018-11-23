@@ -128,7 +128,11 @@ public class Utils extends Vars {
         return cpu;
     }
 
-    public static String readProp(String propName, Boolean device) {
+    public static boolean checkProp(String string, boolean device, String tof) {
+        return readProp(string, device).contains(tof);
+    }
+
+    private static String readProp(String propName, Boolean device) {
         Process process = null;
         BufferedReader bufferedReader = null;
 
