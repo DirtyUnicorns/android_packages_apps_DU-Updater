@@ -27,6 +27,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.PermissionChecker;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,9 +43,8 @@ import com.dirtyunicorns.duupdater.utils.Utils;
 public class MainActivity extends Activity {
 
     BottomNavigationView navigation;
-    Fragment fragment;
+    private Fragment fragment;
     static Snackbar snackbar;
-    UiModeManager mUiModeManager;
 
     private final static int REQUEST_WRITE_STORAGE_PERMISSION = 1;
 
@@ -61,13 +61,14 @@ public class MainActivity extends Activity {
         snackbar = Snackbar.make(view, "", Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
         Utils.setMargins(sbView,30,0,30,0);
-        sbView.setBackground(getResources().getDrawable(R.drawable.round_edges));
+        sbView.setBackground(ContextCompat.getDrawable(getApplicationContext(),
+                R.drawable.round_edges));
 
         TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(getColor(R.color.snackbar_text_color));
         Utils.setMargins(textView,35,0,0,0);
 
-        final BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
+        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
 
         if (!Utils.isOnline(this)) {
             showSnackBar(R.string.no_internet_snackbar);
@@ -85,12 +86,6 @@ public class MainActivity extends Activity {
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.add(R.id.fragmentContainer, fragment).commit();
         }
-
-        bottomnavigation.findViewById(R.id.gapps).setVisibility(Utils.checkProp(
-                "ro.build.ab_update", true, "true") ? View.GONE : View.VISIBLE);
-        bottomnavigation.findViewById(R.id.vendors).setVisibility(Utils.checkProp(
-                "ro.build.ab_update", true, "true") ? View.VISIBLE : View.GONE);
-        Utils.setMargins(bottomnavigation,-180,0,-180,0);
 
         bottomnavigation.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -129,21 +124,17 @@ public class MainActivity extends Activity {
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
                         }
-
-                        bottomnavigation.findViewById(R.id.gapps).setVisibility(Utils.checkProp(
-                                "ro.build.ab_update", true, "true") ? View.GONE : View.VISIBLE);
-                        bottomnavigation.findViewById(R.id.vendors).setVisibility(Utils.checkProp(
-                                "ro.build.ab_update", true, "true") ? View.VISIBLE : View.GONE);
-                        Utils.setMargins(bottomnavigation,-180,0,-180,0);
                         return true;
                     }
                 });
     }
 
-    public void InitPermissions() {
+    private void InitPermissions() {
         if (PermissionChecker
-                .checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PermissionChecker.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                .checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PermissionChecker.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     REQUEST_WRITE_STORAGE_PERMISSION);
         }
     }
@@ -160,6 +151,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        updateBottomNavigation();
     }
 
     @Override
@@ -178,13 +170,9 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setBottomNavigationId(String fragment) {
-        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
-        bottomnavigation.getMenu().getItem(Integer.parseInt(fragment)).setChecked(true);
-    }
-
     private void setTheme() {
-        mUiModeManager = getApplicationContext().getSystemService(UiModeManager.class);
+        UiModeManager mUiModeManager =
+                getApplicationContext().getSystemService(UiModeManager.class);
 
         int mode = mUiModeManager.getNightMode();
         switch (mode) {
@@ -194,5 +182,20 @@ public class MainActivity extends Activity {
                 setTheme(R.style.DarkTheme);
             case UiModeManager.MODE_NIGHT_NO:
         }
+    }
+
+    private void setBottomNavigationId(String fragment) {
+        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
+        bottomnavigation.getMenu().getItem(Integer.parseInt(fragment)).setChecked(true);
+        updateBottomNavigation();
+    }
+
+    private void updateBottomNavigation() {
+        BottomNavigationView bottomnavigation = findViewById(R.id.navigation);
+        bottomnavigation.findViewById(R.id.gapps).setVisibility(Utils.checkProp(
+                "ro.build.ab_update", true, "true") ? View.GONE : View.VISIBLE);
+        bottomnavigation.findViewById(R.id.vendors).setVisibility(Utils.checkProp(
+                "ro.build.ab_update", true, "true") ? View.VISIBLE : View.GONE);
+        Utils.setMargins(bottomnavigation,-180,0,-180,0);
     }
 }
