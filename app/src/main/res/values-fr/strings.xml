@@ -20,14 +20,19 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="app_name">Mise à jour</string>
   <string name="action_download">Télécharger</string>
   <string name="cancel">Annuler</string>
+
   <!-- Toolbar titles -->
   <string name="official">Officielles</string>
   <string name="weeklies">Hebdomadaires</string>
   <string name="rc">RC</string>
   <string name="gapps">GApps</string>
+  <string name="vendors">Vendors</string>
+
   <!-- Snackbar messages -->
   <string name="no_internet_snackbar">Connexion à Internet nécessaire pour utiliser le gestionnaire de mise à jour</string>
   <string name="no_files_to_show">Aucun fichier à afficher actuellement</string>
+  <string name="card_snackbar">Maintenir appuyé pour arrêter l\'effet de sélection</string>
+
   <!-- Dialogs & Downloads -->
   <string name="download_starting_snackbar">Démarrage du téléchargement…</string>
   <string name="download_cancelled">Téléchargement annulé</string>
@@ -35,7 +40,8 @@ Copyright (C) 2014 The Android Open Source Project
   <string name="download_happy">Téléchargement terminé. Bonne installation !</string>
   <string name="complete">Terminé</string>
   <string name="download_failed">Échec du téléchargement</string>
+
   <!--Card String-->
-  <string name="card_file_size">Taille du fichier : %1$s</string>
-  <string name="card_file_md5">Fichier MD5 : %1$s</string>
+  <string name="card_file_size">Taille du fichier :</string>
+  <string name="card_file_md5">Fichier MD5 :</string>
 </resources>
