@@ -107,9 +107,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FileHolder>{
     public void clear() {
         final int size = files.size();
         if (size > 0) {
-            for (int i = 0; i < size; i++) {
-                files.remove(0);
-            }
+            files.subList(0, size).clear();
             notifyItemRangeRemoved(0, size);
             notifyDataSetChanged();
         }

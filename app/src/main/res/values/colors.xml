@@ -4,10 +4,9 @@
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#242424</color>
     <color name="colorAccent">@*android:color/accent_device_default_light</color>
-
     <color name="bottom_navigation_icon_text_active_color">@color/colorAccent</color>
     <color name="bottom_navigation_icon_text_inactive_color">#5f6368</color>
-    <color name="snackbar_bg_color">#ff242424</color>
+    <color name="snackbar_bg_color">#313235</color>
     <color name="snackbar_text_color">#ffffffff</color>
 
 </resources>
