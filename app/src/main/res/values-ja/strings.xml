@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">Updater</string>
-  <string name="action_download">ダウンロード</string>
-  <string name="cancel">キャンセル</string>
-  <!-- Toolbar titles -->
-  <string name="official">オフィシャル</string>
-  <string name="weeklies">ウィークリー</string>
-  <string name="rc">候補</string>
-  <string name="gapps">GApps</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">Updaterを使用するにはインターネットに接続してください</string>
-  <string name="no_files_to_show">現在このセクションに表示するファイルはありません</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">ダウンロードを開始中…</string>
-  <string name="download_cancelled">ダウンロードがキャンセルされました</string>
-  <string name="du_download">DirtyUnicorns ダウンロード</string>
-  <string name="download_happy">ダウンロード完了、お楽しみください！</string>
-  <string name="complete">完了</string>
-  <string name="download_failed">ダウンロードに失敗しました</string>
-  <!--Card String-->
-  <string name="card_file_size">ファイルサイズ: %1$s</string>
-  <string name="card_file_md5">ファイルのMD5: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">Updater</string>
+    <string name="action_download">ダウンロード</string>
+    <string name="cancel">キャンセル</string>
+    <!-- Toolbar titles -->
+    <string name="official">オフィシャル</string>
+    <string name="weeklies">ウィークリー</string>
+    <string name="rc">候補</string>
+    <string name="gapps">GApps</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">Updaterを使用するにはインターネットに接続してください</string>
+    <string name="no_files_to_show">現在このセクションに表示するファイルはありません</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">ダウンロードを開始中…</string>
+    <string name="download_cancelled">ダウンロードがキャンセルされました</string>
+    <string name="du_download">DirtyUnicorns ダウンロード</string>
+    <string name="download_happy">ダウンロード完了、お楽しみください！</string>
+    <string name="complete">完了</string>
+    <string name="download_failed">ダウンロードに失敗しました</string>
+    <!--Card String-->
+    <string name="card_file_size">ファイルサイズ: %1$s</string>
+    <string name="card_file_md5">ファイルのMD5: %1$s</string>
 </resources>

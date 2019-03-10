@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">Güncelleyici</string>
-  <string name="action_download">İndir</string>
-  <string name="cancel">İptal</string>
-  <!-- Toolbar titles -->
-  <string name="official">Resmi</string>
-  <string name="weeklies">Haftalıklar</string>
-  <string name="rc">Rc</string>
-  <string name="gapps">Gapps</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">Güncelleyiciyi kullanmak için internete bağlı olmalısınız</string>
-  <string name="no_files_to_show">Şu anda bu bölümde gösterilecek dosya yok</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">İndirme başlatılıyor…</string>
-  <string name="download_cancelled">İndirme iptal edildi</string>
-  <string name="du_download">DU İndir</string>
-  <string name="download_happy">İndirme tamamlandı, mutlu yüklemeler!</string>
-  <string name="complete">Tamamlandı</string>
-  <string name="download_failed">İndirme başarısız</string>
-  <!--Card String-->
-  <string name="card_file_size">Dosya Boyutu: %1$s</string>
-  <string name="card_file_md5">Dosya MD5: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">Güncelleyici</string>
+    <string name="action_download">İndir</string>
+    <string name="cancel">İptal</string>
+    <!-- Toolbar titles -->
+    <string name="official">Resmi</string>
+    <string name="weeklies">Haftalıklar</string>
+    <string name="rc">Rc</string>
+    <string name="gapps">Gapps</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">Güncelleyiciyi kullanmak için internete bağlı olmalısınız</string>
+    <string name="no_files_to_show">Şu anda bu bölümde gösterilecek dosya yok</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">İndirme başlatılıyor…</string>
+    <string name="download_cancelled">İndirme iptal edildi</string>
+    <string name="du_download">DU İndir</string>
+    <string name="download_happy">İndirme tamamlandı, mutlu yüklemeler!</string>
+    <string name="complete">Tamamlandı</string>
+    <string name="download_failed">İndirme başarısız</string>
+    <!--Card String-->
+    <string name="card_file_size">Dosya Boyutu: %1$s</string>
+    <string name="card_file_md5">Dosya MD5: %1$s</string>
 </resources>

@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">Uppdateraren</string>
-  <string name="action_download">Ladda ned</string>
-  <string name="cancel">Avbryt</string>
-  <!-- Toolbar titles -->
-  <string name="official">Officiell</string>
-  <string name="weeklies">Veckobygg</string>
-  <string name="rc">Rc</string>
-  <string name="gapps">Gapps</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">Du måste vara ansluten till internet för att använda uppdateraren</string>
-  <string name="no_files_to_show">För närvarande finns det inga filer att visa här</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">Starting download…</string>
-  <string name="download_cancelled">Nerladdning avbruten</string>
-  <string name="du_download">DU Nedladdning</string>
-  <string name="download_happy">Nedladdning är klar, ha en trevlig installation!</string>
-  <string name="complete">Klar</string>
-  <string name="download_failed">Nedladdningen misslyckades</string>
-  <!--Card String-->
-  <string name="card_file_size">Filstorlek: %1$s</string>
-  <string name="card_file_md5">Fil MD5: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">Uppdateraren</string>
+    <string name="action_download">Ladda ned</string>
+    <string name="cancel">Avbryt</string>
+    <!-- Toolbar titles -->
+    <string name="official">Officiell</string>
+    <string name="weeklies">Veckobygg</string>
+    <string name="rc">Rc</string>
+    <string name="gapps">Gapps</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">Du måste vara ansluten till internet för att använda uppdateraren</string>
+    <string name="no_files_to_show">För närvarande finns det inga filer att visa här</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">Starting download…</string>
+    <string name="download_cancelled">Nerladdning avbruten</string>
+    <string name="du_download">DU Nedladdning</string>
+    <string name="download_happy">Nedladdning är klar, ha en trevlig installation!</string>
+    <string name="complete">Klar</string>
+    <string name="download_failed">Nedladdningen misslyckades</string>
+    <!--Card String-->
+    <string name="card_file_size">Filstorlek: %1$s</string>
+    <string name="card_file_md5">Fil MD5: %1$s</string>
 </resources>

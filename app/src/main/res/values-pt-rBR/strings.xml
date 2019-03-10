@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">Atualizador</string>
-  <string name="action_download">Baixar</string>
-  <string name="cancel">Cancelar</string>
-  <!-- Toolbar titles -->
-  <string name="official">Oficial</string>
-  <string name="weeklies">Semanais</string>
-  <string name="rc">Rc</string>
-  <string name="gapps">Gapps</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">Tem que estar conectado na internet para usar o atualizador</string>
-  <string name="no_files_to_show">Atualmente não há arquivos para mostrar nesta seção</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">Starting download…</string>
-  <string name="download_cancelled">Download cancelado</string>
-  <string name="du_download">Baixar DU</string>
-  <string name="download_happy">O download finalizou, aproveite!</string>
-  <string name="complete">Completo</string>
-  <string name="download_failed">Falha no download</string>
-  <!--Card String-->
-  <string name="card_file_size">Tamanho do arquivo: %1$s</string>
-  <string name="card_file_md5">Arquivo MD5: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">Atualizador</string>
+    <string name="action_download">Baixar</string>
+    <string name="cancel">Cancelar</string>
+    <!-- Toolbar titles -->
+    <string name="official">Oficial</string>
+    <string name="weeklies">Semanais</string>
+    <string name="rc">Rc</string>
+    <string name="gapps">Gapps</string>
+    <string name="vendors">Fornecedores</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">Tem que estar conectado na internet para usar o atualizador</string>
+    <string name="no_files_to_show">Atualmente não há arquivos para mostrar nesta seção</string>
+    <string name="card_snackbar">Pressione e segure para parar o efeito da marquee</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">Iniciando o download…</string>
+    <string name="download_cancelled">Download cancelado</string>
+    <string name="du_download">Baixar DU</string>
+    <string name="download_happy">O download finalizou, aproveite!</string>
+    <string name="complete">Completo</string>
+    <string name="download_failed">Falha no download</string>
+    <!--Card String-->
+    <string name="card_file_size">Tamanho do arquivo: %1$s</string>
+    <string name="card_file_md5">Arquivo MD5: %1$s</string>
 </resources>

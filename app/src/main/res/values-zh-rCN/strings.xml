@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">更新程序</string>
-  <string name="action_download">下载</string>
-  <string name="cancel">取消</string>
-  <!-- Toolbar titles -->
-  <string name="official">官方版</string>
-  <string name="weeklies">每周版</string>
-  <string name="rc">正式版</string>
-  <string name="gapps">谷歌服务包</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">您必须连接至互联网以使用更新程序</string>
-  <string name="no_files_to_show">当前没有可显示的文件</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">正在开始下载…</string>
-  <string name="download_cancelled">下载已取消</string>
-  <string name="du_download">下载 DU</string>
-  <string name="download_happy">下载已完成，开刷吧！</string>
-  <string name="complete">完成</string>
-  <string name="download_failed">下载失败</string>
-  <!--Card String-->
-  <string name="card_file_size">文件大小：%1$s</string>
-  <string name="card_file_md5">文件MD5值：%1$s</string>
+    <!-- General strings -->
+    <string name="app_name">更新程序</string>
+    <string name="action_download">下载</string>
+    <string name="cancel">取消</string>
+    <!-- Toolbar titles -->
+    <string name="official">官方版</string>
+    <string name="weeklies">每周版</string>
+    <string name="rc">正式版</string>
+    <string name="gapps">谷歌服务包</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">您必须连接至互联网以使用更新程序</string>
+    <string name="no_files_to_show">当前没有可显示的文件</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">正在开始下载…</string>
+    <string name="download_cancelled">下载已取消</string>
+    <string name="du_download">下载 DU</string>
+    <string name="download_happy">下载已完成，开刷吧！</string>
+    <string name="complete">完成</string>
+    <string name="download_failed">下载失败</string>
+    <!--Card String-->
+    <string name="card_file_size">文件大小：%1$s</string>
+    <string name="card_file_md5">文件MD5值：%1$s</string>
 </resources>

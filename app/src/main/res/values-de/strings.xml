@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">Aktualisierungsprogramm</string>
-  <string name="action_download">Herunterladen</string>
-  <string name="cancel">Abbrechen</string>
-  <!-- Toolbar titles -->
-  <string name="official">Official</string>
-  <string name="weeklies">Weeklies</string>
-  <string name="rc">RC</string>
-  <string name="gapps">GApps</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">Du musst mit dem Internet verbunden sein, um den Updater zu benutzen</string>
-  <string name="no_files_to_show">Derzeit gibt es keine Dateien in diesem Abschnitt</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">Starte Download…</string>
-  <string name="download_cancelled">Herunterladen abgebrochen</string>
-  <string name="du_download">Herunterladen von DU</string>
-  <string name="download_happy">Herunterladen beendet. Viel Spaß beim Flashen!</string>
-  <string name="complete">Fertig</string>
-  <string name="download_failed">Herunterladen fehlgeschlagen</string>
-  <!--Card String-->
-  <string name="card_file_size">Dateigröße: %1$s</string>
-  <string name="card_file_md5">MD5-Datei: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">Aktualisierungsprogramm</string>
+    <string name="action_download">Herunterladen</string>
+    <string name="cancel">Abbrechen</string>
+    <!-- Toolbar titles -->
+    <string name="official">Offiziell</string>
+    <string name="weeklies">Weeklies</string>
+    <string name="rc">RC</string>
+    <string name="gapps">GApps</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">Du musst mit dem Internet verbunden sein, um den Updater zu benutzen</string>
+    <string name="no_files_to_show">Derzeit gibt es keine Dateien in diesem Abschnitt</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">Starte Download…</string>
+    <string name="download_cancelled">Herunterladen abgebrochen</string>
+    <string name="du_download">Herunterladen von DU</string>
+    <string name="download_happy">Herunterladen beendet. Viel Spaß beim Flashen!</string>
+    <string name="complete">Fertig</string>
+    <string name="download_failed">Herunterladen fehlgeschlagen</string>
+    <!--Card String-->
+    <string name="card_file_size">Dateigröße: %1$s</string>
+    <string name="card_file_md5">MD5-Datei: %1$s</string>
 </resources>

@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">المحدث</string>
-  <string name="action_download">تنزيل</string>
-  <string name="cancel">إلغاء</string>
-  <!-- Toolbar titles -->
-  <string name="official">رسمية</string>
-  <string name="weeklies">أسبوعية</string>
-  <string name="rc">RC</string>
-  <string name="gapps">تطبيقات Google</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">يجب أن تكون متصلاً بالانترنت لاستخدام المحدث</string>
-  <string name="no_files_to_show">حاليا لا توجد ملفات تظهر في هذا القسم</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">Starting download…</string>
-  <string name="download_cancelled">تم إلغاء التنزيل</string>
-  <string name="du_download">تنزيل DU</string>
-  <string name="download_happy">اكتمل التنزيل، تثبيت سعيد!</string>
-  <string name="complete">اكتمل</string>
-  <string name="download_failed">فشل التنزيل</string>
-  <!--Card String-->
-  <string name="card_file_size">حجم الملف: %1$s</string>
-  <string name="card_file_md5">ملف MD5: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">المحدث</string>
+    <string name="action_download">تنزيل</string>
+    <string name="cancel">إلغاء</string>
+    <!-- Toolbar titles -->
+    <string name="official">رسمية</string>
+    <string name="weeklies">أسبوعية</string>
+    <string name="rc">RC</string>
+    <string name="gapps">تطبيقات Google</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">يجب أن تكون متصلاً بالانترنت لاستخدام المحدث</string>
+    <string name="no_files_to_show">حاليا لا توجد ملفات تظهر في هذا القسم</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">Starting download…</string>
+    <string name="download_cancelled">تم إلغاء التنزيل</string>
+    <string name="du_download">تنزيل DU</string>
+    <string name="download_happy">اكتمل التنزيل، تثبيت سعيد!</string>
+    <string name="complete">اكتمل</string>
+    <string name="download_failed">فشل التنزيل</string>
+    <!--Card String-->
+    <string name="card_file_size">حجم الملف: %1$s</string>
+    <string name="card_file_md5">ملف MD5: %1$s</string>
 </resources>

@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">Aggiornamenti</string>
-  <string name="action_download">Scarica</string>
-  <string name="cancel">Cancella</string>
-  <!-- Toolbar titles -->
-  <string name="official">Ufficiale</string>
-  <string name="weeklies">Settimanali</string>
-  <string name="rc">Rc</string>
-  <string name="gapps">Gapps</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">Devi essere connesso a internet per aggiornare</string>
-  <string name="no_files_to_show">Attualmente non sono presenti file in questa sezione</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">Avvio download…</string>
-  <string name="download_cancelled">Download annullato</string>
-  <string name="du_download">DU Download</string>
-  <string name="download_happy">Download completato, buon flash!</string>
-  <string name="complete">Completato</string>
-  <string name="download_failed">Download non riuscito</string>
-  <!--Card String-->
-  <string name="card_file_size">Dimensione file: %1$s</string>
-  <string name="card_file_md5">File MD5: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">Aggiornamenti</string>
+    <string name="action_download">Scarica</string>
+    <string name="cancel">Cancella</string>
+    <!-- Toolbar titles -->
+    <string name="official">Ufficiale</string>
+    <string name="weeklies">Settimanali</string>
+    <string name="rc">Rc</string>
+    <string name="gapps">Gapps</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">Devi essere connesso a internet per aggiornare</string>
+    <string name="no_files_to_show">Attualmente non sono presenti file in questa sezione</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">Avvio download…</string>
+    <string name="download_cancelled">Download annullato</string>
+    <string name="du_download">DU Download</string>
+    <string name="download_happy">Download completato, buon flash!</string>
+    <string name="complete">Completato</string>
+    <string name="download_failed">Download non riuscito</string>
+    <!--Card String-->
+    <string name="card_file_size">Dimensione file: %1$s</string>
+    <string name="card_file_md5">File MD5: %1$s</string>
 </resources>

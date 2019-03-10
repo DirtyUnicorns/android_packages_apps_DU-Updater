@@ -16,26 +16,28 @@ Copyright (C) 2014 The Android Open Source Project
     limitations under the License.
 -->
 <resources>
-  <!-- General strings -->
-  <string name="app_name">Frissítő alkalmazás</string>
-  <string name="action_download">Letöltés</string>
-  <string name="cancel">Mégse</string>
-  <!-- Toolbar titles -->
-  <string name="official">Hivatalos</string>
-  <string name="weeklies">Heti</string>
-  <string name="rc">RC</string>
-  <string name="gapps">Google Alkalmazások</string>
-  <!-- Snackbar messages -->
-  <string name="no_internet_snackbar">A Frissítő alkalmazás használatához internetkapcsolat szükséges</string>
-  <string name="no_files_to_show">Ezen a terülten jelenleg nincsenek megjeleníthető fájlok</string>
-  <!-- Dialogs & Downloads -->
-  <string name="download_starting_snackbar">Letöltés megkezdése…</string>
-  <string name="download_cancelled">Letöltés megszakítva</string>
-  <string name="du_download">DU letöltés</string>
-  <string name="download_happy">Letöltés elkészült, vidám telepítést kívánunk!</string>
-  <string name="complete">Kész</string>
-  <string name="download_failed">A letöltés sikertelen</string>
-  <!--Card String-->
-  <string name="card_file_size">Fájlméret: %1$s</string>
-  <string name="card_file_md5">MD5: %1$s</string>
+    <!-- General strings -->
+    <string name="app_name">Frissítő alkalmazás</string>
+    <string name="action_download">Letöltés</string>
+    <string name="cancel">Mégse</string>
+    <!-- Toolbar titles -->
+    <string name="official">Hivatalos</string>
+    <string name="weeklies">Heti</string>
+    <string name="rc">RC</string>
+    <string name="gapps">Google Alkalmazások</string>
+    <string name="vendors">Vendors</string>
+    <!-- Snackbar messages -->
+    <string name="no_internet_snackbar">A Frissítő alkalmazás használatához internetkapcsolat szükséges</string>
+    <string name="no_files_to_show">Ezen a terülten jelenleg nincsenek megjeleníthető fájlok</string>
+    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <!-- Dialogs & Downloads -->
+    <string name="download_starting_snackbar">Letöltés megkezdése…</string>
+    <string name="download_cancelled">Letöltés megszakítva</string>
+    <string name="du_download">DU letöltés</string>
+    <string name="download_happy">Letöltés elkészült, vidám telepítést kívánunk!</string>
+    <string name="complete">Kész</string>
+    <string name="download_failed">A letöltés sikertelen</string>
+    <!--Card String-->
+    <string name="card_file_size">Fájlméret: %1$s</string>
+    <string name="card_file_md5">MD5: %1$s</string>
 </resources>
