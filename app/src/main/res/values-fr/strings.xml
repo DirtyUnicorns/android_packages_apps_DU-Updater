@@ -25,7 +25,7 @@ Copyright (C) 2014 The Android Open Source Project
     <string name="weeklies">Hebdomadaires</string>
     <string name="rc">RC</string>
     <string name="gapps">GApps</string>
-    <string name="vendors">Fournisseurs</string>
+    <string name="vendors">Vendors</string>
     <!-- Snackbar messages -->
     <string name="no_internet_snackbar">Connexion à Internet nécessaire pour utiliser le gestionnaire de mise à jour</string>
     <string name="no_files_to_show">Aucun fichier à afficher actuellement</string>

@@ -22,16 +22,16 @@ Copyright (C) 2014 The Android Open Source Project
     <string name="cancel">Cancelar</string>
     <!-- Toolbar titles -->
     <string name="official">Oficial</string>
-    <string name="weeklies">Weeklies</string>
+    <string name="weeklies">Semanales</string>
     <string name="rc">Rc</string>
     <string name="gapps">Gapps</string>
     <string name="vendors">Vendors</string>
     <!-- Snackbar messages -->
     <string name="no_internet_snackbar">Debe estar conectado a internet para usar el Updater</string>
     <string name="no_files_to_show">Actualmente no hay ningún archivo para mostrar en esta sección</string>
-    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <string name="card_snackbar">Presiona y mantén para detener el efecto marquee</string>
     <!-- Dialogs & Downloads -->
-    <string name="download_starting_snackbar">Starting download…</string>
+    <string name="download_starting_snackbar">Comenzando descarga…</string>
     <string name="download_cancelled">Descarga cancelada</string>
     <string name="du_download">Descargar DU</string>
     <string name="download_happy">Descarga finalizada, ¡disfruta de la instalación!</string>
