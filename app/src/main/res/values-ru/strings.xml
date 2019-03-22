@@ -25,11 +25,11 @@ Copyright (C) 2014 The Android Open Source Project
     <string name="weeklies">Еженедельные сборки</string>
     <string name="rc">Релиз-кандидаты</string>
     <string name="gapps">Gapps</string>
-    <string name="vendors">Vendors</string>
+    <string name="vendors">Поставщики</string>
     <!-- Snackbar messages -->
     <string name="no_internet_snackbar">Вы должны быть подключены к Интернету, чтобы использовать обновлятор</string>
     <string name="no_files_to_show">Сейчас тут нечего показывать</string>
-    <string name="card_snackbar">Press and hold to stop marquee effect</string>
+    <string name="card_snackbar">Нажмите и удерживайте, чтобы остановить эффект</string>
     <!-- Dialogs & Downloads -->
     <string name="download_starting_snackbar">Загрузка началась…</string>
     <string name="download_cancelled">Загрузка отменена</string>
